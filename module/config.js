@@ -3,7 +3,7 @@ export const hibern = {};
 hibern.CF = 1;
 hibern.CS = 20;
 
-hibern.LWReadySeuil = 8;
+hibern.ASSeuil = 25;
 
 hibern.rolldiff = {
     veryeasy: 6,

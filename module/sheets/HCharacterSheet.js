@@ -125,7 +125,7 @@ export default class HCharacterSheet extends ActorSheet {
             html.find(".roll-baseatk").click(this._rollBasicAtk.bind(this));
         
             new ContextMenu(html, ".InventoryItem", this.itemContextMenu);
-            new ContextMenu(html, ".LWItem", this.LWContextMenu);
+            //new ContextMenu(html, ".LWItem", this.LWContextMenu);
         }
 
         super.activateListeners(html);
@@ -379,6 +379,14 @@ export default class HCharacterSheet extends ActorSheet {
         if (checkOptions.cancelled) {
             return;
         }
+
+        const ftg = item.system.Fatigue += (IsCharInAS(this.actor)) ? 2 : 1;
+        item.update({
+            system: {
+                Fatigue: ftg
+            }
+        }, {diff: false, render: true});
+        lowerAllOtherFatigue("Spell Card", this.actor, item._id);
         
         let chatData = {
             user: game.user.id,
@@ -405,6 +413,7 @@ export default class HCharacterSheet extends ActorSheet {
         
         let rollResult2 = rollResult._total + this.actor.system.MAG.value + RollBonus;
         let cardData = {
+            isAS: IsSpellAS(this.actor, item),
             Degats: damageRoll._total,
             spell: item,
             rollResult: rollResult2,
@@ -440,6 +449,14 @@ export default class HCharacterSheet extends ActorSheet {
             if (checkOptions.cancelled) {
                 return;
             }
+
+            const ftg = ability.system.Fatigue += (IsCharInAS(this.actor)) ? 2 : 1;
+            ability.update({
+                system: {
+                    Fatigue: ftg
+                }
+            }, {diff: false, render: true});
+            lowerAllOtherFatigue("Capacité", this.actor, item._id);
 
             rollResult = new Roll(`1d20`);
             rollResult = await rollResult.evaluate({async:true});
@@ -626,7 +643,7 @@ Hooks.on("updateActor", (actor, sysdiff, diffrender, id) => {
                     WillPoints: {
                         max: actor.system.CON.value
                     },
-                    lwready: (actor.system.PV.value <= actor.system.PV.max-25)
+                    lwready: (actor.system.PV.value <= actor.system.PV.max-CONFIG.hibern.ASSeuil)
                 }
             }, {diff: false, render: true});
         }
@@ -680,6 +697,32 @@ function _addHudButton(html, selectedToken, title, icon, position, clickEvent) {
     button.click(clickEvent);
     const column = `.col.${position}`;
     html.find(column).append(button);
+}
+
+function IsSpellAS(actor, spell) {
+    if (IsCharInAS(actor) && spell.system.AS == true)
+        return true;
+    return false;
+}
+
+function IsCharInAS(actor) {
+    return (actor.system.PV.value <= actor.system.PV.max-CONFIG.hibern.ASSeuil);
+}
+
+// type, actor, item_id
+function lowerAllOtherFatigue(type, actor, item_id) {
+    let object_array = actor.items.filter(function (item) {return item.type == type});
+
+    object_array.filter(obj => obj._id != item_id).forEach(object => {
+        if (object.system.Fatigue <= 0)
+            return;
+        const ftg = object.system.Fatigue -= 1;
+        object.update({
+            system: {
+                Fatigue: ftg
+            }
+        }, {diff: false, render: true});
+    });
 }
 
 //#endregion

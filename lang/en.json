@@ -67,7 +67,8 @@
             "Spe": "Specialization",
             "Reduction": "Damage reduction",
             "StatBonus": "Stat Bonus",
-            "component": "Component"
+            "component": "Component",
+            "Fatigue": "Fatigue"
         },
         "rolls": {
             "CS": "Critical Success !!!",

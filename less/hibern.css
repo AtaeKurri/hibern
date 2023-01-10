@@ -25,6 +25,10 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+.dice-roll .roll .ASName {
+  background-color: #353584;
+  color: white;
+}
 .dice-roll .roll .content {
   padding: 5px;
   background-color: white;
@@ -518,6 +522,9 @@
 .hibern.sheet.item .row::after {
   clear: both;
   content: "";
+}
+.hibern.sheet.item .row-initial {
+  height: initial;
 }
 .hibern.sheet.item .main-margin {
   margin: 8px;

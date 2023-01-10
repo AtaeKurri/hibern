@@ -78,13 +78,15 @@
             "Cout": 0,
             "Composante": "Aucune",
             "AS": false,
-            "ASDescription": ""
+            "ASDescription": "",
+            "Fatigue": 0
         },
         "Capacité": {
             "templates": ["description"],
             "Spécialisation": 0,
             "Actif": "true",
-            "UsageWhenKO": "false"
+            "UsageWhenKO": "false",
+            "Fatigue": 0
         },
         "LastWord": {
             "templates": ["description"],

@@ -1,8 +1,16 @@
 <form class="{{cssClass}} border-around" autocomplete="off">
     <div class="row">
         <div class="col-7 main-margin">
-            <p class="field-name"><b>{{localize "hibern.objects.Spe"}}</b></p>
-            <input type="number" name="system.Spécialisation" value="{{item.system.Spécialisation}}" data-dtype="Number" placeholder="0"/>
+            <div class="row row-initial">
+                <div class="col-6" style="margin-right: 2px;">
+                    <p class="field-name"><b>{{localize "hibern.objects.Spe"}}</b></p>
+                    <input type="number" name="system.Spécialisation" value="{{item.system.Spécialisation}}" data-dtype="Number" placeholder="0"/>
+                </div>
+                <div class="col-6" style="margin-left: 2px;">
+                    <p class="field-name"><b>{{localize "hibern.objects.Fatigue"}}</b></p>
+                    <input name="system.Fatigue" type="number" value="{{item.system.Fatigue}}" placerholder="0" data-dtype="Number" />
+                </div>
+            </div>
             <p class="field-name"><b>Description</b></p>
 <textarea name="system.Description" rows="8" placeholder="Description">{{{item.system.Description}}}</textarea>
         <div class="row" style="height: initial;">

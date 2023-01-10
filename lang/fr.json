@@ -67,7 +67,8 @@
             "Spe": "Spécialisation",
             "Reduction": "Réduction de dégâts",
             "StatBonus": "Bonus de Statistique",
-            "component": "Composante"
+            "component": "Composante",
+            "Fatigue": "Fatigue"
         },
         "rolls": {
             "CritSuccess": "Succès Critique !!!",

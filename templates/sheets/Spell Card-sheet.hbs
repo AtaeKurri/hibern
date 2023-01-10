@@ -22,10 +22,18 @@
         </select></p>
     </div>-->
 
-    <div class="row">
+    <div class="row row-initial">
         <div class="col-7 main-margin">
-            <p class="field-name"><b>{{localize "hibern.objects.Damage"}}</b></p>
-            <input name="system.Degats" type="text" value="{{item.system.Degats}}" placeholder='{{localize "hibern.objects.Damage"}}'/>
+            <div class="row row-initial">
+                <div class="col-6" style="margin-right: 2px;">
+                    <p class="field-name"><b>{{localize "hibern.objects.Damage"}}</b></p>
+                    <input name="system.Degats" type="text" value="{{item.system.Degats}}" placeholder='{{localize "hibern.objects.Damage"}}'/>
+                </div>
+                <div class="col-6" style="margin-left: 2px;">
+                    <p class="field-name"><b>{{localize "hibern.objects.Fatigue"}}</b></p>
+                    <input name="system.Fatigue" type="number" value="{{item.system.Fatigue}}" placerholder="0" data-dtype="Number" />
+                </div>
+            </div>
             <!--<div class="row" style="height: initial;">
                 <div class="col-6" style="margin-right: 2px;">
                     <p class="field-name"><b>{{localize "hibern.objects.Threshold"}}</b></p>
