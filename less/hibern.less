@@ -1,0 +1,148 @@
+//@import "./HUD.less";
+@import "./chat.less";
+@import "./actor-sheet.less";
+@import "./item-sheet.less";
+@import "./marchand-sheet.less";
+
+@third-radius: 20px;
+@main-radius: 10px;
+@second-radius: 5px;
+
+@main-color: brown;
+@main-alternative-color: rgba(165, 42, 42, 0.8);
+@second-color: white;
+@third-color: #555555;
+@fourth-color: rgb(219, 219, 219);
+@black-color : black;
+
+@life-color: rgb(0, 197, 0);
+@mana-color: rgb(205, 0, 205);
+@LW-color: rgb(0, 234, 230);
+@actif-color: rgb(255, 153, 0);
+@passif-color: rgb(53, 53, 132);
+
+.bold {
+    font-weight: bold;
+}
+
+.main-background {
+    background-color: @main-color;
+
+    input {
+        background-color: @second-color;
+    }
+}
+
+.alternative-background {
+    background-color: @main-alternative-color;
+
+    input {
+        background-color: @second-color;
+    }
+}
+
+.white-on-red() {
+    background-color: @main-alternative-color;
+    color: @second-color;
+}
+
+.main-corner() {
+    border-radius: @main-radius;
+}
+
+.second-corner() {
+    border-radius: @second-radius;
+}
+
+.third-corner() {
+    border-radius: @third-radius;
+}
+
+.red-carpet() {
+    &::before {
+        content: "";
+        background: @main-color;
+        position: absolute;
+        top: 0;
+        left: 10%;
+        right: 10%;
+        bottom: 0;
+        z-index: -1;
+        .second-corner();
+    }
+}
+
+.canvas-shadow() {
+    filter: drop-shadow(0 0 10px @black-color);
+}
+
+.clipCorners(@bevel: @main-radius) {
+    clip-path: polygon(@bevel 0px,
+    calc(100% - @bevel) 0px,
+    100% @bevel,
+    100% calc(100% - @bevel),
+    calc(100% - @bevel) 100%,
+    @bevel 100%,
+    @bevel 100%,
+    @bevel 100%,
+    0px calc(100% - @bevel),
+    0px @bevel);
+}
+
+.clippedBorder(@color: @main-color,
+  @borderThickness: 4px,
+  @background: @second-color,
+  @clipSize: @main-radius,
+  @contextMenu: false) {
+  position: relative;
+  border: none;
+
+  & when (@contextMenu =false) {
+    background: @background;
+    .clipCorners(@clipSize);
+  }
+
+  & when (@contextMenu =true) {
+    background: none;
+
+    &::before {
+      content: "";
+      background: @background;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      .clipCorners(@clipSize);
+      z-index: -1;
+    }
+  }
+
+  &::after {
+    clip-path: polygon(calc(100% - @clipSize) 0%,
+        @clipSize 0%,
+        0% @clipSize,
+        0% calc(100% - @clipSize),
+        @clipSize 100%,
+        calc(@borderThickness + @clipSize) calc(100% - @borderThickness),
+        @borderThickness calc(100% - @borderThickness - @clipSize),
+        @borderThickness calc(@borderThickness + @clipSize),
+        calc(@borderThickness + @clipSize) @borderThickness,
+        calc(100% - @borderThickness - @clipSize) @borderThickness,
+        calc(100% - @borderThickness) calc(@borderThickness + @clipSize),
+        calc(100% - @borderThickness) calc(100% - @borderThickness - @clipSize),
+        calc(100% - @borderThickness - @clipSize) calc(100% - @borderThickness),
+        calc(@borderThickness + @clipSize) calc(100% - @borderThickness),
+        @clipSize 100%,
+        calc(100% - @clipSize) 100%,
+        100% calc(100% - @clipSize),
+        100% @clipSize);
+    content: "";
+    background: @color;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

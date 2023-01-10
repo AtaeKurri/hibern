@@ -1,0 +1,6 @@
+.vscode/*
+node_modules/*
+packs/*
+*.code-workspace
+package-lock.json
+gulpfile.js

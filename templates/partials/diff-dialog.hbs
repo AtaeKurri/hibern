@@ -1,0 +1,14 @@
+<form>
+    <div class="form-group">
+        <label><b>{{localize "hibern.rolls.Difficulty"}}</b></label>
+        <select name="Diff">
+            {{#select Diff}}
+                <option value="{{difficulties.veryeasy}}">{{localize "hibern.rolls.veryeasy"}}</option>
+                <option value="{{difficulties.easy}}">{{localize "hibern.rolls.easy"}}</option>
+                <option value="{{difficulties.normal}}" selected>{{localize "hibern.rolls.normal"}}</option>
+                <option value="{{difficulties.hard}}">{{localize "hibern.rolls.hard"}}</option>
+                <option value="{{difficulties.veryhard}}">{{localize "hibern.rolls.veryhard"}}</option>
+            {{/select}}
+        </select>
+    </div>
+</form>

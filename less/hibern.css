@@ -1,0 +1,748 @@
+@keyframes LWChatanimation {
+  0% {
+    background-color: brown;
+    color: white;
+  }
+  50% {
+    background-color: #00eae6;
+    color: black;
+  }
+  100% {
+    background-color: brown;
+    color: white;
+  }
+}
+.dice-roll .roll .name {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  padding: 4px;
+  background-color: brown;
+  animation: none;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.dice-roll .roll .content {
+  padding: 5px;
+  background-color: white;
+  border: 1px solid #555555;
+  border-top: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.dice-roll .big-number {
+  font-size: large;
+}
+.dice-roll .CritSuccess {
+  color: #00ff00;
+  text-shadow: 1px 1px black;
+  font-size: large;
+}
+.dice-roll .Success {
+  color: darkgreen;
+  text-shadow: 1px 1px black;
+  font-size: large;
+}
+.dice-roll .CritFailure {
+  color: red;
+  text-shadow: 1px 1px black;
+  font-size: large;
+}
+.dice-roll .Failure {
+  color: #888988;
+  text-shadow: 1px 1px black;
+  font-size: large;
+}
+.custom-combat-tracker {
+  border-top: 2px groove var(--color-border-dark-4);
+  padding: 5px;
+}
+.custom-combat-tracker h3 {
+  text-align: center;
+  font-size: initial;
+  border-bottom: none;
+}
+.custom-combat-tracker .posture {
+  display: flex;
+  flex-flow: row wrap;
+  font-size: medium;
+}
+.custom-combat-tracker #change-posture {
+  color: white;
+}
+.custom-combat-tracker #change-posture option {
+  color: black;
+}
+.custom-combat-tracker .actionList {
+  display: flex;
+  flex-flow: row wrap;
+}
+.custom-combat-tracker .actionList .usable {
+  color: white;
+}
+.custom-combat-tracker .actionList .used {
+  color: #616161;
+}
+.hibern.sheet.personnage * {
+  box-sizing: border-box;
+}
+.hibern.sheet.personnage input {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.hibern.sheet.personnage form {
+  height: 100%;
+}
+.hibern.sheet.personnage textarea {
+  resize: none;
+}
+.hibern.sheet.personnage .content {
+  overflow-y: scroll;
+}
+.hibern.sheet.personnage .window-content {
+  height: 100%;
+  padding: 0px;
+  overflow-y: hidden;
+}
+.hibern.sheet.personnage .fullsizelink {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.hibern.sheet.personnage .fullsizelinkwidth {
+  display: inline-block;
+  width: 100%;
+}
+.hibern.sheet.personnage .text-flow {
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.hibern.sheet.personnage .text-flow:hover {
+  overflow: hidden;
+  display: block;
+  text-overflow: none;
+  -webkit-line-clamp: none;
+  -webkit-box-orient: initial;
+}
+.hibern.sheet.personnage .text-flow1 {
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.hibern.sheet.personnage .text-flow1:hover {
+  overflow: hidden;
+  display: block;
+  text-overflow: none;
+  -webkit-line-clamp: none;
+  -webkit-box-orient: initial;
+}
+.hibern.sheet.personnage .row {
+  display: flex;
+  width: 100%;
+}
+.hibern.sheet.personnage .row .col-1 {
+  width: 8.33%;
+}
+.hibern.sheet.personnage .row .col-2 {
+  width: 16.66%;
+}
+.hibern.sheet.personnage .row .col-3 {
+  width: 25%;
+}
+.hibern.sheet.personnage .row .col-4 {
+  width: 33.33%;
+}
+.hibern.sheet.personnage .row .col-5 {
+  width: 41.66%;
+}
+.hibern.sheet.personnage .row .col-6 {
+  width: 50%;
+}
+.hibern.sheet.personnage .row .col-7 {
+  width: 58.33%;
+}
+.hibern.sheet.personnage .row .col-8 {
+  width: 66.66%;
+}
+.hibern.sheet.personnage .row .col-9 {
+  width: 75%;
+}
+.hibern.sheet.personnage .row .col-10 {
+  width: 83.33%;
+}
+.hibern.sheet.personnage .row .col-11 {
+  width: 91.66%;
+}
+.hibern.sheet.personnage .row .col-12 {
+  width: 100%;
+}
+.hibern.sheet.personnage .row::after {
+  clear: both;
+  content: "";
+}
+.hibern.sheet.personnage .editor {
+  height: 100%;
+  resize: none;
+}
+.hibern.sheet.personnage .editor > .tox.tox-tinymce {
+  height: 100%;
+  resize: none;
+}
+.hibern.sheet.personnage .border-around {
+  border: 1px solid #555555;
+  border-radius: 10px;
+}
+.hibern.sheet.personnage .char-name {
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 0px;
+  font-size: large;
+  padding: 4px;
+  margin-top: -5px;
+  width: 100%;
+  background-color: brown;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.hibern.sheet.personnage .char-name2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  padding: 4px;
+  margin-top: -5px;
+  background-color: brown;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.hibern.sheet.personnage .char-name:focus {
+  box-shadow: none;
+}
+.hibern.sheet.personnage .profile-img {
+  object-fit: cover;
+  object-position: 50% 0;
+  border: none;
+  flex: 0;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+  text-align: center;
+  display: block;
+  border-radius: 10px;
+}
+.hibern.sheet.personnage .radius-background {
+  background-color: white;
+  border-radius: 10px;
+}
+.hibern.sheet.personnage .border-right {
+  border-right: 0.5px solid black;
+}
+.hibern.sheet.personnage .border-left {
+  border-left: 0.5px solid black;
+}
+.hibern.sheet.personnage .stat-block {
+  display: block;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  text-align: center;
+  border: 2px;
+  border-color: white;
+  border-style: solid;
+  border-radius: 10px;
+  background-color: #00000022;
+}
+.hibern.sheet.personnage .stat-block input {
+  background: none;
+  border: none;
+  pointer-events: none;
+}
+.hibern.sheet.personnage .stat-block input:focus {
+  box-shadow: none;
+}
+.hibern.sheet.personnage .stat-block .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: large;
+  height: 30px;
+  border-bottom: 2px solid white;
+}
+.hibern.sheet.personnage .stat-block .value {
+  font-size: 35px;
+  font-weight: bold;
+  height: 60%;
+  width: 100%;
+}
+.hibern.sheet.personnage .energies-display input {
+  background: none;
+  border: none;
+  width: 15%;
+  color: inherit;
+  text-shadow: inherit;
+  margin-right: -4px;
+  margin-left: -4px;
+  font-weight: bold;
+}
+.hibern.sheet.personnage .energies-display input:focus {
+  box-shadow: none;
+}
+.hibern.sheet.personnage .energies-display .life {
+  text-shadow: 1px 1px #00c500;
+  color: white;
+}
+.hibern.sheet.personnage .energies-display .mana {
+  text-shadow: 1px 1px #cd00cd;
+  color: white;
+}
+.hibern.sheet.personnage .energies-display .value-display {
+  font-size: medium;
+  font-weight: bold;
+}
+.hibern.sheet.personnage .energies-display .value-display .values {
+  font-size: large;
+}
+.hibern.sheet.personnage .will-point {
+  font-size: large;
+}
+.hibern.sheet.personnage .will-point input {
+  background: none;
+  border: none;
+  width: 1%;
+  color: inherit;
+  text-shadow: inherit;
+  margin-right: -4px;
+  margin-left: -4px;
+  font-weight: bold;
+}
+.hibern.sheet.personnage .will-point input:focus {
+  box-shadow: none;
+}
+.hibern.sheet.personnage .inventory-display h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  padding: 4px;
+  margin-top: -5px;
+  background-color: brown;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.hibern.sheet.personnage .inventory-display .inventory-item {
+  border: 1px dotted #555555;
+  border-radius: 5px;
+  padding: 2px;
+  margin-bottom: 2px;
+}
+.hibern.sheet.personnage .inventory-display .content {
+  padding-top: 8px;
+  background-color: white;
+  border: 1px solid #555555;
+  border-top: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: -8px;
+  margin-bottom: 8px;
+  max-height: 120px;
+}
+.hibern.sheet.personnage .inventory-display table {
+  margin-top: -8px;
+  background: none;
+  /*tr:last-child {
+                border-bottom-left-radius: @main-radius;
+                border-bottom-right-radius: @main-radius;
+            }*/
+}
+.hibern.sheet.personnage .inventory-display table td {
+  border-bottom: hidden;
+  border-top: hidden;
+  padding: 4px;
+  text-align: center;
+}
+.hibern.sheet.personnage .inventory-display table tr:nth-child(odd) {
+  background-color: white;
+}
+.hibern.sheet.personnage .inventory-display table tr:nth-child(even) {
+  background-color: #dbdbdb;
+}
+.hibern.sheet.personnage .main-decoration {
+  text-decoration: underline;
+  text-decoration-color: white;
+  text-decoration-thickness: 1px;
+}
+.hibern.sheet.personnage .color-text-second {
+  color: white;
+  text-shadow: 1px 1px black;
+}
+@keyframes LWanimation {
+  0% {
+    padding-top: 0px;
+  }
+  50% {
+    padding-top: 5px;
+  }
+  100% {
+    padding-top: 0px;
+  }
+}
+.hibern.sheet.personnage .LW .Ready {
+  color: #00eae6;
+  animation-name: LWanimation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+.hibern.sheet.personnage .LW .NotReady {
+  color: black;
+  font-size: medium;
+}
+.hibern.sheet.personnage .spells {
+  color: black;
+  border-radius: 10px;
+}
+.hibern.sheet.personnage .spells .actif {
+  color: #ff9900;
+}
+.hibern.sheet.personnage .spells .passif {
+  color: #353584;
+}
+.hibern.sheet.personnage .spells .name {
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  padding: 4px;
+  margin-top: -5px;
+  background-color: brown;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.hibern.sheet.personnage .spells .scroll-container {
+  overflow-y: auto;
+  padding-top: 8px;
+}
+.hibern.sheet.personnage .spells .scroll-content {
+  width: 100%;
+  overflow: visible;
+  box-sizing: border-box;
+}
+.hibern.sheet.personnage .spells table {
+  margin-top: -8px;
+  background: none;
+  /*tr:last-child {
+                border-bottom-left-radius: @main-radius;
+                border-bottom-right-radius: @main-radius;
+            }*/
+}
+.hibern.sheet.personnage .spells table td {
+  border-bottom: hidden;
+  border-top: hidden;
+  padding: 4px;
+}
+.hibern.sheet.personnage .spells table tr:nth-child(even) {
+  background-color: white;
+}
+.hibern.sheet.personnage .spells table tr:nth-child(odd) {
+  background-color: #dbdbdb;
+}
+.hibern.sheet.personnage .spells .spell-table-content .spell-name {
+  font-weight: bold;
+}
+.hibern.sheet.item textarea {
+  resize: none;
+}
+.hibern.sheet.item form {
+  display: flex;
+  flex-direction: column;
+  margin: -8px;
+  background-color: white;
+}
+.hibern.sheet.item form textarea,
+.hibern.sheet.item form input {
+  width: 100%;
+  font-family: inherit;
+  text-align: justify;
+}
+.hibern.sheet.item .row {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.hibern.sheet.item .row .col-1 {
+  width: 8.33%;
+}
+.hibern.sheet.item .row .col-2 {
+  width: 16.66%;
+}
+.hibern.sheet.item .row .col-3 {
+  width: 25%;
+}
+.hibern.sheet.item .row .col-4 {
+  width: 33.33%;
+}
+.hibern.sheet.item .row .col-5 {
+  width: 41.66%;
+}
+.hibern.sheet.item .row .col-6 {
+  width: 50%;
+}
+.hibern.sheet.item .row .col-7 {
+  width: 58.33%;
+}
+.hibern.sheet.item .row .col-8 {
+  width: 66.66%;
+}
+.hibern.sheet.item .row .col-9 {
+  width: 75%;
+}
+.hibern.sheet.item .row .col-10 {
+  width: 83.33%;
+}
+.hibern.sheet.item .row .col-11 {
+  width: 91.66%;
+}
+.hibern.sheet.item .row .col-12 {
+  width: 100%;
+}
+.hibern.sheet.item .row::after {
+  clear: both;
+  content: "";
+}
+.hibern.sheet.item .main-margin {
+  margin: 8px;
+}
+.hibern.sheet.item .sheet-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.hibern.sheet.item .sheet-content .editor {
+  height: 100%;
+}
+.hibern.sheet.item .header {
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  padding: 0px;
+  background-color: brown;
+  color: white;
+}
+.hibern.sheet.item .header img {
+  border: none;
+  border-radius: 10px;
+}
+.hibern.sheet.item .header input {
+  border: none;
+  box-shadow: none;
+}
+.hibern.sheet.item .header input:hover {
+  border: none;
+  box-shadow: none;
+}
+.hibern.sheet.item .header h1 {
+  border-bottom: none;
+  font-size: medium;
+  padding: 10px;
+}
+.hibern.sheet.item .header .item-type {
+  font-weight: bold;
+  font-size: large;
+  margin-bottom: -10px;
+}
+.hibern.sheet.item .field-name {
+  text-decoration: underline;
+  text-align: center;
+}
+.hibern.sheet.marchand * {
+  box-sizing: border-box;
+}
+.hibern.sheet.marchand input {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.hibern.sheet.marchand form {
+  height: 100%;
+  padding: 5px;
+}
+.hibern.sheet.marchand textarea {
+  resize: none;
+}
+.hibern.sheet.marchand .content {
+  padding: 5px;
+  border-left: 1px solid #555555;
+}
+.hibern.sheet.marchand .window-content {
+  height: 100%;
+  padding: 0px;
+  overflow-y: hidden;
+}
+.hibern.sheet.marchand .fullsizelink {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.hibern.sheet.marchand .fullsizelinkwidth {
+  display: inline-block;
+  width: 100%;
+}
+.hibern.sheet.marchand .text-flow {
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.hibern.sheet.marchand .text-flow:hover {
+  overflow: hidden;
+  display: block;
+  text-overflow: none;
+  -webkit-line-clamp: none;
+  -webkit-box-orient: initial;
+}
+.hibern.sheet.marchand .row {
+  display: flex;
+  width: 100%;
+}
+.hibern.sheet.marchand .row .col-1 {
+  width: 8.33%;
+}
+.hibern.sheet.marchand .row .col-2 {
+  width: 16.66%;
+}
+.hibern.sheet.marchand .row .col-3 {
+  width: 25%;
+}
+.hibern.sheet.marchand .row .col-4 {
+  width: 33.33%;
+}
+.hibern.sheet.marchand .row .col-5 {
+  width: 41.66%;
+}
+.hibern.sheet.marchand .row .col-6 {
+  width: 50%;
+}
+.hibern.sheet.marchand .row .col-7 {
+  width: 58.33%;
+}
+.hibern.sheet.marchand .row .col-8 {
+  width: 66.66%;
+}
+.hibern.sheet.marchand .row .col-9 {
+  width: 75%;
+}
+.hibern.sheet.marchand .row .col-10 {
+  width: 83.33%;
+}
+.hibern.sheet.marchand .row .col-11 {
+  width: 91.66%;
+}
+.hibern.sheet.marchand .row .col-12 {
+  width: 100%;
+}
+.hibern.sheet.marchand .row::after {
+  clear: both;
+  content: "";
+}
+.hibern.sheet.marchand .navigation-item {
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-top: 1px solid #555555;
+  font-size: large;
+  padding: 4px;
+  margin: -5px 2px 0px 2px;
+  width: 100%;
+  color: white;
+  background-color: brown;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.hibern.sheet.marchand .navigation-item:hover {
+  text-shadow: none;
+  background-color: white;
+  color: black;
+}
+.hibern.sheet.marchand .navigation-item.active {
+  text-shadow: none;
+  background-color: white;
+  color: black;
+}
+.hibern.sheet.marchand .marchand-name {
+  padding: 5px 0px 5px 15px;
+  font-size: 30px;
+  border: none;
+  margin-left: 2px;
+  margin-bottom: 4px;
+  margin-right: 2px;
+  color: white;
+  background-color: brown;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.hibern.sheet.marchand .marchand-img {
+  object-fit: cover;
+  object-position: 50% 0;
+  border: none;
+  flex: 0;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+  text-align: center;
+  display: block;
+  border-radius: 10px;
+}
+.hibern.sheet.marchand table {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: none;
+}
+.hibern.sheet.marchand table .item-img {
+  border-radius: 10px;
+  border: none;
+  margin-top: 3px;
+}
+.hibern.sheet.marchand table tr {
+  color: inherit;
+}
+.hibern.sheet.marchand table tr:nth-child(odd) {
+  background-color: white;
+}
+.hibern.sheet.marchand table tr:nth-child(even) {
+  background-color: #dbdbdb;
+}
+.hibern.sheet.marchand table td {
+  padding: 0;
+}
+.hibern.sheet.marchand table .td-img {
+  width: 4%;
+  padding-left: 2px;
+}
+.hibern.sheet.marchand table .td-name {
+  width: 50%;
+  font-weight: bold;
+}
+.bold {
+  font-weight: bold;
+}
+.main-background {
+  background-color: brown;
+}
+.main-background input {
+  background-color: white;
+}
+.alternative-background {
+  background-color: rgba(165, 42, 42, 0.8);
+}
+.alternative-background input {
+  background-color: white;
+}

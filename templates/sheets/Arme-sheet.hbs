@@ -1,0 +1,30 @@
+<form class="{{cssClass}} border-around" autocomplete="off">
+    <!--<header class="sheet-header header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" class="header"/></h1>
+    </header>
+    <div class="main-margin">
+        <p class="field-name"><b>{{localize "hibern.objects.Damage"}}</b></p>
+        <input name="system.Damage" type="text" value="{{item.system.Damage}}" placeholder="Damage"/>
+        <p class="field-name"><b>Description</b></p>
+<textarea name="system.Description" rows="10" placeholder="Description">{{{item.system.Description}}}</textarea>
+        <p class="field-name"><b>{{localize "hibern.objects.Equiped"}}</b>
+        <input type="checkbox" name="system.Equiped" value="{{item.system.Equiped}}" data-dtype="Boolean" {{checked item.system.Equiped}}/></p>
+    </div>-->
+    <div class="row">
+        <div class="col-7 main-margin">
+            <p class="field-name"><b>{{localize "hibern.objects.Damage"}}</b></p>
+            <input name="system.Damage" type="text" value="{{item.system.Damage}}" placeholder="Damage"/>
+            <p class="field-name"><b>Description</b></p>
+<textarea name="system.Description" rows="8" placeholder="Description">{{{item.system.Description}}}</textarea>
+        <p class="field-name"><b>{{localize "hibern.objects.Equiped"}}
+        <input type="checkbox" name="system.Equiped" value="{{item.system.Equiped}}" data-dtype="Boolean"
+            {{checked item.system.Equiped}} style="margin: 0; margin-top: 1px"/></b></p>
+        </div>
+        <div class="col-5 sheet-header header">
+            <h1 class="item-type">{{localize "hibern.objects.weapon"}}</h1>
+            <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" class="header" /></h1>
+            <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="200" width="200" />
+        </div>
+    </div>
+</form>

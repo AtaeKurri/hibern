@@ -1,0 +1,32 @@
+<form class="{{cssClass}}" autocomplete="off" style="background-color: #80808045; width: 100%;">
+    <h2 class="marchand-name">{{actor.name}}</h2>
+    <nav class="tabs navigation" data-group="primary-tabs">
+        <a class="item navigation-item" data-tab="armes">{{localize "hibern.objects.weapons"}}</a>
+        <a class="item navigation-item" data-tab="armures">{{localize "hibern.objects.armors"}}</a>
+        <a class="item navigation-item" data-tab="accessoires">{{localize "hibern.objects.accessories"}}</a>
+        <a class="item navigation-item" data-tab="objets">{{localize "hibern.objects.objects"}}</a>
+        <a class="item navigation-item" data-tab="spell-cards">Spell-Cards</a>
+    </nav>
+    <div class="row" style="margin-top: 15px; height: 77%;">
+        <div class="col-4">
+            <img src="{{actor.img}}" {{#if actor.isOwner}}data-edit="img"{{/if}} title="{{actor.name}}" height="250" width="250" class="marchand-img" />
+        </div>
+        <div class="content sheet-body col-8">
+            <div class="tab" style="overflow-x: hidden;" data-tab="armes" data-group="primary-tabs">
+{{> "systems/hibern/templates/partials/machand-armes-block.hbs"}}
+            </div>
+            <div class="tab" style="overflow-x: hidden;" data-tab="armures" data-group="primary-tabs">
+{{> "systems/hibern/templates/partials/machand-armures-block.hbs"}}
+            </div>
+            <div class="tab" style="overflow-x: hidden;" data-tab="accessoires" data-group="primary-tabs">
+{{> "systems/hibern/templates/partials/machand-accessoires-block.hbs"}}
+            </div>
+            <div class="tab" style="overflow-x: hidden;" data-tab="objets" data-group="primary-tabs">
+{{> "systems/hibern/templates/partials/machand-objets-block.hbs"}}
+            </div>
+            <div class="tab" style="overflow-x: hidden;" data-tab="spell-cards" data-group="primary-tabs">
+{{> "systems/hibern/templates/partials/machand-spells-block.hbs"}}
+            </div>
+        </div>
+    </div>
+</form>

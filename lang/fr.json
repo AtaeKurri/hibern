@@ -1,0 +1,108 @@
+{
+    "hibern": {
+        "stats": {
+            "PV": "PV",
+            "PM": "PM",
+            "FOR": "FOR",
+            "Force": "Force",
+            "MAG": "MAG",
+            "Magie": "Magie",
+            "DEX": "DEX",
+            "Dextérité": "Dextérité",
+            "CON": "CON",
+            "Constitution": "Constitution",
+            "EDU": "ERU",
+            "Education": "Érudition",
+            "CHA": "CHA",
+            "Charisme": "Charisme",
+            "WillPoints": "Points de Volonté"
+        },
+        "chars": {
+            "Statistiques": "Statistiques",
+            "Statistique": "Statistique",
+            "EditMode": "Mode Édition",
+            "charname": "Nom du Personnage",
+            "species": "Espèce",
+            "title": "Titre",
+            "LWReady": "Last-Word Prête!!",
+            "LWCharging": "Last-Word en chargement...",
+            "NoSpells": "Aucune Spell Card",
+            "abilities": "Capacités",
+            "NoAbilities": "Aucune Capacité",
+            "atkMagic": "Attaque Magique",
+            "atkPhysic": "Attaque Physique",
+            "dmgMagic": "Dégâts Magique",
+            "dmgPhysic": "Dégâts Physique",
+            "Esquive": "Esquive",
+            "Parade": "Parade",
+            "postureBase": "Normale",
+            "postureDef": "Défensive",
+            "postureOff": "Offensive",
+            "postureRea": "Réactive",
+            "postureFuy": "Fuyante",
+            "postureHib": "Hibernation",
+            "tooltipPostureBase": "Aucun Bonus. Aucun Malus.",
+            "tooltipPostureDef": "-3 Dégâts reçus. Ne peut pas attaquer.",
+            "tooltipPostureOff": "+3 Dégâts infligés. Tout dégât que vous recevez ignore toute résistance sauf équipements.",
+            "tooltipPostureRea": "Vous ne pouvez utiliser que des réactions. Vous ne pouvez que changer de posture à votre tour.",
+            "tooltipPostureFuy": "Vous fuyez le combat. Vitesse de déplacement doublée, ne peut pas attaquer, esquiver, parer.",
+            "tooltipPostureHib": "Vous ne pouvez pas faire d'action ou d'action secondaire. Chaque tour dans cette posture donne +2 initiative. Esquive et parade est en Difficile."
+        },
+        "objects": {
+            "Damage": "Dégâts",
+            "Equiped": "Équipé ?",
+            "Actif": "Actif ?",
+            "Threshold": "Seuil",
+            "Cost": "Coût",
+            "weapons": "Armes",
+            "weapon": "Arme",
+            "armors": "Armures",
+            "armor": "Armure",
+            "accessories": "Accessoires",
+            "accessory": "Accessoire",
+            "objects": "Objets",
+            "object": "Objet",
+            "ability": "Capacité",
+            "KoUsage": "Utilisable en KO ?",
+            "Spe": "Spécialisation",
+            "Reduction": "Réduction de dégâts",
+            "StatBonus": "Bonus de Statistique",
+            "component": "Composante"
+        },
+        "rolls": {
+            "CritSuccess": "Succès Critique !!!",
+            "CritFailure": "Échec Critique !!!",
+            "Success": "Succès !",
+            "Failure": "Échec...",
+            "Difficulty": "Difficulté",
+            "veryeasy": "Très facile",
+            "easy": "Facile",
+            "normal": "Normal",
+            "hard": "Difficile",
+            "veryhard": "Très difficile"
+        },
+        "Divers": {
+            "Accepter": "Accepter",
+            "Annuler": "Annuler",
+            "EnnemiRoll": "Résultat ennemi",
+            "Deletion": "Supprimer un objet",
+            "ConfirmDeletion": "Voulez-vous vraiment supprimer "
+        },
+        "chat": {
+            "CurrentCombattant": "Combattant actuel",
+            "ActionsLeft": "Actions Restantes"
+        },
+        "actions": {
+            "Action": "Action",
+            "ActionSE": "Action Secondaire",
+            "Move": "Déplacement",
+            "ChangePosture": "Changer de Posture",
+            "Esquiver": "Esquive",
+            "Parer": "Parer",
+            "Reaction": "Réaction"
+        },
+        "marchands": {
+            "Recherche": "Ecrivez pour rechercher..."
+        }
+    }
+}

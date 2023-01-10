@@ -1,0 +1,108 @@
+{
+    "hibern": {
+        "stats": {
+            "PV": "HP",
+            "PM": "MP",
+            "FOR": "STR",
+            "Force": "Strength",
+            "MAG": "MAG",
+            "Magie": "Magic",
+            "DEX": "DEX",
+            "Dextérité": "Dexterity",
+            "CON": "CON",
+            "Constitution": "Constitution",
+            "EDU": "ERU",
+            "Education": "Erudition",
+            "CHA": "CHA",
+            "Charisme": "Charisma",
+            "WillPoints": "Will Points"
+        },
+        "chars": {
+            "Statistiques": "Modifiers",
+            "Statistique": "Modifier",
+            "EditMode": "Edit Mode",
+            "charname": "Character Name",
+            "species": "Species",
+            "title": "Title",
+            "LWReady": "Last-Word Ready!!",
+            "LWCharging": "Last-Word charging...",
+            "NoSpells": "No Spell Cards",
+            "abilities": "Abilities",
+            "NoAbilities": "No Abilities",
+            "atkMagic": "Magic Attack",
+            "atkPhysic": "Physical Attack",
+            "dmgMagic": "Magic Damage",
+            "dmgPhysic": "Physical Damage",
+            "Esquive": "Dodge",
+            "Parade": "Parry",
+            "postureBase": "Normal",
+            "postureDef": "Defensive",
+            "postureOff": "Attacking",
+            "postureRea": "Reactive",
+            "postureFuy": "Fleeing",
+            "postureHib": "Hibernation",
+            "tooltipPostureBase": "No bonus. no penalty.",
+            "tooltipPostureDef": "3 damage reduction. Can't attack.",
+            "tooltipPostureOff": "3 damage bonus. Every damage you receive ignore all reduction bonuses except for equipments.",
+            "tooltipPostureRea": "You can only use reactions, you can't attack on your turn (except changing postures).",
+            "tooltipPostureFuy": "You're fleeing the fight. Speed x2, you can't attack, dodge or parry.",
+            "tooltipPostureHib": "You can't use an action or a secondary action. Each turn in this posture gives you +2 initiative. Parry and dodging are in Hard difficulty."
+        },
+        "objects": {
+            "Damage": "Damage",
+            "Equiped": "Equiped ?",
+            "Actif": "Active ?",
+            "Threshold": "Threshold",
+            "Cost": "Cost",
+            "weapons": "Weapons",
+            "weapon": "Weapon",
+            "armors": "Armors",
+            "armor": "Armor",
+            "accessories": "Accessories",
+            "accessory": "Accessory",
+            "objects": "Objects",
+            "object": "Object",
+            "ability": "Ability",
+            "KoUsage": "Usable when KO ?",
+            "Spe": "Specialization",
+            "Reduction": "Damage reduction",
+            "StatBonus": "Stat Bonus",
+            "component": "Component"
+        },
+        "rolls": {
+            "CS": "Critical Success !!!",
+            "CF": "Ciritical Failure !!!",
+            "S": "Success !",
+            "F": "Failure...",
+            "Difficulty": "Difficulty",
+            "veryeasy": "Very Easy",
+            "easy": "Easy",
+            "normal": "Normal",
+            "hard": "Hard",
+            "veryhard": "Very hard"
+        },
+        "Divers": {
+            "Accepter": "Accept",
+            "Annuler": "Cancel",
+            "EnnemiRoll": "Enemy's roll",
+            "Deletion": "Delete an item",
+            "ConfirmDeletion": "Would you really like to delete "
+        },
+        "chat": {
+            "CurrentCombattant": "Current fighter",
+            "ActionsLeft": "Actions Left"
+        },
+        "actions": {
+            "Action": "Action",
+            "ActionSE": "Secondary Action",
+            "Move": "Move",
+            "ChangePosture": "Change Posture",
+            "Esquiver": "Dodge",
+            "Parer": "Parry",
+            "Reaction": "Reaction"
+        },
+        "marchands": {
+            "Recherche": "Type of search..."
+        }
+    }
+}

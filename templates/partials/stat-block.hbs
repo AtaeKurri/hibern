@@ -1,0 +1,77 @@
+<section class="radius-background" style="padding-bottom: 2px;">
+    {{#EditMode actor}}
+        <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize hibern.chars.charname}}" class="char-name"/>
+        <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="200" width="200" class="profile-img" />
+    {{else}}
+        <div class="char-name2 text-flow">{{actor.name}}</div>
+        <img src="{{actor.img}}" title="{{actor.name}}" height="200" width="200" class="profile-img" />
+    {{/EditMode}}
+    <div class="border-around main-background energies-display" style="margin: 13px; padding: 5px;">
+        <!--<div class="row" style="text-align: center;">
+            <div class="col-6 value-display life border-right">
+                <span class="bold">{{localize "hibern.stats.PV"}}</span><br>
+                <span class="values"><input name="system.PV.value" type="number" value="{{system.PV.value}}" data-dtype="Number" />
+                    / {{system.PV.max}}</span>
+            </div>
+            <div class="col-6 value-display mana border-left">
+                <span class="bold">{{localize "hibern.stats.PM"}}</span><br>
+                <span class="values"><input name="system.PM.value" type="number" value="{{system.PM.value}}" data-dtype="Number" />
+                    / {{system.PM.max}}</span>
+            </div>
+        </div>-->
+        <div class="value-display life" style="text-align: center">
+            <span class="bold">{{localize "hibern.stats.PV"}}</span><br>
+            <span class="values"><input name="system.PV.value" type="number" value="{{system.PV.value}}" data-dtype="Number" />
+                / {{system.PV.max}}</span>     
+        </div>
+    </div>
+    <div class="border-around main-background bold" style="margin: 13px; padding: 5px; text-align: center;">
+        <h3>{{localize "hibern.stats.WillPoints"}}</h3>
+        <span class="will-point"><input name="system.WillPoints.value" type="number" value="{{system.WillPoints.value}}" data-dtype="Number" />
+            / {{system.WillPoints.max}}</span>
+    </div>
+    {{#if actor.isOwner}}
+    <div class="border-around main-background bold" style="margin: 13px; padding: 5px;">
+        {{#EditMode actor}}
+            <p>{{localize "hibern.stats.FOR"}} ({{localize "hibern.stats.Force"}}) : <input type="text" name="system.FOR.value" value="{{system.FOR.value}}" data-dtype="Number" class="stat-css"/></p>
+            <p>{{localize "hibern.stats.MAG"}} ({{localize "hibern.stats.Magie"}}) : <input type="text" name="system.MAG.value" value="{{system.MAG.value}}" data-dtype="Number" class="stat-css"/></p>
+            <p>{{localize "hibern.stats.DEX"}} ({{localize "hibern.stats.Dextérité"}}) : <input type="text" name="system.DEX.value" value="{{system.DEX.value}}" data-dtype="Number" class="stat-css"/></p>
+            <p>{{localize "hibern.stats.CON"}} ({{localize "hibern.stats.Constitution"}}) : <input type="text" name="system.CON.value" value="{{system.CON.value}}" data-dtype="Number" class="stat-css"/></p>
+            <p>{{localize "hibern.stats.EDU"}} ({{localize "hibern.stats.Education"}}) : <input type="text" name="system.EDU.value" value="{{system.EDU.value}}" data-dtype="Number" class="stat-css"/></p>
+            <p>{{localize "hibern.stats.CHA"}} ({{localize "hibern.stats.Charisme"}}) : <input type="text" name="system.CHA.value" value="{{system.CHA.value}}" data-dtype="Number" class="stat-css"/></p>
+        {{else}}
+            <div class="row" style="text-align: center; padding-bottom: -5px;">
+                <div class="col-6 border-right">
+                    <div class="stat-block" style="margin-bottom: 15px;">
+                        <span><a class="stats-test fullsizelinkwidth title" data-stat="{{system.FOR.value}}" data-statname="{{localize "hibern.stats.Force"}}">{{localize "hibern.stats.Force"}}</a></span>
+                        <input name="system.FOR.value" type="text" value="{{system.FOR.value}}" class="stat-css value" data-dtype="Number"/>
+                    </div>
+                    <div class="stat-block" style="margin-bottom: 15px;">
+                        <span><a class="stats-test fullsizelinkwidth title" data-stat="{{system.MAG.value}}" data-statname="{{localize "hibern.stats.Magie"}}">{{localize "hibern.stats.Magie"}}</a></span>
+                        <input name="system.MAG.value" type="text" value="{{system.MAG.value}}" class="stat-css value" data-dtype="Number"/>
+                    </div>
+                    <div class="stat-block">
+                        <span><a class="stats-test fullsizelinkwidth title" data-stat="{{system.DEX.value}}" data-statname="{{localize "hibern.stats.Dextérité"}}">{{localize "hibern.stats.Dextérité"}}</a></span>
+                        <input name="system.DEX.value" type="text" value="{{system.DEX.value}}" class="stat-css value" data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="col-6 border-left" style="padding-left: 3px;">
+                    <div class="stat-block" style="margin-bottom: 15px;">
+                        <span><a class="stats-test fullsizelinkwidth title" data-stat="{{system.CON.value}}" data-statname="{{localize "hibern.stats.Constitution"}}" style="font-size: small;">{{localize "hibern.stats.Constitution"}}</a></span>
+                        <input name="system.CON.value" type="text" value="{{system.CON.value}}" class="stat-css value" data-dtype="Number"/>
+                    </div>
+                    <div class="stat-block" style="margin-bottom: 15px;">
+                        <span><a class="stats-test fullsizelinkwidth title" data-stat="{{system.EDU.value}}" data-statname="{{localize "hibern.stats.Education"}}">{{localize "hibern.stats.Education"}}</a></span>
+                        <input name="system.EDU.value" type="text" value="{{system.EDU.value}}" class="stat-css value" data-dtype="Number"/>
+                    </div>
+                    <div class="stat-block">
+                        <span class="fullsizelinkwidth title"><!--<a class="stats-test fullsizelinkwidth title" data-stat="{{system.CHA.value}}" data-statname="{{localize "hibern.stats.Charisme"}}">{{localize "hibern.stats.Charisme"}}</a>-->
+                        {{localize "hibern.stats.Charisme"}}</span>
+                        <input name="system.CHA.value" type="text" value="{{system.CHA.value}}" class="stat-css value" data-dtype="Number"/>
+                    </div>
+                </div>
+            </div>
+        {{/EditMode}}
+    </div>
+    {{/if}}
+</section>

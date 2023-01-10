@@ -1,0 +1,16 @@
+<section class="dice-roll second-background">
+    <div class="roll">
+        <div class="name">{{localizeAtk}}</div>
+        {{#if (eq context "Atk")}}
+        <div class="{{Successtype}} content" style="text-align: center;">
+            <span style="text-decoration: underline;" class="big-number">{{rollResult}}</span></br>
+            <span style="font-size: 14px; text-decoration: none;">({{localizeResult}})</span></br>
+            <span class="big-number">{{localize "hibern.objects.Damage"}} :<i>{{Degats}}</i></span><br>
+        </div>
+        {{else}}
+        <div class="content" style="text-align: center;">
+            <span class="big-number">{{localize "hibern.objects.Damage"}} :<i>{{Degats}}</i></span><br>
+        </div>
+        {{/if}}
+    </div>
+</section>

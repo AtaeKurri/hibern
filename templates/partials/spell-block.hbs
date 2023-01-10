@@ -1,0 +1,45 @@
+<section class="spells" style="margin-bottom: 10px;">
+    <h2 class="name" style="margin-bottom: 0px;">Spell Cards
+        {{#EditMode actor}}
+            <a class="item-create" data-itemname="Spell Card" data-type="Spell Card"><i class="fas fa-plus"></i></a>
+        {{/EditMode}}</h2>
+    <table style="margin: 0px; border: none;">
+        <tr style="text-align: center; background-color: white;">
+            <th>
+                <a class="roll-baseatk" data-type="Physic" data-ctx="Atk" style="text-decoration: underline;">{{localize "hibern.chars.atkPhysic"}}</a>
+                <a class="roll-baseatk" data-type="Physic" data-ctx="Dmg">(<i class="fas fa-crosshairs"></i>)</a>
+            </th>
+            <th>
+                <a class="roll-baseatk" data-type="Magic" data-ctx="Atk" style="text-decoration: underline;">{{localize "hibern.chars.atkMagic"}}</a>
+                <a class="roll-baseatk" data-type="Magic" data-ctx="Dmg">(<i class="fas fa-crosshairs"></i>)</a>
+            </th>
+        </tr>
+    </table>
+    <div style="max-height: 155px;" class="scroll-container">
+        <table class="item-list scoll-content">
+            {{#if (eq spellcards.length 0)}}
+            <tr>
+                <td style="text-align: center;">{{localize "hibern.chars.NoSpells"}}</td>
+            </tr>
+            {{else}}
+                {{#each spellcards as |spell id|}}
+                <tr class="item spell-table-content" data-itemid="{{spell._id}}" data-item-id="{{spell._id}}">
+                    {{#EditMode ../actor}}
+                        <td class="spell-name" style="width: 175px;">
+                            <a class="item-delete" data-itemid="{{spell._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-trash"></i></a>
+                            <a class="item-edit" data-itemid="{{spell._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-edit"></i></a>
+                            {{spell.name}}
+                        </td>
+                        <td>
+                            <span class="text-flow1">{{{spell.system.Description}}}</span>
+                        </td>
+                    {{else}}
+                        <td class="spell-name" style="width: 175px;"><a class="use-spellcard fullsizelinkwidth text-flow1" data-itemid="{{spell._id}}">{{spell.name}}</a></td>
+                        <td><span class="text-flow1" style="font-size: 12px;">{{{spell.system.Description}}}</span></td>
+                    {{/EditMode}}
+                </tr>
+                {{/each}}
+            {{/if}}
+        </table>
+    </div>
+</section>

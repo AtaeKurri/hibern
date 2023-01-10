@@ -1,0 +1,33 @@
+<section style="padding: 5px; margin-bottom: 10px;">
+    <div class="row">
+        <div class="col-4 char-name2" style="margin: -10px 3px 0px 3px;">
+            {{#EditMode actor}}
+                <p>{{localize "hibern.chars.title"}} : <input type="text" name="system.title" value="{{system.title}}" data-dtype="Text" class="stat-css"/></p>
+            {{else}}
+                <span class="main-decoration">{{localize "hibern.chars.title"}}</span><br>
+                <span class="text-flow1 color-text-second">{{system.title}}</span>
+            {{/EditMode}}
+        </div>
+        <div class="col-4 char-name2" style="margin: -10px 3px 0px 3px;">
+            {{#EditMode actor}}
+                <p>{{localize "hibern.chars.species"}} : <input type="text" name="system.species" value="{{system.species}}" data-dtype="Text" class="stat-css"/></p>
+            {{else}}
+                <span class="main-decoration">{{localize "hibern.chars.species"}}</span><br>
+                <span class="text-flow1 color-text-second">{{system.species}}</span>
+            {{/EditMode}}
+        </div>
+        <div class="LWItem col-4">
+            <div class="char-name2 LW" style="margin: -10px 3px 0px 3px;">
+                {{#if (eq system.lwready true)}}
+                    {{#if actor.isOwner}}
+                        <a class="use-LW fullsizelink"><span class="item Ready" data-item-id="">{{localize "hibern.chars.LWReady"}}</span></a>
+                    {{else}}
+                        <span class="item Ready" data-item-id="">{{localize "hibern.chars.LWReady"}}</span>
+                    {{/if}}
+                {{else}}
+                    <span class="item NotReady">{{localize "hibern.chars.LWCharging"}}</span>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>

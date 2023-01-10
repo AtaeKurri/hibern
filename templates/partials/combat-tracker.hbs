@@ -1,0 +1,32 @@
+<section class="custom-combat-tracker" style="max-height: 165px;">
+    <h3><u>{{localize "hibern.chat.CurrentCombattant"}}</u></h3>
+    <div class="posture">
+        <span style="text-align: left; width: 50%;">Posture</span>
+        {{#if (eq actor.isOwner true)}}
+        <select name="posture" style="text-align: right; width: 50%;" data-tooltip="{{posturetooltip}}" id="change-posture">
+            <option value="Base" {{#if (eq currentPosture "Base")}}selected{{/if}}>{{localize "hibern.chars.postureBase"}}</option>
+            <option value="Def" {{#if (eq currentPosture "Def")}}selected{{/if}}>{{localize "hibern.chars.postureDef"}}</option>
+            <option value="Off" {{#if (eq currentPosture "Off")}}selected{{/if}}>{{localize "hibern.chars.postureOff"}}</option>
+            <option value="Rea" {{#if (eq currentPosture "Rea")}}selected{{/if}}>{{localize "hibern.chars.postureRea"}}</option>
+            <option value="Fuy" {{#if (eq currentPosture "Fuy")}}selected{{/if}}>{{localize "hibern.chars.postureFuy"}}</option>
+            <option value="Hib" {{#if (eq currentPosture "Hib")}}selected{{/if}}>{{localize "hibern.chars.postureHib"}}</option>
+        </select>
+        {{else}}
+        <span style="text-align: right; width: 50%;" data-tooltip="{{posturetooltip}}">{{localPosture}}</span>
+        {{/if}}
+    </div>
+    <h3><u>{{localize "hibern.chat.ActionsLeft"}}</u></h3>
+    <div class="actionList">
+        <div style="text-align: left; width: 50%;">
+            <span class="{{#if (eq usedActions.Action true)}}usable{{else}}used{{/if}}"><a class="use-action" data-type="Action">{{localize "hibern.actions.Action"}}</a></span><br>
+            <span class="{{#if (eq usedActions.ActionSE true)}}usable{{else}}used{{/if}}"><a class="use-action" data-type="ActionSE">{{localize "hibern.actions.ActionSE"}}</a></span><br>
+            <span class="{{#if (eq usedActions.Move true)}}usable{{else}}used{{/if}}"><a class="use-action" data-type="Move">{{localize "hibern.actions.Move"}}</a></span>
+        </div>
+        <div style="text-align: right; width: 50%;">
+            <span class="{{#if (eq usedActions.ChangePosture true)}}usable{{else}}used{{/if}}"><a class="use-action" data-type="ChangePosture">{{localize "hibern.actions.ChangePosture"}}</a></span><br>
+            <span class="{{#if (eq usedActions.Esquiver true)}}usable{{else}}used{{/if}}"><a class="use-action" data-type="Esquiver">{{localize "hibern.actions.Esquiver"}}</a></span><br>
+            <span class="{{#if (eq usedActions.Parer true)}}usable{{else}}used{{/if}}"><a class="use-action" data-type="Parer">{{localize "hibern.actions.Parer"}}</a></span><br>
+            <span class="{{#if (eq usedActions.Reaction true)}}usable{{else}}used{{/if}}"><a class="use-action" data-type="Reaction">{{localize "hibern.actions.Reaction"}}</a></span>
+        </div>
+    </div>
+</section>

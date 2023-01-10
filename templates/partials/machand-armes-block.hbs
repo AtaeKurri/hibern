@@ -1,0 +1,21 @@
+<section>
+    <input type="text" id="recherche" placeholder="{{localize "hibern.marchands.Recherche"}}" style="font-size: small; vertical-align: middle; width: 90%; margin: 3px;" /></h1>
+    <script>
+        $(document).ready(function(){
+            $("#recherche").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".skillcard").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <table>
+        {{#each armes as |arme id|}}
+        <tr>
+            <td class="td-img"><img src="{{arme.img}}" title="{{arme.name}}" height="30" width="30" class="item-img"></td>
+            <td class="td-name">{{arme.name}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</section>

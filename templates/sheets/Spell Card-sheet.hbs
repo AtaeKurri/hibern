@@ -1,0 +1,63 @@
+<form class="{{cssClass}} border-around" autocomplete="off">
+    <!--<header class="sheet-header">
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </header>
+    <div>
+        <p><b>{{localize "hibern.objects.Damage"}}</b></p>
+        <input name="system.Degats" type="text" value="{{item.system.Degats}}" placeholder="Degats"/>
+        <p><b>{{localize "hibern.objects.Threshold"}}</b></p>
+        <input name="system.Seuil" type="text" value="{{item.system.Seuil}}" placeholder="Seuil"/>
+        <p><b>{{localize "hibern.objects.Cost"}}</b></p>
+        <input name="system.Cout" type="text" value="{{item.system.Cout}}" placeholder="Cout"/>
+        <p><b>Description</b></p>
+<textarea name="system.Description" rows="10" placeholder="Description">{{{item.system.Description}}}</textarea>
+        <p><b>Composante</b>
+        <select name="system.Composante">
+            <option value="None">None</option>
+            {{#select item.system.Composante}}
+                {{#each abilities as |ability id|}}
+                    <option value="{{ability._id}}">{{ability.name}}</option>
+                {{/each}}
+            {{/select}}
+        </select></p>
+    </div>-->
+
+    <div class="row">
+        <div class="col-7 main-margin">
+            <p class="field-name"><b>{{localize "hibern.objects.Damage"}}</b></p>
+            <input name="system.Degats" type="text" value="{{item.system.Degats}}" placeholder='{{localize "hibern.objects.Damage"}}'/>
+            <!--<div class="row" style="height: initial;">
+                <div class="col-6" style="margin-right: 2px;">
+                    <p class="field-name"><b>{{localize "hibern.objects.Threshold"}}</b></p>
+                    <input name="system.Seuil" type="text" value="{{item.system.Seuil}}" placeholder="Seuil"/>
+                </div>
+                <div class="col-6" style="margin-left: 2px;">
+                    <p class="field-name"><b>{{localize "hibern.objects.Cost"}}</b></p>
+                    <input name="system.Cout" type="text" value="{{item.system.Cout}}" placeholder="Cout"/>
+                </div>
+            </div>-->
+            <div>
+                <p class="field-name"><b>{{localize "hibern.objects.Cost"}}</b></p>
+                <input name="system.Cout" type="text" value="{{item.system.Cout}}" placeholder="Cout"/>
+            </div>
+            <p class="field-name"><b>Description</b></p>
+<textarea name="system.Description" rows="4" placeholder="Description">{{{item.system.Description}}}</textarea>
+            <p class="field-name"><b>{{localize "hibern.objects.component"}}</b></p>
+            <div style="display: flex; justify-content: center;">
+                <select name="system.Composante" style="margin: 0; margin-top: 1px;">
+                    <option value="None">None</option>
+                    {{#select item.system.Composante}}
+                        {{#each abilities as |ability id|}}
+                            <option value="{{ability._id}}">{{ability.name}}</option>
+                        {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+        <div class="col-5 sheet-header header">
+            <h1 class="item-type">Spell-Card</h1>
+            <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" class="header" /></h1>
+            <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="200" width="200" />
+        </div>
+    </div>
+</form>

@@ -1,0 +1,93 @@
+#navigation {
+    #nav-toggle {
+        border: none;
+        .white-on-red();
+        .main-corner();
+    }
+
+    #scene-list {
+        .scene {
+            background: none;
+            border: none;
+            padding: 0;
+
+            .scene-name {
+                padding: 10px 8px;
+                background-color: @main-alternative-color;
+                .second-corner();
+                color: @second-color;
+            }
+            &.gm .scene-name {
+                .main-corner();
+            }
+            &.view .scene-name {
+                background-color: @main-color;
+                color: @second-color;
+                .third-corner();
+            }
+            &.gm, &.view, &.context {
+                background: none;
+                border: none;
+                box-shadow: none;
+            }
+            ul.scene-players {
+                left: 8px;
+                padding-top: 1px;
+            }
+        }
+    }
+}
+
+#context-menu {
+    border: none;
+    width: max-content;
+    min-width: 100%;
+    .white-on-red();
+    .main-corner();
+    .clipCorners();
+    .canvas-shadow();
+
+    li.context-item:hover {
+        background-color: @second-color;
+        color: @third-color;
+        text-shadow: none;
+    }
+}
+
+#controls {
+    border: none;
+    
+    .main-controls {
+        .scene-control {
+            background-color: @main-color;
+            color: @second-color;
+            border: none;
+            border-radius: @main-radius;
+        }
+
+        .active {
+            background-color: @second-color;
+            color: @main-color;
+            border: none;
+            border-radius: @main-radius;
+        }
+
+        .scene-control:hover {
+            background-color: @main-color;
+            color: @second-color;
+            border: none;
+            border-radius: @main-radius;
+        }
+    }
+
+    .sub-controls {
+        background: none;
+    }
+}
+
+#token-hud {
+    col .far-right {
+        width: 380px;
+        top: 0;
+    }
+}

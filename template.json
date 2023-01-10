@@ -1,0 +1,92 @@
+{
+    "Actor": {
+        "types": ["personnage", "marchand"],
+        "templates": {
+            "commonStats": {
+                "PV": {
+                    "min": 0,
+                    "value": 0,
+                    "max": 0
+                },
+                "PM": {
+                    "min": 0,
+                    "value": 0,
+                    "max": 0
+                },
+                "WillPoints": {
+                    "min": 0,
+                    "value": 0,
+                    "max": 0
+                },
+                "FOR": 0,
+                "MAG": 0,
+                "DEX": 0,
+                "CON": 0,
+                "EDU": 0,
+                "CHA": 0
+            },
+            "description": {
+                "title": "",
+                "species": ""
+            },
+            "checks": {
+                "lwready": "false",
+                "EditModeOn": false
+            },
+            "combat": {
+                "posture": "Normal",
+                "actionsUsed": {}
+            }
+        },
+        "personnage": {
+            "templates": ["commonStats", "description", "checks", "combat"]
+        },
+        "marchand": {
+            "templates": ["checks"]
+        }
+    },
+    "Item": {
+        "types": ["Arme", "Armure", "Accessoire", "Objet", "Spell Card", "Capacité", "LastWord"],
+        "templates": {
+            "description": {
+                "Description": ""
+            }
+        },
+        "Arme": {
+            "templates": ["description"],
+            "Damage": "0",
+            "Equiped": "false"
+        },
+        "Armure": {
+            "templates": ["description"],
+            "Reduction": 0,
+            "Equiped": "false"
+        },
+        "Accessoire": {
+            "templates": ["description"],
+            "StatBonus": "null",
+            "Equiped": "false"
+        },
+        "Objet": {
+            "templates": ["description"],
+            "Equiped": "false"
+        },
+        "Spell Card": {
+            "Description": "",
+            "Degats": 0,
+            "Seuil": 14,
+            "Cout": 0,
+            "Composante": "Aucune"
+        },
+        "Capacité": {
+            "templates": ["description"],
+            "Spécialisation": 0,
+            "Actif": "true",
+            "UsageWhenKO": "false"
+        },
+        "LastWord": {
+            "templates": ["description"],
+            "Actif": "true"
+        }
+    }
+}

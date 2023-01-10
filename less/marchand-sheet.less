@@ -1,0 +1,176 @@
+.hibern.sheet.marchand {
+    * {
+        box-sizing: border-box;
+    }
+
+    input {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    form {
+        height: 100%;
+        padding: 5px;
+    }
+    
+    textarea {
+        resize: none;
+    }
+
+    .content {
+        //overflow-y: scroll;
+        padding: 5px;
+        border-left: 1px solid @third-color;
+    }
+
+    .window-content {
+        height: 100%;
+        padding: 0px;
+        overflow-y: hidden;
+    }
+
+    .fullsizelink {
+        display:inline-block;
+        width:100%;
+        height:100%;
+    }
+
+    .fullsizelinkwidth {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .text-flow {
+        overflow: hidden;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .text-flow:hover {
+        overflow: hidden;
+        display: block;
+        text-overflow: none;
+        -webkit-line-clamp: none;
+        -webkit-box-orient: initial;
+    }
+
+    .row {
+        display: flex;
+        width: 100%;
+
+        .col-1 {width: 8.33%};
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+    }
+
+    .row::after {
+        clear: both;
+        content: "";
+    }
+
+    .navigation-item {
+        text-align: center;
+        font-weight: bold;
+        border: none;
+        border-top: 1px solid @third-color;
+        font-size: large;
+        padding: 4px;
+        margin: -5px 2px 0px 2px;
+        width: 100%;
+        color: @second-color;
+        background-color: @main-color;
+        border-bottom-left-radius: @main-radius;
+        border-bottom-right-radius: @main-radius;
+    }
+    .navigation-item:hover {
+        text-shadow: none;
+        background-color: @second-color;
+        color: @black-color;
+    }
+    .navigation-item.active {
+        text-shadow: none;
+        background-color: @second-color;
+        color: @black-color;
+    }
+    
+    .marchand-name {
+        padding: 5px 0px 5px 15px;
+        font-size: 30px;
+        border: none;
+        margin-left: 2px;
+        margin-bottom: 4px;
+        margin-right: 2px;
+        color: @second-color;
+        background-color: @main-color;
+        border-top-left-radius: @main-radius;
+        border-top-right-radius: @main-radius;
+    }
+
+    .marchand-img {
+        border: none;
+        object-fit: cover;
+        object-position: 50% 0;
+        border: none;
+        flex: 0;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 10px;
+        text-align: center;
+        display: block;
+        border-radius: @main-radius;
+    }
+
+    table {
+        width: 100%;
+        border: none;
+        border-radius: @main-radius;
+        background: none;
+
+        .item-img {
+            border-radius: @main-radius;
+            border: none;
+            margin-top: 3px;
+        }
+
+        tr {
+            color: inherit;
+            //border: 0;
+            //display: block;
+            //border-radius: @main-radius;
+        }
+
+        tr:nth-child(odd) {
+            background-color: @second-color;
+        }
+
+        tr:nth-child(even) {
+            background-color: @fourth-color;
+        }
+
+        td {
+            padding: 0;
+        }
+
+        .td-img {
+            width: 4%;
+            padding-left: 2px;
+        }
+
+        .td-name {
+            width: 50%;
+            font-weight: bold;
+        }
+    }
+}
