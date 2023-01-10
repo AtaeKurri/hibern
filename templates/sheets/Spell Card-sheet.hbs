@@ -36,12 +36,33 @@
                     <input name="system.Cout" type="text" value="{{item.system.Cout}}" placeholder="Cout"/>
                 </div>
             </div>-->
-            <div>
-                <p class="field-name"><b>{{localize "hibern.objects.Cost"}}</b></p>
-                <input name="system.Cout" type="text" value="{{item.system.Cout}}" placeholder="Cout"/>
+            <div class="row" style="height: 60px;">
+                <div class="col-11">
+                    <p class="field-name"><b>{{localize "hibern.objects.Cost"}}</b></p>
+                    <input name="system.Cout" type="text" value="{{item.system.Cout}}" placeholder="Cout"/>
+                </div>
+                <div class="col-2">
+                    <p class="field-name"><b>AS</b></p>
+                    <input type="checkbox" name="system.AS" value="{{item.system.AS}}" data-dtype="Boolean"
+                        {{checked item.system.AS}} style="margin: 0;" />
+                </div>
             </div>
-            <p class="field-name"><b>Description</b></p>
+
+            {{#if (eq item.system.AS true)}}
+                <div class="row" style="height: 114px;">
+                    <div class="col-6" style="margin-right: 2px;">
+                        <p class="field-name"><b>Description</b></p>
+<textarea name="system.Description" rows="5" placeholder="Description" style="font-size: 10px;">{{{item.system.Description}}}</textarea>
+                    </div>
+                    <div class="col-6" style="margin-left: 2px;">
+                        <p class="field-name"><b>AS Description</b></p>
+<textarea name="system.ASDescription" rows="5" placeholder="AS Description" style="font-size: 10px;">{{{item.system.ASDescription}}}</textarea>
+                    </div>
+                </div>
+            {{else}}
+                <p class="field-name"><b>Description</b></p>
 <textarea name="system.Description" rows="4" placeholder="Description">{{{item.system.Description}}}</textarea>
+            {{/if}}
             <p class="field-name"><b>{{localize "hibern.objects.component"}}</b></p>
             <div style="display: flex; justify-content: center;">
                 <select name="system.Composante" style="margin: 0; margin-top: 1px;">

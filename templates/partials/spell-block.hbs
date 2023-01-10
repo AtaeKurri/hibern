@@ -34,7 +34,8 @@
                             <span class="text-flow1">{{{spell.system.Description}}}</span>
                         </td>
                     {{else}}
-                        <td class="spell-name" style="width: 175px;"><a class="use-spellcard fullsizelinkwidth text-flow1" data-itemid="{{spell._id}}">{{spell.name}}</a></td>
+                        <td class="spell-name" style="width: 175px;"><a class="use-spellcard fullsizelinkwidth text-flow1
+                        {{#if (eq spell.system.AS true)}}ASName{{/if}}" data-itemid="{{spell._id}}">{{spell.name}}</a></td>
                         <td><span class="text-flow1" style="font-size: 12px;">{{{spell.system.Description}}}</span></td>
                     {{/EditMode}}
                 </tr>

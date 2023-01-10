@@ -623,9 +623,6 @@ Hooks.on("updateActor", (actor, sysdiff, diffrender, id) => {
                     PV: {
                         max: Math.floor((actor.system.CON.value+30))
                     },
-                    PM: {
-                        max: Math.floor(actor.system.MAG.value*6)
-                    },
                     WillPoints: {
                         max: actor.system.CON.value
                     },
@@ -716,16 +713,10 @@ async function GetEsquiveRollOptions(type) {
 
 async function _rollEsq(type, token) {
     const actor = token._actor;
-    let checkOptions = await GetEsquiveRollOptions(type);
-    if (checkOptions.cancelled) {
+    const checkOptions = await GetEsquiveRollOptions(type);
+    if (checkOptions.cancelled)
         return;
-    }
-    let stat;
-    if (type == "Esquive") {
-        stat = actor.system.DEX.value;
-    } else {
-        stat = actor.system.CON.value;
-    }
+    const stat = (type == "Esquive") ? actor.system.DEX.value : actor.system.CON.value;
 
     let rollResult = new Roll(`1d20`);
     rollResult = await rollResult.evaluate({async:true});
@@ -734,7 +725,7 @@ async function _rollEsq(type, token) {
     let localRes;
     if (rollResult._total == 20) {
         successtype = "CritSuccess";
-    } else if (rollResult._total+stat >= checkOptions.Seuil-Math.floor(stat/1.5)) {
+    } else if (rollResult._total+stat >= checkOptions.Seuil-stat) {
         successtype = "Success";
     } else if (rollResult._total == 1) {
         successtype = "CritFailure";
@@ -763,17 +754,6 @@ async function _rollEsq(type, token) {
 //#endregion
 
 //#region combat tracker
-
-// Update the tracker when an actor changes
-/*Hooks.on("updateActor", (actor, changes) => {
-    try {
-        if ("system.posture" in foundry.utils.flattenObject(changes)) {
-            game.combats.apps[0].render();
-        } 
-    } catch {
-        console.log("exception caught on update actor");
-    }
-});*/
 
 Hooks.on("renderCombatTracker", async (tracker, html, data) => {
     const currentToken = game.scenes.get(data.combat._source.scene).tokens.get(data.combat.current.tokenId);

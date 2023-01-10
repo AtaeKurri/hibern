@@ -76,7 +76,9 @@
             "Degats": 0,
             "Seuil": 14,
             "Cout": 0,
-            "Composante": "Aucune"
+            "Composante": "Aucune",
+            "AS": false,
+            "ASDescription": ""
         },
         "Capacité": {
             "templates": ["description"],
