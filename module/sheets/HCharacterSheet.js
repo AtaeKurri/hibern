@@ -621,7 +621,7 @@ Hooks.on("updateActor", (actor, sysdiff, diffrender, id) => {
             actor.update({
                 system: {
                     PV: {
-                        max: Math.floor((actor.system.CON.value+20)*1.5)
+                        max: Math.floor((actor.system.CON.value+30))
                     },
                     PM: {
                         max: Math.floor(actor.system.MAG.value*6)
@@ -629,7 +629,7 @@ Hooks.on("updateActor", (actor, sysdiff, diffrender, id) => {
                     WillPoints: {
                         max: actor.system.CON.value
                     },
-                    lwready: (actor.system.PV.value <= CONFIG.hibern.LWReadySeuil)
+                    lwready: (actor.system.PV.value <= actor.system.PV.max-25)
                 }
             }, {diff: false, render: true});
         }
