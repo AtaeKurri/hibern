@@ -380,6 +380,7 @@ export default class HCharacterSheet extends ActorSheet {
         if (checkOptions.cancelled) {
             return;
         }
+        const newDiff = getAdjustedDiff(checkOptions.Diff, item.system.Fatigue);
 
         if (checkOptions.AffectFatigue == true) {
             const ftg = item.system.Fatigue += (IsCharInAS(this.actor)) ? 2 : 1;
@@ -405,7 +406,7 @@ export default class HCharacterSheet extends ActorSheet {
         let localRes;
         if (rollResult._total == 20) {
             successtype = "CritSuccess";
-        } else if (rollResult._total+this.actor.system.MAG.value+RollBonus >= checkOptions.Diff) {
+        } else if (rollResult._total+this.actor.system.MAG.value+RollBonus >= newDiff) {
             successtype = "Success";
         } else if (rollResult._total == 1) {
             successtype = "CritFailure";
@@ -452,6 +453,7 @@ export default class HCharacterSheet extends ActorSheet {
             if (checkOptions.cancelled) {
                 return;
             }
+            const newDiff = getAdjustedDiff(checkOptions.Diff, ability.system.Fatigue);
 
             if (checkOptions.AffectFatigue == true) {
                 const ftg = ability.system.Fatigue += (IsCharInAS(this.actor)) ? 2 : 1;
@@ -460,7 +462,7 @@ export default class HCharacterSheet extends ActorSheet {
                         Fatigue: ftg
                     }
                 }, {diff: false, render: true});
-                lowerAllOtherFatigue("Capacité", this.actor, item._id);
+                lowerAllOtherFatigue("Capacité", this.actor, ability._id);
             }
 
             rollResult = new Roll(`1d20`);
@@ -468,7 +470,7 @@ export default class HCharacterSheet extends ActorSheet {
 
             if (rollResult._total == 20) {
                 successtype = "CritSuccess";
-            } else if (rollResult._total+ability.system.Spécialisation >= checkOptions.Diff) {
+            } else if (rollResult._total+ability.system.Spécialisation >= newDiff) {
                 successtype = "Success";
             } else if (rollResult._total == 1) {
                 successtype = "CritFailure";
@@ -729,6 +731,54 @@ function lowerAllOtherFatigue(type, actor, item_id) {
             }
         }, {diff: false, render: true});
     });
+}
+
+function getAdjustedDiff(baseDiffNum, ftg) {
+    let newDiff = baseDiffNum;
+    const diffKey = getKeyByValue(CONFIG.hibern.rolldiff, newDiff);
+    if (ftg >= 7) {
+        switch (diffKey) {
+            case "veryeasy":
+                newDiff += CONFIG.hibern.rolldiff.hard - CONFIG.hibern.rolldiff.veryeasy;
+                break;
+            case "easy":
+                newDiff += CONFIG.hibern.rolldiff.veryhard - CONFIG.hibern.rolldiff.easy;
+                break;
+            default:
+                newDiff = CONFIG.hibern.rolldiff.veryhard;
+                break;
+        }
+    } else if (ftg >= 5) {
+        switch (diffKey) {
+            case "veryeasy":
+                newDiff += CONFIG.hibern.rolldiff.normal - CONFIG.hibern.rolldiff.veryeasy;
+                break;
+            case "hard":
+                newDiff = CONFIG.hibern.rolldiff.veryhard;
+                break;
+            case "veryhard":
+                break;
+            default:
+                newDiff += CONFIG.hibern.rolldiff.hard - CONFIG.hibern.rolldiff.easy;
+                break;
+        }
+    } else if (ftg >= 3) {
+        switch (diffKey) {
+            case "veryeasy":
+                newDiff += CONFIG.hibern.rolldiff.easy - CONFIG.hibern.rolldiff.veryeasy;
+                break;
+            case "veryhard":
+                break;
+            default:
+                newDiff += CONFIG.hibern.rolldiff.normal - CONFIG.hibern.rolldiff.easy;
+                break;
+        }
+    }
+    return newDiff;
+}
+
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
 }
 
 //#endregion

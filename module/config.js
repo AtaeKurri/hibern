@@ -6,7 +6,7 @@ hibern.CS = 20;
 hibern.ASSeuil = 25;
 
 hibern.rolldiff = {
-    veryeasy: 6,
+    veryeasy: 8,
     easy: 12,
     normal: 14,
     hard: 16,
