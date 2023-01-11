@@ -28,14 +28,14 @@
                         <td class="spell-name" style="width: 175px;">
                             <a class="item-delete" data-itemid="{{spell._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-trash"></i></a>
                             <a class="item-edit" data-itemid="{{spell._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-edit"></i></a>
-                            {{spell.name}}
+                            ({{spell.system.Fatigue}}) {{spell.name}}
                         </td>
                         <td>
                             <span class="text-flow1">{{{spell.system.Description}}}</span>
                         </td>
                     {{else}}
                         <td class="spell-name" style="width: 175px;"><a class="use-spellcard fullsizelinkwidth text-flow1
-                        {{#if (eq spell.system.AS true)}}ASName{{/if}}" data-itemid="{{spell._id}}">{{spell.name}}</a></td>
+                        {{#if (eq spell.system.AS true)}}ASName{{/if}}" data-itemid="{{spell._id}}">({{spell.system.Fatigue}}) {{spell.name}}</a></td>
                         <td><span class="text-flow1" style="font-size: 12px;">{{{spell.system.Description}}}</span></td>
                     {{/EditMode}}
                 </tr>

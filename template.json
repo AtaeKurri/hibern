@@ -8,11 +8,6 @@
                     "value": 0,
                     "max": 0
                 },
-                "PM": {
-                    "min": 0,
-                    "value": 0,
-                    "max": 0
-                },
                 "WillPoints": {
                     "min": 0,
                     "value": 0,
@@ -46,7 +41,7 @@
         }
     },
     "Item": {
-        "types": ["Arme", "Armure", "Accessoire", "Objet", "Spell Card", "Capacité", "LastWord"],
+        "types": ["Arme", "Armure", "Accessoire", "Objet", "Spell Card", "Capacité"],
         "templates": {
             "description": {
                 "Description": ""

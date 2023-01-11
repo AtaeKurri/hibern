@@ -14,11 +14,13 @@ export default class HCharacterSheet extends ActorSheet {
     }
     
     get template() {
-        if(this.actor.isOwner) {
-            return `systems/hibern/templates/sheets/character-sheet.hbs`;
-        } else {
-            return `systems/hibern/templates/sheets/Ncharacter-sheet.hbs`;
-        }
+        console.log(this.actor.items);
+        this.actor.items.forEach(item => {
+            if (item.type == "LastWord")
+                return this.actor.deleteEmbeddedDocuments("Item", [item._id]);
+        });
+        const char = (this.actor.isOwner) ? "character" : "Ncharacter";
+        return `systems/hibern/templates/sheets/${char}-sheet.hbs`;
     }
 
     //#region Context Menus
@@ -41,52 +43,6 @@ export default class HCharacterSheet extends ActorSheet {
         }
     ];
 
-    LWContextMenu = [
-        {
-            name: "Editer Last-Word",
-            icon: '<i class="fas fa-edit"></i>',
-            callback: element => {
-                let lastwords = this.actor.items.filter(function (item) {return item.type == "LastWord"});
-                if (lastwords.length != 0) {
-                    const item = this.actor.items.get(lastwords[0]._id);
-                    item.sheet.render(true);
-                } else {
-                    ui.notifications.error(`This Last-Word doesn't exists.`);
-                }
-            }
-        },
-        {
-            name: "Créer Last-Word",
-            icon: '<i class="fas fa-plus"></i>',
-            callback: element => {
-                if (this.checkIfHasItemType("LastWord") == false)
-                {
-                    let itemData = {
-                        name: `Last-Word de ${this.actor.name}`,
-                        type: "LastWord"
-                    }
-                    ui.notifications.info("Last-Word created");
-                    return this.actor.createEmbeddedDocuments("Item", [itemData]);
-                }
-                ui.notifications.error(`Your Last-Word already exists.`);
-            }
-        },
-        {
-            name: "Supprimer Last-Word",
-            icon: '<i class="fas fa-trash"></i>',
-            callback: async element => {
-                let lastwords = this.actor.items.filter(function (item) {return item.type == "LastWord"});
-                if (lastwords.length == 0) {ui.notifications.error(`There is no Last-Word to delete.`); return;}
-
-                let checkOptions = await this.GetDeletionConfirmation("Last-Word");
-                if (checkOptions.cancelled) { return; }
-
-                this.actor.deleteEmbeddedDocuments("Item", [lastwords[0]._id]);
-                ui.notifications.info("Last-Word deleted");
-            }
-        }
-    ];
-
     //#endregion
 
     getData() {
@@ -104,7 +60,7 @@ export default class HCharacterSheet extends ActorSheet {
             accessoires: data.items.filter(function (item) {return item.type == "Accessoire"}),
             spellcards: data.items.filter(function (item) {return item.type == "Spell Card"}),
             abilities: data.items.filter(function (item) {return item.type == "Capacité"}),
-            lastword: data.items.filter(function (item) {return item.type == "LastWord"}),
+            //lastword: data.items.filter(function (item) {return item.type == "LastWord"}),
             objets: data.items.filter(function (item) {return item.type == "Objet"})
         };
 
@@ -118,7 +74,7 @@ export default class HCharacterSheet extends ActorSheet {
             html.find(".inline-edit").change(this._onInlineEdit.bind(this));
             html.find(".item-edit").click(this._onItemEdit.bind(this));
             html.find(".stats-test").click(this._onStatTest.bind(this));
-            html.find(".use-LW").click(this._useLastWord.bind(this));
+           // html.find(".use-LW").click(this._useLastWord.bind(this));
             html.find(".use-spellcard").click(this._useSpellCard.bind(this));
             html.find(".use-ability").click(this._useAbility.bind(this));
             html.find(".roll-weapon").click(this._useWeapon.bind(this));
@@ -922,25 +878,31 @@ Hooks.on("renderCombatTracker", async (tracker, html, data) => {
 
 // Reset les actions de tout les tokens présents dans le combat ainsi que leur posture à la base
 Hooks.on("preDeleteCombat", (combat, rendering, id) => {
-    combat.combatants.forEach(async (fighter) => {
-        let currentActor = game.actors.get(fighter.actorId);
-        if (currentActor.canUserModify(game.user, "update")) {
-            await currentActor.update({
-                system: {
-                    actionsUsed: {
-                        "Action": true,
-                        "Move": true,
-                        "ChangePosture": true,
-                        "Esquiver": true,
-                        "Parer": true,
-                        "Reaction": true
-                    },
-                    posture: "Base"
-                }
-            });
-            CONFIG.hibern.socket.executeForEveryone("RenderTracker");
-        }
-    });
+    combat.combatants.forEach(resetCombatant);
 });
+
+Hooks.on("combatRound", (combat, roundInfo, data) => {
+    combat.combatants.forEach(resetCombatant);
+});
+
+async function resetCombatant(fighter) {
+    let currentActor = game.actors.get(fighter.actorId);
+    if (currentActor.canUserModify(game.user, "update")) {
+        await currentActor.update({
+            system: {
+                actionsUsed: {
+                    "Action": true,
+                    "Move": true,
+                    "ChangePosture": true,
+                    "Esquiver": true,
+                    "Parer": true,
+                    "Reaction": true
+                },
+                posture: "Base"
+            }
+        });
+        CONFIG.hibern.socket.executeForEveryone("RenderTracker");
+    }
+}
 
 //#endregion
