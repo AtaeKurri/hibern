@@ -855,8 +855,12 @@ async function _rollEsq(type, token) {
 //#region combat tracker
 
 Hooks.on("renderCombatTracker", async (tracker, html, data) => {
-    const currentToken = game.scenes.get(data.combat._source.scene).tokens.get(data.combat.current.tokenId);
-    const currentCombatant = tracker.viewed.combatants.get(tracker.viewed.current.combatantId);
+    let currentToken;
+    let currentCombatant;
+    try {
+        currentToken = game.scenes.get(data.combat._source.scene).tokens.get(data.combat.current.tokenId);
+        currentCombatant = tracker.viewed.combatants.get(tracker.viewed.current.combatantId);
+    } catch(err) {}
     if (data.combat == null || currentCombatant == null) {return;}
     const currentActor = game.actors.get(currentCombatant.actorId);
 

@@ -43,9 +43,9 @@
             "postureHib": "Hibernation",
             "tooltipPostureBase": "No bonus. no penalty.",
             "tooltipPostureDef": "3 damage reduction. Can't attack.",
-            "tooltipPostureOff": "3 damage bonus. Every damage you receive ignore all reduction bonuses except for equipments.",
+            "tooltipPostureOff": "3 dealt damage bonus. 3 taken damage reduction.",
             "tooltipPostureRea": "You can only use reactions, you can't attack on your turn (except changing postures).",
-            "tooltipPostureFuy": "You're fleeing the fight. Speed x2, you can't attack, dodge or parry.",
+            "tooltipPostureFuy": "You can flee the fight. Speed x2, you can't attack, dodge or parry.",
             "tooltipPostureHib": "You can't use an action or a secondary action. Each turn in this posture gives you +2 initiative. Parry and dodging are in Hard difficulty."
         },
         "objects": {

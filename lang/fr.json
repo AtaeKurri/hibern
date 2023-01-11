@@ -43,9 +43,9 @@
             "postureHib": "Hibernation",
             "tooltipPostureBase": "Aucun Bonus. Aucun Malus.",
             "tooltipPostureDef": "-3 Dégâts reçus. Ne peut pas attaquer.",
-            "tooltipPostureOff": "+3 Dégâts infligés. Tout dégât que vous recevez ignore toute résistance sauf équipements.",
+            "tooltipPostureOff": "+3 Dégâts infligés. -3 Dégâts reçus.",
             "tooltipPostureRea": "Vous ne pouvez utiliser que des réactions. Vous ne pouvez que changer de posture à votre tour.",
-            "tooltipPostureFuy": "Vous fuyez le combat. Vitesse de déplacement doublée, ne peut pas attaquer, esquiver, parer.",
+            "tooltipPostureFuy": "Vous pouvez fuir le combat. Vitesse de déplacement doublée, ne peut pas attaquer, esquiver, parer.",
             "tooltipPostureHib": "Vous ne pouvez pas faire d'action ou d'action secondaire. Chaque tour dans cette posture donne +2 initiative. Esquive et parade est en Difficile."
         },
         "objects": {

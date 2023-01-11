@@ -4,8 +4,13 @@
         <div class="{{Successtype}} content" style="text-align: center;">
             <span style="text-decoration: underline;" class="big-number">{{rollResult}}</span></br>
             <span style="font-size: 14px; text-decoration: none;">({{localizeResult}})</span></br>
-            <span class="big-number">{{localize "hibern.objects.Cost"}} : <i>{{Cost}}</i> | {{localize "hibern.objects.Damage"}} : <i>{{Degats}}</i></span><br>
-            <span style="color: gray; font-size: small; text-shadow: none;">{{#if (eq isAS true)}}{{spell.system.ASDescription}}{{else}}{{spell.system.Description}}{{/if}}</span>
+            <span class="big-number">{{localize "hibern.objects.Damage"}} : <i>{{Degats}}</i></span><br>
+            <span style="color: gray; font-size: small; text-shadow: none;">
+                {{#if (eq isAS true)}}
+                    {{spell.system.ASDescription}}
+                {{else}}
+                    {{spell.system.Description}}
+                {{/if}}</span>
         </div>
     </div>
 </section>
