@@ -11,4 +11,10 @@
             {{/select}}
         </select>
     </div>
+    {{#if (eq NeedFatigue true)}}
+    <div class="form-group">
+        <label><b>{{localize "hibern.Divers.AffectFatigue"}}</b></label>
+        <input type="checkbox" name="AffectFatigue" value="AffectFatigue" data-dtype="Boolean" checked/>
+    </div>
+    {{/if}}
 </form>

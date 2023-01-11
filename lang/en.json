@@ -87,7 +87,8 @@
             "Annuler": "Cancel",
             "EnnemiRoll": "Enemy's roll",
             "Deletion": "Delete an item",
-            "ConfirmDeletion": "Would you really like to delete "
+            "ConfirmDeletion": "Would you really like to delete ",
+            "AffectFatigue": "Change Fatigue values?"
         },
         "chat": {
             "CurrentCombattant": "Current fighter",

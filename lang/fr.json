@@ -87,7 +87,8 @@
             "Annuler": "Annuler",
             "EnnemiRoll": "Résultat ennemi",
             "Deletion": "Supprimer un objet",
-            "ConfirmDeletion": "Voulez-vous vraiment supprimer "
+            "ConfirmDeletion": "Voulez-vous vraiment supprimer ",
+            "AffectFatigue": "Changer les valeurs de fatigue ?"
         },
         "chat": {
             "CurrentCombattant": "Combattant actuel",

@@ -133,10 +133,11 @@ export default class HCharacterSheet extends ActorSheet {
 
     //#region Dialogs
 
-    async GetDiffRollOptions() {
+    async GetDiffRollOptions(needFatigue) {
         const template = "systems/hibern/templates/partials/diff-dialog.hbs";
         const htmlParams = {
-            difficulties: CONFIG.hibern.rolldiff
+            difficulties: CONFIG.hibern.rolldiff,
+            NeedFatigue: needFatigue
         };
         const html = await renderTemplate(template, htmlParams);
 
@@ -281,7 +282,7 @@ export default class HCharacterSheet extends ActorSheet {
         const statName = event.currentTarget.closest(".stats-test").dataset.statname;
         const testStat = event.currentTarget.closest(".stats-test").dataset.stat;
 
-        let checkOptions = await this.GetDiffRollOptions();
+        let checkOptions = await this.GetDiffRollOptions(false);
         if (checkOptions.cancelled) {
             return;
         }
@@ -375,18 +376,20 @@ export default class HCharacterSheet extends ActorSheet {
         }
         const AdditionnalManaCost = (RollBonus == 0) ? 0 : 1;
 
-        let checkOptions = await this.GetDiffRollOptions();
+        let checkOptions = await this.GetDiffRollOptions(true);
         if (checkOptions.cancelled) {
             return;
         }
 
-        const ftg = item.system.Fatigue += (IsCharInAS(this.actor)) ? 2 : 1;
-        item.update({
-            system: {
-                Fatigue: ftg
-            }
-        }, {diff: false, render: true});
-        lowerAllOtherFatigue("Spell Card", this.actor, item._id);
+        if (checkOptions.AffectFatigue == true) {
+            const ftg = item.system.Fatigue += (IsCharInAS(this.actor)) ? 2 : 1;
+            item.update({
+                system: {
+                    Fatigue: ftg
+                }
+            }, {diff: false, render: true});
+            lowerAllOtherFatigue("Spell Card", this.actor, item._id);
+        }
         
         let chatData = {
             user: game.user.id,
@@ -445,18 +448,20 @@ export default class HCharacterSheet extends ActorSheet {
         };
 
         if (IsActive) {
-            let checkOptions = await this.GetDiffRollOptions();
+            let checkOptions = await this.GetDiffRollOptions(true);
             if (checkOptions.cancelled) {
                 return;
             }
 
-            const ftg = ability.system.Fatigue += (IsCharInAS(this.actor)) ? 2 : 1;
-            ability.update({
-                system: {
-                    Fatigue: ftg
-                }
-            }, {diff: false, render: true});
-            lowerAllOtherFatigue("Capacité", this.actor, item._id);
+            if (checkOptions.AffectFatigue == true) {
+                const ftg = ability.system.Fatigue += (IsCharInAS(this.actor)) ? 2 : 1;
+                ability.update({
+                    system: {
+                        Fatigue: ftg
+                    }
+                }, {diff: false, render: true});
+                lowerAllOtherFatigue("Capacité", this.actor, item._id);
+            }
 
             rollResult = new Roll(`1d20`);
             rollResult = await rollResult.evaluate({async:true});
@@ -550,7 +555,7 @@ export default class HCharacterSheet extends ActorSheet {
         let checkOptions;
         if (context == "Atk") {
             localAtk = game.i18n.localize(`hibern.chars.atk${atkType}`);
-            checkOptions = await this.GetDiffRollOptions();
+            checkOptions = await this.GetDiffRollOptions(false);
             if (checkOptions.cancelled) {
                 return;
             }
@@ -670,7 +675,8 @@ Hooks.on("renderTokenHUD", (app, html, data) => {
 
 function _processDiffOptions(form) {
     return {
-        Diff: parseInt(form.Diff.value)
+        Diff: parseInt(form.Diff.value),
+        AffectFatigue: form.AffectFatigue.checked
     }
 }
 

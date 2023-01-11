@@ -19,11 +19,7 @@
         <div class="LWItem col-4">
             <div class="char-name2 LW" style="margin: -10px 3px 0px 3px;">
                 {{#if (eq system.lwready true)}}
-                    {{#if actor.isOwner}}
-                        <span class="item Ready" data-item-id="">{{localize "hibern.chars.LWReady"}}</span>
-                    {{else}}
-                        <span class="item Ready" data-item-id="">{{localize "hibern.chars.LWReady"}}</span>
-                    {{/if}}
+                    <span class="item Ready" data-item-id="">{{localize "hibern.chars.LWReady"}}</span>
                 {{else}}
                     <span class="item NotReady">{{localize "hibern.chars.LWCharging"}}</span>
                 {{/if}}
