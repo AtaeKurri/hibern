@@ -1,112 +1,114 @@
 <section>
     <div class="row">
-        <div class="item-list col-6 inventory-display" style="margin-right: 4px;">
-            <h2>{{localize "hibern.objects.weapons"}}
-                {{#EditMode actor}}
-                    <a class="item-create" data-itemname="Arme" data-type="Arme"><i class="fas fa-plus"></i></a>
-                {{/EditMode}}</h2>
-            <div class="content">
-                <table class="item-list">
-                    {{#each armes as |arme id|}}
-                    <tr class="item" data-itemid="{{arme._id}}" data-item-id="{{arme._id}}">
-                        <td style="{{#if (eq arme.system.Equiped false)}}color: gray;{{/if}}">
-                            <span class="bold" style="font-size: 15px">
-                                {{#EditMode ../actor}}
-                                    {{arme.name}}<br>
-                                    <a class="item-edit" data-itemid="{{arme._id}}"><i class="fas fa-edit"></i></a>
-                                    <a class="item-delete" data-itemid="{{arme._id}}"><i class="fas fa-trash"></i></a>
-                                {{else}}
-                                    {{#if (eq arme.system.Equiped true)}}<a class="roll-weapon" data-itemid="{{arme._id}}">{{arme.name}}</a>{{else}}{{arme.name}}{{/if}}
-                                {{/EditMode}}
-                            </span></br>
-                            <span style="font-size: 10px">({{arme.system.Damage}} dmg)</span></br>
-                            <span style="font-size: 11px;">{{{arme.system.Description}}}</span>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </table>
+        <div class="col-6">
+            <div class="item-list inventory-display" style="margin-right: 4px;">
+                <h2>{{localize "hibern.objects.weapons"}}
+                    {{#EditMode actor}}
+                        <a class="item-create" data-itemname="Arme" data-type="Arme"><i class="fas fa-plus"></i></a>
+                    {{/EditMode}}</h2>
+                <div class="content">
+                    <table class="item-list">
+                        {{#each armes as |arme id|}}
+                        <tr class="item" data-itemid="{{arme._id}}" data-item-id="{{arme._id}}">
+                            <td style="{{#if (eq arme.system.Equiped false)}}color: gray;{{/if}}">
+                                <span class="bold" style="font-size: 15px">
+                                    {{#EditMode ../actor}}
+                                        {{arme.name}}<br>
+                                        <a class="item-edit" data-itemid="{{arme._id}}"><i class="fas fa-edit"></i></a>
+                                        <a class="item-delete" data-itemid="{{arme._id}}"><i class="fas fa-trash"></i></a>
+                                    {{else}}
+                                        {{#if (eq arme.system.Equiped true)}}<a class="roll-weapon" data-itemid="{{arme._id}}">{{arme.name}}</a>{{else}}{{arme.name}}{{/if}}
+                                    {{/EditMode}}
+                                </span></br>
+                                <span style="font-size: 10px">({{arme.system.Damage}} dmg)</span></br>
+                                <span style="font-size: 11px;">{{{arme.system.Description}}}</span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+            <div class="item-list inventory-display" style="margin-right: 4px;">
+                <h2>{{localize "hibern.objects.accessories"}}
+                    {{#EditMode actor}}
+                        <a class="item-create" data-itemname="Accessoire" data-type="Accessoire"><i class="fas fa-plus"></i></a>
+                    {{/EditMode}}</h2>
+                <div class="content">
+                    <table class="item-list">
+                        {{#each accessoires as |accessoire id|}}
+                        <tr class="item" data-itemid="{{accessoire._id}}" data-item-id="{{accessoire._id}}">
+                            <td style="{{#if (eq accessoire.system.Equiped false)}}color: gray;{{/if}}">
+                                <span class="bold" style="font-size: 15px">
+                                    {{#EditMode ../actor}}
+                                        {{accessoire.name}}<br>
+                                        <a class="item-edit" data-itemid="{{accessoire._id}}"><i class="fas fa-edit"></i></a>
+                                        <a class="item-delete" data-itemid="{{accessoire._id}}"><i class="fas fa-trash"></i></a>
+                                    {{else}}
+                                        {{accessoire.name}}
+                                    {{/EditMode}}
+                                </span></br>
+                                <span style="font-size: 10px">(Bonus: {{accessoire.system.StatBonus}})</span></br>
+                                <span style="font-size: 11px;">{{{accessoire.system.Description}}}</span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="item-list col-6 inventory-display" style="margin-left: 4px;">
-            <h2>{{localize "hibern.objects.armors"}}
-                {{#EditMode actor}}
-                    <a class="item-create" data-itemname="Armure" data-type="Armure"><i class="fas fa-plus"></i></a>
-                {{/EditMode}}</h2>
-            <div class="content">
-                <table class="item-list">
-                    {{#each armures as |armor id|}}
-                    <tr class="item" data-itemid="{{armor._id}}" data-item-id="{{armor._id}}">
-                        <td style="{{#if (eq armor.system.Equiped false)}}color: gray;{{/if}}">
-                            <span class="bold" style="font-size: 15px">
-                                {{#EditMode ../actor}}
-                                    {{armor.name}}<br>
-                                    <a class="item-edit" data-itemid="{{armor._id}}"><i class="fas fa-edit"></i></a>
-                                    <a class="item-delete" data-itemid="{{armor._id}}"><i class="fas fa-trash"></i></a>
-                                {{else}}
-                                    {{armor.name}}
-                                {{/EditMode}}
-                            </span></br>
-                            <span style="font-size: 10px">({{armor.system.Reduction}} Rdct)</span></br>
-                            <span style="font-size: 11px;">{{{armor.system.Description}}}</span>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </table>
+        <div class="col-6">
+            <div class="item-list inventory-display" style="margin-left: 4px;">
+                <h2>{{localize "hibern.objects.armors"}}
+                    {{#EditMode actor}}
+                        <a class="item-create" data-itemname="Armure" data-type="Armure"><i class="fas fa-plus"></i></a>
+                    {{/EditMode}}</h2>
+                <div class="content">
+                    <table class="item-list">
+                        {{#each armures as |armor id|}}
+                        <tr class="item" data-itemid="{{armor._id}}" data-item-id="{{armor._id}}">
+                            <td style="{{#if (eq armor.system.Equiped false)}}color: gray;{{/if}}">
+                                <span class="bold" style="font-size: 15px">
+                                    {{#EditMode ../actor}}
+                                        {{armor.name}}<br>
+                                        <a class="item-edit" data-itemid="{{armor._id}}"><i class="fas fa-edit"></i></a>
+                                        <a class="item-delete" data-itemid="{{armor._id}}"><i class="fas fa-trash"></i></a>
+                                    {{else}}
+                                        {{armor.name}}
+                                    {{/EditMode}}
+                                </span></br>
+                                <span style="font-size: 10px">({{armor.system.Reduction}} Rdct)</span></br>
+                                <span style="font-size: 11px;">{{{armor.system.Description}}}</span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="item-list col-6 inventory-display" style="margin-right: 4px;">
-            <h2>{{localize "hibern.objects.accessories"}}
-                {{#EditMode actor}}
-                    <a class="item-create" data-itemname="Accessoire" data-type="Accessoire"><i class="fas fa-plus"></i></a>
-                {{/EditMode}}</h2>
-            <div class="content">
-                <table class="item-list">
-                    {{#each accessoires as |accessoire id|}}
-                    <tr class="item" data-itemid="{{accessoire._id}}" data-item-id="{{accessoire._id}}">
-                        <td style="{{#if (eq accessoire.system.Equiped false)}}color: gray;{{/if}}">
-                            <span class="bold" style="font-size: 15px">
-                                {{#EditMode ../actor}}
-                                    {{accessoire.name}}<br>
-                                    <a class="item-edit" data-itemid="{{accessoire._id}}"><i class="fas fa-edit"></i></a>
-                                    <a class="item-delete" data-itemid="{{accessoire._id}}"><i class="fas fa-trash"></i></a>
-                                {{else}}
-                                    {{accessoire.name}}
-                                {{/EditMode}}
-                            </span></br>
-                            <span style="font-size: 10px">(Bonus: {{accessoire.system.StatBonus}})</span></br>
-                            <span style="font-size: 11px;">{{{accessoire.system.Description}}}</span>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </table>
-            </div>
-        </div>
-        <div class="item-list col-6 inventory-display" style="margin-left: 4px;">
-            <h2>{{localize "hibern.objects.objects"}}
-                {{#EditMode actor}}
-                    <a class="item-create" data-itemname="Objet" data-type="Objet"><i class="fas fa-plus"></i></a>
-                {{/EditMode}}</h2>
-            <div class="content">
-                <table class="item-list">
-                    {{#each objets as |objet id|}}
-                    <tr class="item" data-itemid="{{objet._id}}" data-item-id="{{objet._id}}">
-                        <td style="{{#if (eq objet.system.Equiped false)}}color: gray;{{/if}}">
-                            <span class="bold" style="font-size: 15px">
-                                {{#EditMode ../actor}}
-                                    {{objet.name}}<br>
-                                    <a class="item-edit" data-itemid="{{objet._id}}"><i class="fas fa-edit"></i></a>
-                                    <a class="item-delete" data-itemid="{{objet._id}}"><i class="fas fa-trash"></i></a>
-                                {{else}}
-                                    {{objet.name}}
-                                {{/EditMode}}
-                            </span></br>
-                            <span style="font-size: 11px;">{{{objet.system.Description}}}</span>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </table>
+            <div class="item-list inventory-display" style="margin-left: 4px;">
+                <h2>{{localize "hibern.objects.objects"}}
+                    {{#EditMode actor}}
+                        <a class="item-create" data-itemname="Objet" data-type="Objet"><i class="fas fa-plus"></i></a>
+                    {{/EditMode}}</h2>
+                <div class="content">
+                    <table class="item-list">
+                        {{#each objets as |objet id|}}
+                        <tr class="item" data-itemid="{{objet._id}}" data-item-id="{{objet._id}}">
+                            <td style="{{#if (eq objet.system.Equiped false)}}color: gray;{{/if}}">
+                                <span class="bold" style="font-size: 15px">
+                                    {{#EditMode ../actor}}
+                                        {{objet.name}}<br>
+                                        <a class="item-edit" data-itemid="{{objet._id}}"><i class="fas fa-edit"></i></a>
+                                        <a class="item-delete" data-itemid="{{objet._id}}"><i class="fas fa-trash"></i></a>
+                                    {{else}}
+                                        {{objet.name}}
+                                    {{/EditMode}}
+                                </span></br>
+                                <span style="font-size: 11px;">{{{objet.system.Description}}}</span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
             </div>
         </div>
     </div>

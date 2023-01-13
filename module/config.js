@@ -13,6 +13,15 @@ hibern.rolldiff = {
     veryhard: 18
 }
 
+hibern.statlist = {
+    FOR: "FOR",
+    MAG: "MAG",
+    DEX: "DEX",
+    CON: "CON",
+    ERU: "ERU",
+    CHA: "CHA"
+}
+
 hibern.ActorType = {
     "personnage": {
         height: 750,

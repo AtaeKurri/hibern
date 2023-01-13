@@ -2,7 +2,6 @@
     "hibern": {
         "stats": {
             "PV": "HP",
-            "PM": "MP",
             "FOR": "STR",
             "Force": "Strength",
             "MAG": "MAG",
@@ -11,8 +10,8 @@
             "Dextérité": "Dexterity",
             "CON": "CON",
             "Constitution": "Constitution",
-            "EDU": "ERU",
-            "Education": "Erudition",
+            "ERU": "ERU",
+            "Erudition": "Erudition",
             "CHA": "CHA",
             "Charisme": "Charisma",
             "WillPoints": "Will Points"
@@ -68,7 +67,8 @@
             "Reduction": "Damage reduction",
             "StatBonus": "Stat Bonus",
             "component": "Component",
-            "Fatigue": "Fatigue"
+            "Fatigue": "Fatigue",
+            "Stat": "Statistic"
         },
         "rolls": {
             "CS": "Critical Success !!!",

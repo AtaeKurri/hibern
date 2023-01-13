@@ -7,18 +7,6 @@
         <img src="{{actor.img}}" title="{{actor.name}}" height="200" width="200" class="profile-img" />
     {{/EditMode}}
     <div class="border-around main-background energies-display" style="margin: 13px; padding: 5px;">
-        <!--<div class="row" style="text-align: center;">
-            <div class="col-6 value-display life border-right">
-                <span class="bold">{{localize "hibern.stats.PV"}}</span><br>
-                <span class="values"><input name="system.PV.value" type="number" value="{{system.PV.value}}" data-dtype="Number" />
-                    / {{system.PV.max}}</span>
-            </div>
-            <div class="col-6 value-display mana border-left">
-                <span class="bold">{{localize "hibern.stats.PM"}}</span><br>
-                <span class="values"><input name="system.PM.value" type="number" value="{{system.PM.value}}" data-dtype="Number" />
-                    / {{system.PM.max}}</span>
-            </div>
-        </div>-->
         <div class="value-display life" style="text-align: center">
             <span class="bold">{{localize "hibern.stats.PV"}}</span><br>
             <span class="values"><input name="system.PV.value" type="number" value="{{system.PV.value}}" data-dtype="Number" />
@@ -37,7 +25,7 @@
             <p>{{localize "hibern.stats.MAG"}} ({{localize "hibern.stats.Magie"}}) : <input type="text" name="system.MAG.value" value="{{system.MAG.value}}" data-dtype="Number" class="stat-css"/></p>
             <p>{{localize "hibern.stats.DEX"}} ({{localize "hibern.stats.Dextérité"}}) : <input type="text" name="system.DEX.value" value="{{system.DEX.value}}" data-dtype="Number" class="stat-css"/></p>
             <p>{{localize "hibern.stats.CON"}} ({{localize "hibern.stats.Constitution"}}) : <input type="text" name="system.CON.value" value="{{system.CON.value}}" data-dtype="Number" class="stat-css"/></p>
-            <p>{{localize "hibern.stats.EDU"}} ({{localize "hibern.stats.Education"}}) : <input type="text" name="system.EDU.value" value="{{system.EDU.value}}" data-dtype="Number" class="stat-css"/></p>
+            <p>{{localize "hibern.stats.ERU"}} ({{localize "hibern.stats.Erudition"}}) : <input type="text" name="system.ERU.value" value="{{system.ERU.value}}" data-dtype="Number" class="stat-css"/></p>
             <p>{{localize "hibern.stats.CHA"}} ({{localize "hibern.stats.Charisme"}}) : <input type="text" name="system.CHA.value" value="{{system.CHA.value}}" data-dtype="Number" class="stat-css"/></p>
         {{else}}
             <div class="row" style="text-align: center; padding-bottom: -5px;">
@@ -61,8 +49,8 @@
                         <input name="system.CON.value" type="text" value="{{system.CON.value}}" class="stat-css value" data-dtype="Number"/>
                     </div>
                     <div class="stat-block" style="margin-bottom: 15px;">
-                        <span><a class="stats-test fullsizelinkwidth title" data-stat="{{system.EDU.value}}" data-statname="{{localize "hibern.stats.Education"}}">{{localize "hibern.stats.Education"}}</a></span>
-                        <input name="system.EDU.value" type="text" value="{{system.EDU.value}}" class="stat-css value" data-dtype="Number"/>
+                        <span><a class="stats-test fullsizelinkwidth title" data-stat="{{system.ERU.value}}" data-statname="{{localize "hibern.stats.Erudition"}}">{{localize "hibern.stats.Erudition"}}</a></span>
+                        <input name="system.ERU.value" type="text" value="{{system.ERU.value}}" class="stat-css value" data-dtype="Number"/>
                     </div>
                     <div class="stat-block">
                         <span class="fullsizelinkwidth title"><!--<a class="stats-test fullsizelinkwidth title" data-stat="{{system.CHA.value}}" data-statname="{{localize "hibern.stats.Charisme"}}">{{localize "hibern.stats.Charisme"}}</a>-->

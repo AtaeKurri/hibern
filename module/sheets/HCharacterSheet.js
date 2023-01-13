@@ -55,7 +55,6 @@ export default class HCharacterSheet extends ActorSheet {
             accessoires: data.items.filter(function (item) {return item.type == "Accessoire"}),
             spellcards: data.items.filter(function (item) {return item.type == "Spell Card"}),
             abilities: data.items.filter(function (item) {return item.type == "Capacité"}),
-            //lastword: data.items.filter(function (item) {return item.type == "LastWord"}),
             objets: data.items.filter(function (item) {return item.type == "Objet"})
         };
 
@@ -69,14 +68,12 @@ export default class HCharacterSheet extends ActorSheet {
             html.find(".inline-edit").change(this._onInlineEdit.bind(this));
             html.find(".item-edit").click(this._onItemEdit.bind(this));
             html.find(".stats-test").click(this._onStatTest.bind(this));
-            //html.find(".use-LW").click(this._useLastWord.bind(this));
             html.find(".use-spellcard").click(this._useSpellCard.bind(this));
             html.find(".use-ability").click(this._useAbility.bind(this));
             html.find(".roll-weapon").click(this._useWeapon.bind(this));
             html.find(".roll-baseatk").click(this._rollBasicAtk.bind(this));
         
             new ContextMenu(html, ".InventoryItem", this.itemContextMenu);
-            //new ContextMenu(html, ".LWItem", this.LWContextMenu);
         }
 
         super.activateListeners(html);
@@ -216,13 +213,8 @@ export default class HCharacterSheet extends ActorSheet {
     }
 
     checkIfHasItemType(type) {
-        let lastwords = this.actor.items.filter(function (item) {return item.type == "LastWord"});
-        if (lastwords.length == 0)
-        {
-            return false;
-        } else {
-            return true;
-        }
+        let items = this.actor.items.filter(function (item) {return item.type == type});
+        return (items.length == 0) ? false : true;
     }
 
     //#endregion
@@ -273,54 +265,12 @@ export default class HCharacterSheet extends ActorSheet {
 
     //#endregion
 
-    //#region Last-Word related
-
-    async _useLastWord(event) {
-        const LW = this.actor.items.filter(function (item) {return item.type == "LastWord"})[0];
-
-        let chatData = {
-            user: game.user.id,
-            speaker: ChatMessage.getSpeaker()
-        };
-
-        let rollResult = new Roll(`1d20`);
-        rollResult = await rollResult.evaluate({async:true});
-
-        let successtype;
-        let localRes;
-        if (rollResult._total == 20) {
-            successtype = "CritSuccess";
-        } else if (rollResult._total+this.actor.system.CON.value >= CONFIG.hibern.rolldiff.veryeasy) {
-            successtype = "Success";
-        } else if (rollResult._total == 1) {
-            successtype = "CritFailure";
-        } else {
-            successtype = "Failure";
-        }
-        localRes = successtype;
-        
-        let rollResult2 = rollResult._total + this.actor.system.CON.value;
-        let cardData = {
-            LW: LW,
-            rollResult: rollResult2,
-            Successtype: successtype,
-            localizeResult: game.i18n.localize(`hibern.rolls.${localRes}`)
-        }
-
-        chatData.content = await renderTemplate("systems/hibern/templates/partials/LW-card.hbs", cardData);
-        if (LW.system.Actif == true)
-            return rollResult.toMessage(chatData);
-        else
-            return ChatMessage.create(chatData);
-    }
-
-    //#endregion
-
     //#region Spell related
 
     async _useSpellCard(event) {
         const itemId = event.currentTarget.closest(".use-spellcard").dataset.itemid;
         const item = this.actor.items.get(itemId);
+        const rollStat = this.actor.system[item.system.stat].value;
         let RollBonus = 0;
         if (item.system.Composante != "None") {
             RollBonus = this.actor.items.get(item.system.Composante).system.Spécialisation;
@@ -359,7 +309,7 @@ export default class HCharacterSheet extends ActorSheet {
         let localRes;
         if (rollResult._total == 20) {
             successtype = "CritSuccess";
-        } else if (rollResult._total+this.actor.system.MAG.value+RollBonus >= newDiff) {
+        } else if (rollResult._total + rollStat+RollBonus >= newDiff) {
             successtype = "Success";
         } else if (rollResult._total == 1) {
             successtype = "CritFailure";
@@ -368,7 +318,7 @@ export default class HCharacterSheet extends ActorSheet {
         }
         localRes = successtype;
         
-        let rollResult2 = rollResult._total + this.actor.system.MAG.value + RollBonus;
+        let rollResult2 = rollResult._total + rollStat + RollBonus;
         let cardData = {
             isAS: IsSpellAS(this.actor, item),
             Degats: damageRoll._total,

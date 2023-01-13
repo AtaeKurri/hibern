@@ -1,4 +1,4 @@
-<form class="{{cssClass}} border-around" autocomplete="off">
+<form class="border-around" autocomplete="off">
     <!--<header class="sheet-header">
         <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
     </header>
@@ -22,10 +22,27 @@
         </select></p>
     </div>-->
 
-    <div class="row row-initial">
+    <div class="row">
         <div class="col-7 main-margin">
-            <p class="field-name"><b>{{localize "hibern.objects.Damage"}}</b></p>
-            <input name="system.Degats" type="text" value="{{item.system.Degats}}" placeholder='{{localize "hibern.objects.Damage"}}'/>
+            <div class="row row-initial">
+                <div class="col-6" style="margin-right: 2px;">
+                    <p class="field-name"><b>{{localize "hibern.objects.Damage"}}</b></p>
+                    <input name="system.Degats" type="text" value="{{item.system.Degats}}" placeholder='{{localize "hibern.objects.Damage"}}'/>
+                </div>
+                <div class="col-6" style="margin-left: 2px;">
+                    <p class="field-name"><b>{{localize "hibern.objects.Stat"}}</b></p>
+                    <select name="system.stat" style="width: 100%; height: 47%;">
+                        {{#select item.system.stat}}
+                            <option value="FOR">{{localize "hibern.stats.FOR"}}</option>
+                            <option value="MAG">{{localize "hibern.stats.MAG"}}</option>
+                            <option value="DEX">{{localize "hibern.stats.DEX"}}</option>
+                            <option value="CON">{{localize "hibern.stats.CON"}}</option>
+                            <option value="ERU">{{localize "hibern.stats.ERU"}}</option>
+                            <!--<option value="CHA">{{localize "hibern.stats.CHA"}}</option>-->
+                        {{/select}}
+                    </select>
+                </div>
+            </div>
             <!--<div class="row" style="height: initial;">
                 <div class="col-6" style="margin-right: 2px;">
                     <p class="field-name"><b>{{localize "hibern.objects.Threshold"}}</b></p>
