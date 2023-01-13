@@ -82,10 +82,6 @@
             "Actif": "true",
             "UsageWhenKO": "false",
             "Fatigue": 0
-        },
-        "LastWord": {
-            "templates": ["description"],
-            "Actif": "true"
         }
     }
 }

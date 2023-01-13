@@ -14,11 +14,6 @@ export default class HCharacterSheet extends ActorSheet {
     }
     
     get template() {
-        console.log(this.actor.items);
-        this.actor.items.forEach(item => {
-            if (item.type == "LastWord")
-                return this.actor.deleteEmbeddedDocuments("Item", [item._id]);
-        });
         const char = (this.actor.isOwner) ? "character" : "Ncharacter";
         return `systems/hibern/templates/sheets/${char}-sheet.hbs`;
     }
@@ -74,7 +69,7 @@ export default class HCharacterSheet extends ActorSheet {
             html.find(".inline-edit").change(this._onInlineEdit.bind(this));
             html.find(".item-edit").click(this._onItemEdit.bind(this));
             html.find(".stats-test").click(this._onStatTest.bind(this));
-           // html.find(".use-LW").click(this._useLastWord.bind(this));
+            //html.find(".use-LW").click(this._useLastWord.bind(this));
             html.find(".use-spellcard").click(this._useSpellCard.bind(this));
             html.find(".use-ability").click(this._useAbility.bind(this));
             html.find(".roll-weapon").click(this._useWeapon.bind(this));
@@ -329,6 +324,8 @@ export default class HCharacterSheet extends ActorSheet {
         let RollBonus = 0;
         if (item.system.Composante != "None") {
             RollBonus = this.actor.items.get(item.system.Composante).system.Spécialisation;
+            if (RollBonus >= this.actor.system.MAG.value)
+                RollBonus = this.actor.system.MAG.value;
         }
         const AdditionnalManaCost = (RollBonus == 0) ? 0 : 1;
 
@@ -513,7 +510,7 @@ export default class HCharacterSheet extends ActorSheet {
         let checkOptions;
         if (context == "Atk") {
             localAtk = game.i18n.localize(`hibern.chars.atk${atkType}`);
-            checkOptions = await this.GetDiffRollOptions(false);
+            checkOptions = await this.GetDiffRollOptions(true);
             if (checkOptions.cancelled) {
                 return;
             }
@@ -522,10 +519,11 @@ export default class HCharacterSheet extends ActorSheet {
             localAtk = game.i18n.localize(`hibern.chars.dmg${atkType}`);
         }
 
-        if (atkType == "Magic") {
-            stat = this.actor.system.MAG.value;
-        } else {
-            stat = this.actor.system.FOR.value;
+        stat = (atkType == "Magic") ? this.actor.system.MAG.value : this.actor.system.FOR.value;
+
+        if (context == "Atk" && checkOptions.AffectFatigue == true) {
+            lowerAllOtherFatigue("Spell Card", this.actor, null);
+            lowerAllOtherFatigue("Capacité", this.actor, null);
         }
 
         let rollResult;
@@ -632,9 +630,15 @@ Hooks.on("renderTokenHUD", (app, html, data) => {
 //#region Proccessors
 
 function _processDiffOptions(form) {
-    return {
-        Diff: parseInt(form.Diff.value),
-        AffectFatigue: form.AffectFatigue.checked
+    try {
+        return {
+            Diff: parseInt(form.Diff.value),
+            AffectFatigue: form.AffectFatigue.checked
+        }
+    } catch(err) {
+        return {
+            Diff: parseInt(form.Diff.value)
+        }
     }
 }
 
@@ -892,6 +896,7 @@ async function resetCombatant(fighter) {
             system: {
                 actionsUsed: {
                     "Action": true,
+                    "ActionSE": true,
                     "Move": true,
                     "ChangePosture": true,
                     "Esquiver": true,

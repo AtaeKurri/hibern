@@ -1,50 +1,52 @@
 {
-    "name": "hibern",
-    "title": "Hibernation",
-    "description": "Système de jeu adapté pour Touhou et Myara.",
-    "version": 1.0,
-    "compatibility": {
-      "minimum": "10.287",
-      "verified": "10.288",
-      "maximum": "10.288"
+  "name": "hibern",
+  "title": "Hibernation",
+  "description": "Système de jeu adapté pour Touhou et Myara.",
+  "version": "1.0",
+  "compatibility": {
+    "minimum": "10.287",
+    "verified": "10.288",
+    "maximum": "10.288"
+  },
+  "url": "https://github.com/AtaeKurri/hibern",
+  "manifest": "https://github.com/AtaeKurri/hibern/blob/experimental/system.json",
+  "esmodules": ["hibern.js"],
+  "styles": ["less/hibern.css"],
+  "initiative": "1d20 + @DEX",
+  "gridDistance": 10,
+  "gridUnits": "m",
+  "socket": true,
+  "authors": [
+    {
+      "name": "Tania Anehina",
+      "discord": "Tania Anehina#6302",
+      "email": "hakussura@protonmail.com"
+    }
+  ],
+  "packs": [
+    {
+      "name": "weapons",
+      "label": "Hibernation Weapons",
+      "path": "packs/weapons.db",
+      "type": "Item"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
     },
-    "authors": [
-      {
-        "name": "Tania Anehina",
-        "discord": "Tania Anehina#6302",
-        "email": "hakussura@protonmail.com"
-      }
-    ],
-    "packs": [
-      {
-        "name": "weapons",
-        "label": "Hibernation Weapons",
-        "path": "packs/weapons.db",
-        "type": "Item"
-      }
-    ],
-    "esmodules": ["hibern.js"],
-    "styles": ["less/hibern.css"],
-    "initiative": "1d20 + @DEX",
-    "gridDistance": 10,
-    "gridUnits": "m",
-    "languages": [
-      {
-        "lang": "fr",
-        "name": "Français",
-        "path": "lang/fr.json"
-      },
-      {
-        "lang": "en",
-        "name": "English",
-        "path": "lang/en.json"
-      }
-    ],
-    "dependencies": [
-      {
-        "name": "socketlib",
-        "manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json"
-      }
-    ],
-    "socket": true
-  }
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "socketlib",
+      "manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json"
+    }
+  ]
+}
