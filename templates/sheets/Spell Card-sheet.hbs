@@ -92,9 +92,9 @@
                 </select>
             </div>
         </div>
-        <div class="col-5 sheet-header header">
+        <div class="col-5 sheet-header header {{#if (eq item.system.AS true)}}header-AS{{/if}}">
             <h1 class="item-type">Spell-Card</h1>
-            <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" class="header" /></h1>
+            <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" class="header {{#if (eq item.system.AS true)}}header-AS{{/if}}" /></h1>
             <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="200" width="200" />
         </div>
     </div>

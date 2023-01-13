@@ -571,6 +571,10 @@
   text-decoration: underline;
   text-align: center;
 }
+.hibern.sheet.item .header-AS {
+  background-color: #353584;
+  color: white;
+}
 .hibern.sheet.marchand * {
   box-sizing: border-box;
 }

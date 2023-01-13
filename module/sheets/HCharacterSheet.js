@@ -292,7 +292,7 @@ export default class HCharacterSheet extends ActorSheet {
                     Fatigue: ftg
                 }
             }, {diff: false, render: true});
-            lowerAllOtherFatigue("Spell Card", this.actor, item._id);
+            lowerAllOtherFatigue(item.type, this.actor, item._id);
         }
         
         let chatData = {
@@ -309,7 +309,7 @@ export default class HCharacterSheet extends ActorSheet {
         let localRes;
         if (rollResult._total == 20) {
             successtype = "CritSuccess";
-        } else if (rollResult._total + rollStat+RollBonus >= newDiff) {
+        } else if (rollResult._total + rollStat + RollBonus >= newDiff) {
             successtype = "Success";
         } else if (rollResult._total == 1) {
             successtype = "CritFailure";
@@ -365,7 +365,7 @@ export default class HCharacterSheet extends ActorSheet {
                         Fatigue: ftg
                     }
                 }, {diff: false, render: true});
-                lowerAllOtherFatigue("Capacité", this.actor, ability._id);
+                lowerAllOtherFatigue(ability.type, this.actor, ability._id);
             }
 
             rollResult = new Roll(`1d20`);
