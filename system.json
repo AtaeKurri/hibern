@@ -5,8 +5,8 @@
   "version": "1.0",
   "compatibility": {
     "minimum": "10.287",
-    "verified": "10.288",
-    "maximum": "10.288"
+    "verified": "10.291",
+    "maximum": "10.291"
   },
   "url": "https://github.com/AtaeKurri/hibern",
   "manifest": "https://github.com/AtaeKurri/hibern/blob/experimental/system.json",
