@@ -611,7 +611,7 @@ function _processEsquiveOptions(form) {
 
 function _addHudButton(html, selectedToken, title, icon, position, clickEvent) {
     if (!selectedToken) return;
-    const button = $(`<div class="control-icon squadron" title="${title}"><img src="icons/svg/${icon}.svg"></div>`);
+    const button = $(`<div class="control-icon" title="${title}"><img src="icons/svg/${icon}.svg"></div>`);
     button.click(clickEvent);
     const column = `.col.${position}`;
     html.find(column).append(button);

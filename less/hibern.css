@@ -745,6 +745,314 @@
   width: 50%;
   font-weight: bold;
 }
+#navigation #nav-toggle {
+  border: none;
+  color: white;
+  background: rgba(165, 42, 42, 0.7);
+  border-radius: 10px;
+}
+#navigation #scene-list .scene {
+  background: none;
+  border: none;
+  padding: 0;
+}
+#navigation #scene-list .scene .scene-name {
+  padding: 10px 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  color: brown;
+}
+#navigation #scene-list .scene.gm .scene-name {
+  border-radius: 5px;
+}
+#navigation #scene-list .scene.view .scene-name {
+  background: rgba(165, 42, 42, 0.7);
+  color: white;
+  border-radius: 20px;
+}
+#navigation #scene-list .scene.gm,
+#navigation #scene-list .scene.view,
+#navigation #scene-list .scene.context {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+#navigation #scene-list .scene ul.scene-players {
+  left: 8px;
+  padding-top: 1px;
+}
+#context-menu {
+  border: none;
+  width: max-content;
+  min-width: 100%;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 10px black);
+  color: white;
+  background: rgba(165, 42, 42, 0.7);
+}
+#context-menu li.context-item:hover {
+  background-color: white;
+  color: brown;
+  text-shadow: none;
+  border-radius: 10px;
+}
+#controls {
+  padding: 10px 15px;
+}
+#controls .main-controls ::before {
+  padding-top: 2px;
+}
+#controls .main-controls .scene-control {
+  background-color: brown;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px brown;
+  border: 1px solid white;
+}
+#controls .main-controls .active {
+  background-color: white !important;
+  color: brown !important;
+  border: 1px solid brown !important;
+  box-shadow: 0 0 10px white !important;
+}
+#controls .main-controls .scene-control:hover {
+  background-color: white;
+  color: brown;
+  border: 1px solid brown;
+  box-shadow: 0 0 10px white;
+}
+#controls .sub-controls ::before {
+  padding-top: 2px;
+}
+#controls .sub-controls .control-tool {
+  background-color: #bcbcbc;
+  color: brown;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #bcbcbc;
+  border: 1px solid brown;
+}
+#controls .sub-controls .active {
+  background-color: white !important;
+  color: brown !important;
+  box-shadow: 0 0 10px white !important;
+}
+#controls .sub-controls .control-tool:hover {
+  background-color: white;
+  color: brown;
+  box-shadow: 0 0 10px #bcbcbc;
+  border: 1px solid brown;
+}
+#controls .sub-controls .toggle {
+  border: 1px solid brown !important;
+  background-color: #353584 !important;
+}
+#controls .sub-controls .toggle.active {
+  border: 1px solid white !important;
+  background-color: #ff9900 !important;
+}
+#players {
+  border: 1px solid white;
+  border-radius: 10px;
+  background-image: none;
+  background-color: rgba(165, 42, 42, 0.7);
+  color: #bcbcbc;
+  font-weight: bold;
+}
+#players h3 {
+  border-bottom: 2px groove black;
+  font-weight: bold !important;
+}
+#players ol .player-name.self {
+  color: white;
+}
+#sidebar {
+  background: rgba(255, 255, 255, 0.7);
+  color: brown;
+  border-radius: 10px;
+}
+#sidebar button {
+  color: white;
+  background: brown;
+  border-radius: 10px;
+  box-shadow: 0 0 5px inset white;
+}
+#sidebar input[type="text"],
+#sidebar textarea {
+  border-radius: 10px;
+  background: #dbdbdb;
+  color: black;
+}
+#sidebar input[type="text"] {
+  color: brown;
+}
+#sidebar #sidebar-tabs {
+  box-shadow: 0 0 10px brown;
+  border-bottom: 1px solid brown;
+}
+#sidebar #sidebar-tabs .item {
+  color: white;
+  background-color: brown;
+  border-radius: 10px 10px 0 0;
+}
+#sidebar #sidebar-tabs .item.active {
+  box-shadow: 0 0 6px inset white;
+  border: 1px solid brown;
+  border-bottom: none;
+}
+#sidebar #sidebar-tabs .collapse {
+  color: brown;
+}
+#sidebar #chat-controls {
+  margin-top: 2px;
+}
+#sidebar #chat-log .chat-message {
+  margin: 5px 3px 5px 3px;
+  background: white;
+  border: 2px solid black !important;
+  border-radius: 10px;
+  box-shadow: 0 0 5px inset brown;
+}
+#sidebar .combat-sidebar a {
+  color: brown;
+}
+#sidebar .combat-sidebar h3 {
+  font-weight: bold;
+  text-decoration: underline;
+}
+#sidebar .combat-sidebar .encounter {
+  color: brown;
+}
+#sidebar .combat-sidebar #combat-tracker h4 {
+  color: brown;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px white;
+}
+#sidebar .combat-sidebar #combat-tracker a {
+  color: brown;
+  text-shadow: 2px 2px 2px white;
+  margin-right: 10px;
+}
+#sidebar .combat-sidebar #combat-tracker .initiative {
+  color: brown;
+  text-shadow: 2px 2px 2px white;
+}
+#sidebar .combat-sidebar .custom-combat-tracker {
+  color: brown;
+  text-shadow: 2px 2px 2px white;
+}
+#sidebar .combat-sidebar .custom-combat-tracker #change-posture {
+  color: brown;
+  background: rgba(255, 255, 255, 0.7);
+}
+#sidebar .combat-sidebar .custom-combat-tracker .actionList {
+  border: 1px solid brown;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0px 5px 0px 5px;
+  text-shadow: none;
+}
+#sidebar .scenes-sidebar .directory-list .directory-item .document-name a {
+  color: white;
+}
+#sidebar li.folder.collapsed > .folder-header {
+  background: brown;
+}
+#sidebar li.folder.collapsed > .folder-header h3,
+#sidebar li.folder.collapsed > .folder-header a {
+  color: white;
+}
+#sidebar li.folder > .folder-header {
+  background: white;
+}
+#sidebar li.folder > .folder-header h3,
+#sidebar li.folder > .folder-header a {
+  color: brown;
+}
+#sidebar .subdirectory {
+  border-left: 10px solid brown;
+}
+#sidebar .compendium-sidebar h3 {
+  background: rgba(255, 255, 255, 0.7);
+}
+#sidebar .compendium-sidebar li.compendium-pack .compendium-footer {
+  color: brown;
+}
+#sidebar .settings-sidebar h2 {
+  background: rgba(255, 255, 255, 0.7);
+}
+.app {
+  background: rgba(165, 42, 42, 0.7);
+  color: white;
+  border-radius: 15px 15px 0px 0px;
+}
+.window-app .window-content {
+  background: white;
+  color: brown;
+  /*select {
+        border: 1px solid @main-color;
+    }*/
+}
+.window-app .window-content button {
+  border-radius: 10px;
+  color: white;
+  background-color: brown;
+  border: none;
+}
+.window-app .window-content button.default {
+  background: white;
+  color: brown;
+  border: 1px solid brown;
+}
+.window-app .window-content .notes {
+  color: black;
+}
+#hotbar .bar-controls {
+  background: rgba(165, 42, 42, 0.7);
+  border: 1px solid white;
+}
+#hotbar .bar-controls a,
+#hotbar .bar-controls .page-number {
+  color: white;
+}
+#hotbar #macro-list {
+  border: none;
+}
+#hotbar #macro-list .macro {
+  background: rgba(165, 42, 42, 0.7);
+  border: 1px solid white;
+}
+#hotbar #macro-list .macro .macro-key {
+  color: brown;
+  background: rgba(255, 255, 255, 0.7);
+}
+#logo {
+  content: url(../images/icon.png);
+}
+.placeable-hud .control-icon {
+  border: 1px solid white;
+  background: rgba(165, 42, 42, 0.7);
+  color: white;
+  border-radius: 10px;
+}
+.placeable-hud .control-icon img {
+  opacity: 1;
+}
+.placeable-hud .control-icon:hover,
+.placeable-hud .control-icon.active {
+  border: 1px solid brown;
+  color: brown;
+  background: rgba(255, 255, 255, 0.7);
+}
+.placeable-hud .control-icon:hover img,
+.placeable-hud .control-icon.active img {
+  opacity: 1;
+  filter: brightness(0) saturate(100%) invert(24%) sepia(25%) saturate(4524%) hue-rotate(335deg) brightness(92%) contrast(98%);
+}
+.placeable-hud input[type="text"] {
+  background: rgba(165, 42, 42, 0.7);
+  color: white;
+  border: 1px solid white;
+}
 .bold {
   font-weight: bold;
 }

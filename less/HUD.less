@@ -1,8 +1,9 @@
 #navigation {
     #nav-toggle {
         border: none;
-        .white-on-red();
-        .main-corner();
+        color: @second-color;
+        background: @main-color-opacity;
+        border-radius: @main-radius;
     }
 
     #scene-list {
@@ -13,17 +14,17 @@
 
             .scene-name {
                 padding: 10px 8px;
-                background-color: @main-alternative-color;
-                .second-corner();
-                color: @second-color;
+                background: @second-color-opacity;
+                border-radius: @main-radius;
+                color: @main-color;
             }
             &.gm .scene-name {
-                .main-corner();
+                border-radius: @second-radius;
             }
             &.view .scene-name {
-                background-color: @main-color;
+                background: @main-color-opacity;
                 color: @second-color;
-                .third-corner();
+                border-radius: @third-radius;
             }
             &.gm, &.view, &.context {
                 background: none;
@@ -42,52 +43,344 @@
     border: none;
     width: max-content;
     min-width: 100%;
-    .white-on-red();
-    .main-corner();
-    .clipCorners();
-    .canvas-shadow();
+    border-radius: @main-radius;
+    filter: drop-shadow(0 0 10px @black-color);
+    color: @second-color;
+    background: @main-color-opacity;
 
     li.context-item:hover {
         background-color: @second-color;
-        color: @third-color;
+        color: @main-color;
         text-shadow: none;
+        border-radius: @main-radius;
     }
 }
 
 #controls {
-    border: none;
-    
+    padding: 10px 15px;
+
     .main-controls {
+        ::before {
+            padding-top: 2px;
+        }
+
         .scene-control {
             background-color: @main-color;
             color: @second-color;
-            border: none;
             border-radius: @main-radius;
+            box-shadow: 0 0 10px @main-color;
+            border: 1px solid @second-color;
         }
 
         .active {
-            background-color: @second-color;
-            color: @main-color;
-            border: none;
-            border-radius: @main-radius;
+            background-color: @second-color !important;
+            color: @main-color !important;
+            border: 1px solid @main-color !important;
+            box-shadow: 0 0 10px @second-color !important;
         }
 
         .scene-control:hover {
-            background-color: @main-color;
-            color: @second-color;
-            border: none;
-            border-radius: @main-radius;
+            background-color: @second-color;
+            color: @main-color;
+            border: 1px solid @main-color;
+            box-shadow: 0 0 10px @second-color;
         }
     }
 
     .sub-controls {
-        background: none;
+        ::before {
+            padding-top: 2px;
+        }
+
+        .control-tool {
+            background-color: @fifth-color;
+            color: @main-color;
+            border-radius: @main-radius;
+            box-shadow: 0 0 10px @fifth-color;
+            border: 1px solid @main-color;
+        }
+
+        .active {
+            background-color: @second-color !important;
+            color: @main-color !important;
+            box-shadow: 0 0 10px @second-color !important;
+        }
+
+        .control-tool:hover {
+            background-color: @second-color;
+            color: @main-color;
+            box-shadow: 0 0 10px @fifth-color;
+            border: 1px solid @main-color;
+        }
+
+        .toggle {
+            border: 1px solid @main-color !important;
+            background-color: @passif-color !important;
+        }
+
+        .toggle.active {
+            border: 1px solid @second-color !important;
+            background-color: @actif-color !important;
+        }
     }
 }
 
-#token-hud {
-    col .far-right {
-        width: 380px;
-        top: 0;
+#players {
+    border: 1px solid @second-color;
+    border-radius: @main-radius;
+    background-image: none;
+    background-color: @main-color-opacity;
+    color: @fifth-color;
+    font-weight: bold;
+
+    h3 {
+        border-bottom: 2px groove @black-color;
+        font-weight: bold !important;
+    }
+
+    ol .player-name.self {
+        color: @second-color;
+    }
+}
+
+#sidebar {
+    background: @second-color-opacity;
+    color: @main-color;
+    border-radius: @main-radius;
+
+    button {
+        color: @second-color;
+        background: @main-color;
+        border-radius: @main-radius;
+        box-shadow: 0 0 5px inset @second-color;
+    }
+
+    input[type="text"], textarea {
+        border-radius: @main-radius;
+        background: @fourth-color;
+        color: @black-color;
+    }
+    input[type="text"] {
+        color: @main-color;
+    }
+
+    #sidebar-tabs {
+        box-shadow: 0 0 10px @main-color;
+        border-bottom: 1px solid @main-color;
+
+        .item {
+            color: @second-color;
+            background-color: @main-color;
+            border-radius: 10px 10px 0 0
+        }
+
+        .item.active {
+            box-shadow: 0 0 6px inset @second-color;
+            border: 1px solid @main-color;
+            border-bottom: none;
+        }
+
+        .collapse {
+            color: @main-color;
+        }
+    }
+
+    #chat-controls {
+        margin-top: 2px;
+    }
+
+    #chat-log {
+        .chat-message {
+            margin: 5px 3px 5px 3px;
+            background: @second-color;
+            border: 2px solid @black-color !important;
+            border-radius: @main-radius;
+            box-shadow: 0 0 5px inset @main-color;
+        }
+    }
+
+    .combat-sidebar {
+        a {
+            color: @main-color;
+        }
+
+        h3 {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .encounter {
+            color: @main-color;
+        }
+
+        #combat-tracker {
+            h4 {
+                color: @main-color;
+                font-weight: bold;
+                text-shadow: 2px 2px 2px @second-color;
+            }
+
+            a {
+                color: @main-color;
+                text-shadow: 2px 2px 2px @second-color;
+                margin-right: 10px;
+            }
+
+            .initiative {
+                color: @main-color;
+                text-shadow: 2px 2px 2px @second-color;
+            }
+        }
+
+        .custom-combat-tracker {
+            color: @main-color;
+            text-shadow: 2px 2px 2px @second-color;
+
+            #change-posture {
+                color: @main-color;
+                background: @second-color-opacity;
+            }
+
+            .actionList {
+                border: 1px solid @main-color;
+                border-radius: @main-radius;
+                background: @second-color-opacity;
+                padding: 0px 5px 0px 5px;
+                text-shadow: none;
+            }
+        }
+    }
+
+    .scenes-sidebar .directory-list .directory-item .document-name {
+        a {
+            color: @second-color;
+        }
+    }
+
+    li.folder.collapsed > .folder-header {
+        background: @main-color;
+
+        h3, a {
+            color: @second-color;
+        }
+    }
+
+    li.folder > .folder-header {
+        background: @second-color;
+        
+        h3, a {
+            color: @main-color;
+        }
+    }
+
+    .subdirectory {
+        border-left: 10px solid @main-color;
+    }
+
+    .compendium-sidebar {
+        h3 {
+            background: @second-color-opacity;
+        }
+
+        li.compendium-pack .compendium-footer {
+            color: @main-color;
+        }
+    }
+
+    .settings-sidebar {
+        h2 {
+            background: @second-color-opacity;
+        }
+    }
+}
+
+.app {
+    background: @main-color-opacity;
+    color: @second-color;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.window-app .window-content {
+    background: @second-color;
+    color: @main-color;
+
+    button {
+        border-radius: @main-radius;
+        color: @second-color;
+        background-color: @main-color;
+        border: none;
+    }
+
+    button.default {
+        background: @second-color;
+        color: @main-color;
+        border: 1px solid @main-color;
+    }
+
+    /*select {
+        border: 1px solid @main-color;
+    }*/
+
+    .notes {
+        color: @black-color;
+    }
+}
+
+#hotbar {
+    .bar-controls {
+        background: @main-color-opacity;
+        border: 1px solid @second-color;
+
+        a, .page-number {
+            color: @second-color;
+        }
+    }
+
+    #macro-list {
+        border: none;
+
+        .macro {
+            background: @main-color-opacity;
+            border: 1px solid @second-color;
+
+            .macro-key {
+                color: @main-color;
+                background: @second-color-opacity;
+            }
+        }
+    }
+}
+
+#logo {
+    content: url(../images/icon.png);
+}
+
+.placeable-hud {
+    .control-icon {
+        border: 1px solid @second-color;
+        background: @main-color-opacity;
+        color: @second-color;
+        border-radius: @main-radius;
+    
+        img {
+            opacity: 1;
+        }
+    
+        &:hover, &.active {
+            border: 1px solid @main-color;
+            color: @main-color;
+            background: @second-color-opacity;
+    
+            img {
+                opacity: 1;
+                filter: brightness(0) saturate(100%) invert(24%) sepia(25%) saturate(4524%) hue-rotate(335deg) brightness(92%) contrast(98%);
+            }
+        }
+    }
+
+    input[type="text"] {
+        background: @main-color-opacity;
+        color: @second-color;
+        border: 1px solid @second-color;
     }
 }
