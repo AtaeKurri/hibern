@@ -951,6 +951,9 @@
   padding: 0px 5px 0px 5px;
   text-shadow: none;
 }
+#sidebar .combat-sidebar .custom-combat-tracker .actionList .used a {
+  color: #555555;
+}
 #sidebar .scenes-sidebar .directory-list .directory-item .document-name a {
   color: white;
 }
