@@ -3,6 +3,7 @@ import HItem from "./module/HItem.js";
 import HItemSheet from "./module/sheets/HItemSheet.js";
 import HCharacterSheet from "./module/sheets/HCharacterSheet.js";
 import HMarchandSheet from "./module/sheets/HMarchandSheet.js";
+import * as HUD from "./module/HUD.js";
 
 async function preloadHandlebarsTemplates() {
     const templatePaths = [

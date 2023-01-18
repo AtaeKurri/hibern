@@ -267,15 +267,16 @@ export default class HCharacterSheet extends ActorSheet {
 
     //#region Spell related
 
-    async _useSpellCard(event) {
+    async _useSpellCard(event, newThisBase) {
+        const newThis = (newThisBase === undefined) ? this : newThisBase;
         const itemId = event.currentTarget.closest(".use-spellcard").dataset.itemid;
-        const item = this.actor.items.get(itemId);
-        const rollStat = this.actor.system[item.system.stat].value;
+        const item = newThis.actor.items.get(itemId);
+        const rollStat = newThis.actor.system[item.system.stat].value;
         let RollBonus = 0;
         if (item.system.Composante != "None") {
-            RollBonus = this.actor.items.get(item.system.Composante).system.Spécialisation;
-            if (RollBonus >= this.actor.system.MAG.value)
-                RollBonus = this.actor.system.MAG.value;
+            RollBonus = newThis.actor.items.get(item.system.Composante).system.Spécialisation;
+            if (RollBonus >= newThis.actor.system.MAG.value)
+                RollBonus = newThis.actor.system.MAG.value;
         }
         const AdditionnalManaCost = (RollBonus == 0) ? 0 : 1;
 
@@ -286,13 +287,13 @@ export default class HCharacterSheet extends ActorSheet {
         const newDiff = getAdjustedDiff(checkOptions.Diff, item.system.Fatigue);
 
         if (checkOptions.AffectFatigue == true) {
-            const ftg = item.system.Fatigue += (IsCharInAS(this.actor)) ? 2 : 1;
+            const ftg = item.system.Fatigue += (IsCharInAS(newThis.actor)) ? 2 : 1;
             item.update({
                 system: {
                     Fatigue: ftg
                 }
             }, {diff: false, render: true});
-            lowerAllOtherFatigue(item.type, this.actor, item._id);
+            lowerAllOtherFatigue(item.type, newThis.actor, item._id);
         }
         
         let chatData = {
@@ -320,7 +321,7 @@ export default class HCharacterSheet extends ActorSheet {
         
         let rollResult2 = rollResult._total + rollStat + RollBonus;
         let cardData = {
-            isAS: IsSpellAS(this.actor, item),
+            isAS: IsSpellAS(newThis.actor, item),
             Degats: damageRoll._total,
             spell: item,
             rollResult: rollResult2,
@@ -337,9 +338,10 @@ export default class HCharacterSheet extends ActorSheet {
 
     //#region Ability related
 
-    async _useAbility(event) {
+    async _useAbility(event, newThisBase) {
+        const newThis = (newThisBase === undefined) ? this : newThisBase;
         const capaID = event.currentTarget.closest(".use-ability").dataset.itemid;
-        const ability = this.actor.items.get(capaID);
+        const ability = newThis.actor.items.get(capaID);
         const IsActive = ability.system.Actif;
         let rollResult;
         let rollResult2;
@@ -359,13 +361,13 @@ export default class HCharacterSheet extends ActorSheet {
             const newDiff = getAdjustedDiff(checkOptions.Diff, ability.system.Fatigue);
 
             if (checkOptions.AffectFatigue == true) {
-                const ftg = ability.system.Fatigue += (IsCharInAS(this.actor)) ? 2 : 1;
+                const ftg = ability.system.Fatigue += (IsCharInAS(newThis.actor)) ? 2 : 1;
                 ability.update({
                     system: {
                         Fatigue: ftg
                     }
                 }, {diff: false, render: true});
-                lowerAllOtherFatigue(ability.type, this.actor, ability._id);
+                lowerAllOtherFatigue(ability.type, newThis.actor, ability._id);
             }
 
             rollResult = new Roll(`1d20`);
@@ -565,13 +567,13 @@ Hooks.on("renderTokenHUD", (app, html, data) => {
     const token = app?.object?.document;
     if (!token) return; 
 
-    //const far_right = $(`<div class="col far-right"></div>`);
-    //html.append(far_right);
+    const far_right = $(`<div class="col far-right"></div>`);
+    html.append(far_right);
 
-    _addHudButton(html, token, game.i18n.localize("hibern.chars.Esquive"), 'wing', "right",
+    _addHudButton(html, token, game.i18n.localize("hibern.chars.Esquive"), 'wing', "far-right",
     (event)=>{ _rollEsq("Esquive", token) });
 
-    _addHudButton(html, token, game.i18n.localize("hibern.chars.Parade"), 'sword', "right",
+    _addHudButton(html, token, game.i18n.localize("hibern.chars.Parade"), 'sword', "far-right",
     (event)=>{ _rollEsq("Parade", token) });
 });
 
@@ -611,7 +613,7 @@ function _processEsquiveOptions(form) {
 
 function _addHudButton(html, selectedToken, title, icon, position, clickEvent) {
     if (!selectedToken) return;
-    const button = $(`<div class="control-icon" title="${title}"><img src="icons/svg/${icon}.svg"></div>`);
+    const button = $(`<div class="control-icon" title="${title}"><img src="icons/svg/${icon}.svg" width="36" height="36"></div>`);
     button.click(clickEvent);
     const column = `.col.${position}`;
     html.find(column).append(button);

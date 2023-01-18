@@ -1,6 +1,6 @@
 {
   "name": "hibern",
-  "title": "Hibernation",
+  "title": "Justice",
   "description": "Système de jeu adapté pour Touhou et Myara.",
   "version": "1.0",
   "compatibility": {
@@ -26,7 +26,7 @@
   "packs": [
     {
       "name": "weapons",
-      "label": "Hibernation Weapons",
+      "label": "Justice Weapons",
       "path": "packs/weapons.db",
       "type": "Item"
     }

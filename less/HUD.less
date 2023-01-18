@@ -136,6 +136,7 @@
     h3 {
         border-bottom: 2px groove @black-color;
         font-weight: bold !important;
+        color: @second-color;
     }
 
     ol .player-name.self {
@@ -298,6 +299,13 @@
     }
 }
 
+#sidebar.collapsed {
+    .item {
+        border-radius: @main-radius !important;
+        margin: 1px 0 1px 0;
+    }
+}
+
 .app {
     background: @main-color-opacity;
     color: @second-color;
@@ -331,6 +339,10 @@
 }
 
 #hotbar {
+    visibility: hidden;
+    touch-action: none;
+    pointer-events: none;
+
     .bar-controls {
         background: @main-color-opacity;
         border: 1px solid @second-color;
@@ -386,5 +398,61 @@
         background: @main-color-opacity;
         color: @second-color;
         border: 1px solid @second-color;
+    }
+
+    /*.bottom {
+        width: 100%;
+        justify-content: space-evenly;
+        flex-direction: row;
+        height: calc(250% + 100px) !important;
+    }*/
+
+    .far-right {
+        justify-content: center;
+        right: -105px;
+    }
+}
+
+#character-rack {
+    margin: -5px;
+    overflow-y: hidden;
+
+    .tabs {
+        border: 1px solid @main-color;
+        background: @main-color;
+        color: @second-color;
+        padding: 5px;
+        border-radius: @main-radius;
+
+        .item {
+            font-weight: bold;
+            text-shadow: none;
+            display: inline-block;
+            width: 100%;
+        }
+        .item:hover {
+            text-shadow: 0 0 5px @second-color;
+            color: @main-color;
+        }
+    }
+
+    .tab {
+        border: 1px solid @main-color;
+        border-radius: @main-radius;
+        margin-top: 5px;
+        height: 570px;
+        padding: 5px;
+    }
+
+    .rack-item {
+        padding: 5px 2px 5px 2px;
+        border-top: 1px solid @main-color;
+
+        .actif { color: @actif-color; }
+        .passif { color: @passif-color; }
+        .ASName { color: @passif-color; }
+    }
+    .rack-item:last-child {
+        border-bottom: 1px solid @main-color;
     }
 }

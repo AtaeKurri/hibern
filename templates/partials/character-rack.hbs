@@ -1,0 +1,39 @@
+<section id="character-rack">
+    <nav class="tabs">
+        <a class="item" data-tab="Spells">Spell Cards</a>
+        <a class="item" data-tab="Capacités">{{localize "hibern.objects.ability"}}</a>
+    </nav>
+
+    <section class="content">
+        <ul class="tab" data-tab="Spells">
+            {{#if (eq spellcards.length 0)}}
+                <li class="rack-item">
+                    <b>{{localize "hibern.chars.NoSpells"}}</b>
+                </li>
+            {{else}}
+                {{#each spellcards as |spell id|}}
+                    <li class="rack-item">
+                        <a class="use-spellcard" data-tooltip="{{spell.system.Description}}" data-itemid="{{spell._id}}">
+                            ({{spell.system.Fatigue}}) <b class="{{#if (eq spell.system.AS true)}}ASName{{/if}}">{{spell.name}}</b>
+                        </a>
+                    </li>
+                {{/each}}
+            {{/if}}
+        </ul>
+        <ul class="tab" data-tab="Capacités">
+            {{#if (eq abilities.length 0)}}
+                <li class="rack-item">
+                    <b>{{localize "hibern.chars.NoAbilities"}}</b>
+                </li>
+            {{else}}
+                {{#each abilities as |ability id|}}
+                    <li class="rack-item">
+                        <a class="use-ability" data-tooltip="{{ability.system.Description}}" data-itemid="{{ability._id}}">
+                            ({{ability.system.Fatigue}}) <b class="{{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}">{{ability.name}}</b>
+                        </a>
+                    </li>
+                {{/each}}
+            {{/if}}
+        </ul>
+    </section>
+</section>
