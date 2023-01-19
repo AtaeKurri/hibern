@@ -1,5 +1,9 @@
 <form class="{{cssClass}}" autocomplete="off" style="background-color: #80808045; width: 100%;">
-    <h2 class="marchand-name">{{actor.name}}</h2>
+    {{#EditMode actor}}
+    <h2 class="marchand-name"><input type="text" name="name" value="{{actor.name}}"/></h2>
+    {{else}}
+        <h2 class="marchand-name">{{actor.name}}</h2>
+    {{/EditMode}}
     <nav class="tabs navigation" data-group="primary-tabs">
         <a class="item navigation-item" data-tab="armes">{{localize "hibern.objects.weapons"}}</a>
         <a class="item navigation-item" data-tab="armures">{{localize "hibern.objects.armors"}}</a>
@@ -8,8 +12,14 @@
         <a class="item navigation-item" data-tab="spell-cards">Spell-Cards</a>
     </nav>
     <div class="row" style="margin-top: 15px; height: 77%;">
-        <div class="col-4">
-            <img src="{{actor.img}}" {{#if actor.isOwner}}data-edit="img"{{/if}} title="{{actor.name}}" height="250" width="250" class="marchand-img" />
+        <div class="col-4" style="padding: 5px">
+            {{#EditMode actor}}
+                <img src="{{actor.img}}" {{#if actor.isOwner}}data-edit="img"{{/if}} title="{{actor.name}}" height="250" width="250" class="marchand-img" />
+                <h2 class="marchand-fonction"><input name="system.fonction" type="text" value="{{actor.system.fonction}}"/></h2>
+            {{else}}
+                <img src="{{actor.img}}" title="{{actor.name}}" height="250" width="250" class="marchand-img" />
+                <h2 class="marchand-fonction">{{actor.system.fonction}}</h2>
+            {{/EditMode}}
         </div>
         <div class="content sheet-body col-8">
             <div class="tab" style="overflow-x: hidden;" data-tab="armes" data-group="primary-tabs">

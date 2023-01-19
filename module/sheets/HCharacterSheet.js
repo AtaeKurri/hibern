@@ -532,7 +532,7 @@ export default class HCharacterSheet extends ActorSheet {
 
 Hooks.on("renderActorSheet", (app, html, data) => {
     let actor = game.actors.get(data.actor._id);
-    if (actor.isOwner && actor.type == "personnage") {
+    if (actor.isOwner) {
         let title = html.find(".window-title");
 
         let EditModeButton = $(`<a id="edit-mode"><i class="fas fa-cog"></i>${game.i18n.localize("hibern.chars.EditMode")}</a>`);

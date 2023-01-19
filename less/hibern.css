@@ -585,7 +585,6 @@
 }
 .hibern.sheet.marchand form {
   height: 100%;
-  padding: 5px;
 }
 .hibern.sheet.marchand textarea {
   resize: none;
@@ -613,7 +612,7 @@
   display: -webkit-box;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
 }
 .hibern.sheet.marchand .text-flow:hover {
   overflow: hidden;
@@ -670,49 +669,103 @@
   text-align: center;
   font-weight: bold;
   border: none;
-  border-top: 1px solid #555555;
+  border: 1px solid black;
+  border-top: 1px solid black;
   font-size: large;
   padding: 4px;
-  margin: -5px 2px 0px 2px;
+  margin: 0;
   width: 100%;
   color: white;
   background-color: brown;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+.hibern.sheet.marchand .navigation-item.active,
 .hibern.sheet.marchand .navigation-item:hover {
   text-shadow: none;
   background-color: white;
-  color: black;
-}
-.hibern.sheet.marchand .navigation-item.active {
-  text-shadow: none;
-  background-color: white;
-  color: black;
+  color: brown;
+  border: 1px solid brown;
+  border-top: 1px solid black;
 }
 .hibern.sheet.marchand .marchand-name {
-  padding: 5px 0px 5px 15px;
+  padding: 5px 15px 5px 15px;
   font-size: 30px;
   border: none;
-  margin-left: 2px;
-  margin-bottom: 4px;
-  margin-right: 2px;
+  margin: 0;
   color: white;
   background-color: brown;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 .hibern.sheet.marchand .marchand-img {
+  border: 1px solid brown !important;
   object-fit: cover;
   object-position: 50% 0;
   border: none;
   flex: 0;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 10px;
+  margin: 20px auto -1px auto;
   text-align: center;
   display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.hibern.sheet.marchand .marchand-fonction {
+  border: 1px solid brown;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: brown;
+  color: white;
+  text-align: center;
+  margin: 0;
+  text-decoration: underline;
+}
+.hibern.sheet.marchand .scroll-container {
+  overflow-y: scroll;
+  max-height: 335px;
+  height: 335px;
+}
+.hibern.sheet.marchand .grid-items {
+  display: grid;
+  grid-template-columns: repeat(3, 33.33333333%);
+}
+.hibern.sheet.marchand .grid-items .grid-item {
+  margin: 5px;
+  padding: 0px 5px 5px 0px;
+  background: white;
   border-radius: 10px;
+  border: 1px solid brown;
+}
+.hibern.sheet.marchand .grid-items .grid-item .header {
+  display: flex;
+}
+.hibern.sheet.marchand .grid-items .grid-item .item-img {
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  background: brown;
+}
+.hibern.sheet.marchand .grid-items .grid-item .item-name {
+  padding: 2px 3px 3px 3px;
+  text-align: center;
+  width: 100%;
+  height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  font-weight: bold;
+  line-height: 100%;
+}
+.hibern.sheet.marchand .grid-items .grid-item .item-description {
+  border-top: 1px solid brown;
+  padding: 3px;
+  text-align: justify;
+  font-size: 12px;
+  overflow-y: auto;
+  max-height: 80px;
+}
+.hibern.sheet.marchand .grid-items .grid-item .item-cost {
+  border-top: 1px dashed brown;
+  text-align: center;
+  padding: 5px 0px 0px 0px;
 }
 .hibern.sheet.marchand table {
   width: 100%;
@@ -726,7 +779,7 @@
   margin-top: 3px;
 }
 .hibern.sheet.marchand table tr {
-  color: inherit;
+  color: black;
 }
 .hibern.sheet.marchand table tr:nth-child(odd) {
   background-color: white;

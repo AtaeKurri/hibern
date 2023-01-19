@@ -1,0 +1,32 @@
+<section>
+    <input type="text" class="recherche" placeholder="{{localize "hibern.marchands.Recherche"}}" style="font-size: small; vertical-align: middle; width: 90%; margin: 3px;" /></h1>
+    <script>
+        $(document).ready(function(){
+            $(".recherche").prop('disabled', false);
+            $(".recherche").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".grid-item").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <div class="scroll-container">
+        <div class="item-list grid-items">
+        {{#each spellcards as |spellcard id|}}
+            <div class="item grid-item InventoryItem" data-item-id="{{spellcard._id}}">
+                <div class="header">
+                    <img src="{{spellcard.img}}" title="{{spellcard.name}}" height="30" width="30" class="item-img" />
+                    <span class="item-name" data-tooltip="{{spellcard.name}}">{{spellcard.name}}</span>
+                </div>
+                <div class="scroll-container item-description">
+                    <span>{{{spellcard.system.Description}}}</span>
+                </div>
+                <div class="item-cost">
+                    <span>{{localize "hibern.objects.Cost"}} : {{spellcard.system.MarchandCost}}</span>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+</section>

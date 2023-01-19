@@ -37,14 +37,16 @@
             "templates": ["commonStats", "description", "checks", "combat"]
         },
         "marchand": {
-            "templates": ["checks"]
+            "templates": ["checks"],
+            "fonction": "..."
         }
     },
     "Item": {
         "types": ["Arme", "Armure", "Accessoire", "Objet", "Spell Card", "Capacité"],
         "templates": {
             "description": {
-                "Description": ""
+                "Description": "",
+                "MarchandCost": 0
             }
         },
         "Arme": {
@@ -75,7 +77,8 @@
             "AS": false,
             "ASDescription": "",
             "Fatigue": 0,
-            "stat": "MAG"
+            "stat": "MAG",
+            "MarchandCost": 0
         },
         "Capacité": {
             "templates": ["description"],

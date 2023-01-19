@@ -73,12 +73,16 @@ export default class character_rack_HUD extends FormApplication {
         Hooks.call("hibern.char_rack_show", this.selected_token, this.actor);
 
         Hooks.on("controlToken", (tokenData, selected) => {
+            if (tokenData.document._actor.type == "marchand") {return;}
+
             this.selected_token = (selected == true) ? tokenData : undefined;
             this.actor = (selected == true) ? this.selected_token.document._actor : undefined;
             this.render();
         });
 
         Hooks.on("updateItem", (item, system, diff, id) => {
+            if (item.parent._type == "marchand") {return;}
+            
             if (this.selected_token.document._actor._id == item.parent._id)
                 this.render();
         });
