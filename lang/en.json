@@ -105,6 +105,11 @@
         },
         "marchands": {
             "Recherche": "Type of search..."
+        },
+        "ContextMenu": {
+            "Editer": "Edit",
+            "Supprimer": "Delete",
+            "Details": "See Details"
         }
     }
 }

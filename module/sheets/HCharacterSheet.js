@@ -22,7 +22,7 @@ export default class HCharacterSheet extends ActorSheet {
 
     itemContextMenu = [
         {
-            name: "Editer",
+            name: game.i18n.localize("hibern.ContextMenu.Editer"),
             icon: '<i class="fas fa-edit"></i>',
             callback: element => {
                 const item = this.actor.items.get(element.data("item-id"));
@@ -30,7 +30,7 @@ export default class HCharacterSheet extends ActorSheet {
             }
         },
         {
-            name: "Supprimer",
+            name:game.i18n.localize("hibern.ContextMenu.Supprimer"),
             icon: '<i class="fas fa-trash"></i>',
             callback: element => {
                 this.actor.deleteEmbeddedDocuments("Item", [element.data("item-id")]);
@@ -46,6 +46,7 @@ export default class HCharacterSheet extends ActorSheet {
         const baseData = super.getData();
         let sheetData = {
             owner: this.actor.isOwner,
+            //modifier editable en true, ou alors voir pour modifier les permissions de drag and drop sur la fiche (modifier les permissions internes ?)
             editable: this.isEditable,
             actor: baseData.actor,
             system: baseData.actor.system,
@@ -526,6 +527,22 @@ export default class HCharacterSheet extends ActorSheet {
     }
 
     //#endregion
+
+    //#region DragDrop
+
+    async _onDrop(event) {
+        const data = TextEditor.getDragEventData(event);
+        const item = await Item.implementation.fromDropData(data);
+
+        if (item.parent?._id == this.actor._id || item.parent == undefined) {
+            super._onDrop(event);
+        } else {
+            CONFIG.hibern.socket.executeAsGM("CreateGMItem", item.parent._id, this.actor._id, item._id);
+            CONFIG.hibern.socket.executeAsGM("DeleteGMItem", item.parent, item);
+        }
+    }
+
+    //#endregion
 }
 
 //#region Hooks
@@ -546,7 +563,7 @@ Hooks.on("renderActorSheet", (app, html, data) => {
 
 // Faire des calculs sur les stats modifiées automatiquement.
 Hooks.on("updateActor", (actor, sysdiff, diffrender, id) => {
-    if (actor.canUserModify(game.user, "update")) {
+    if (actor.canUserModify(game.user, "update") && actor.type == "personnage") {
         if (diffrender.diff == true) {
             actor.update({
                 system: {

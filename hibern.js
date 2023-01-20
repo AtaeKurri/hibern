@@ -30,6 +30,7 @@ function registerHandlebarsHelpers() {
             return content.inverse(this);
         }
     });
+
     Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
         switch (operator) {
@@ -89,9 +90,25 @@ Hooks.once("init", function() {
 Hooks.once("socketlib.ready", () => {
     hibern.socket = socketlib.registerSystem("hibern");
     hibern.socket.register("RenderTracker", RenderTracker);
+    hibern.socket.register("DeleteGMItem", DeleteGMItem);
+    hibern.socket.register("CreateGMItem", CreateGMItem);
 });
 
 function RenderTracker() {
     let tracker = game.combats.apps[0];
     tracker.render();
+}
+
+function DeleteGMItem(itemParent, item) {
+    const parent = game.actors.get(itemParent?._id);
+    parent?.deleteEmbeddedDocuments("Item", [item._id]);
+}
+
+function CreateGMItem(itemSourceId, itemDestId, itemid) {
+    const itemDest = game.actors.get(itemDestId);
+    const itemSource = game.actors.get(itemSourceId);
+    const item = itemSource.items.get(itemid);
+    const itemData = item.toObject();
+    
+    itemDest.createEmbeddedDocuments("Item", [itemData]);
 }

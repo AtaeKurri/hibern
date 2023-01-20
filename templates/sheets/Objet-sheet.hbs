@@ -8,7 +8,8 @@
             {{checked item.system.Equiped}} style="margin: 0; margin-top: 1px"/></b></p>
         </div>
         <div class="col-5 sheet-header header">
-            <h1 class="item-type">{{localize "hibern.objects.object"}}</h1>
+            <h1 class="item-type">{{localize "hibern.objects.object"}}
+                ({{localize "hibern.objects.Cost"}}: <input class="MarchandCost-input" type="number" name="system.MarchandCost" value="{{item.system.MarchandCost}}"/>)</h1>
             <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" class="header" /></h1>
             <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="200" width="200" />
         </div>

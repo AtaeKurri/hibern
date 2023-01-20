@@ -359,6 +359,11 @@
   margin-bottom: 8px;
   max-height: 120px;
 }
+.hibern.sheet.personnage .inventory-display .mons-input {
+  border: none;
+  width: 50px;
+  font-weight: bold;
+}
 .hibern.sheet.personnage .inventory-display table {
   margin-top: -8px;
   background: none;
@@ -573,6 +578,14 @@
 }
 .hibern.sheet.item .header-AS {
   background-color: #353584;
+  color: white;
+}
+.hibern.sheet.item .MarchandCost-input {
+  border: none;
+  background: rgba(165, 42, 42, 0.7);
+  width: 30px;
+  text-align: center;
+  font-weight: bold;
   color: white;
 }
 .hibern.sheet.marchand * {

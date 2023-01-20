@@ -85,10 +85,15 @@
                 </div>
             </div>
             <div class="item-list inventory-display" style="margin-left: 4px;">
-                <h2>{{localize "hibern.objects.objects"}}
+                <h2 class="text-flow1">
+                    {{localize "hibern.objects.objects"}}
                     {{#EditMode actor}}
                         <a class="item-create" data-itemname="Objet" data-type="Objet"><i class="fas fa-plus"></i></a>
-                    {{/EditMode}}</h2>
+                         | Mons: <input class="mons-input" type="number" name="system.mons" value="{{actor.system.mons}}" />
+                    {{else}}
+                        <span> | Mons : {{actor.system.mons}}</span>
+                    {{/EditMode}}
+                </h2>
                 <div class="content">
                     <table class="item-list">
                         {{#each objets as |objet id|}}

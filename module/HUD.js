@@ -37,6 +37,7 @@ export default class character_rack_HUD extends FormApplication {
             activeApp.render(true, {focus: inFocus});
         }
 
+        Hooks.call("hibern.char_rack_show", this.selected_token, this.actor);
         return activeApp.setTab(tab);
     }
 
@@ -70,8 +71,6 @@ export default class character_rack_HUD extends FormApplication {
     }
 
     activateListeners(html) {
-        Hooks.call("hibern.char_rack_show", this.selected_token, this.actor);
-
         Hooks.on("controlToken", (tokenData, selected) => {
             if (tokenData.document._actor.type == "marchand") {return;}
 

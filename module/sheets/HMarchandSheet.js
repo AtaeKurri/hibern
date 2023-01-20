@@ -38,6 +38,8 @@ export default class HMarchandSheet extends ActorSheet {
 
     activateListeners(html) {
         if (this.actor.isOwner) {
+            new ContextMenu(html, ".InventoryItem", this.itemContextMenuOwner);
+        } else {
             new ContextMenu(html, ".InventoryItem", this.itemContextMenu);
         }
 
@@ -46,9 +48,9 @@ export default class HMarchandSheet extends ActorSheet {
 
     //#region Context Menus
 
-    itemContextMenu = [
+    itemContextMenuOwner = [
         {
-            name: "Editer",
+            name: game.i18n.localize("hibern.ContextMenu.Editer"),
             icon: '<i class="fas fa-edit"></i>',
             callback: element => {
                 const item = this.actor.items.get(element.data("item-id"));
@@ -56,7 +58,7 @@ export default class HMarchandSheet extends ActorSheet {
             }
         },
         {
-            name: "Supprimer",
+            name: game.i18n.localize("hibern.ContextMenu.Supprimer"),
             icon: '<i class="fas fa-trash"></i>',
             callback: async (element) => {
                 const itemid = element.data("item-id");
@@ -65,6 +67,17 @@ export default class HMarchandSheet extends ActorSheet {
                     return;
                 }
                 this.actor.deleteEmbeddedDocuments("Item", [itemid]);
+            }
+        }
+    ];
+
+    itemContextMenu = [
+        {
+            name: game.i18n.localize("hibern.ContextMenu.Details"),
+            icon: '<i class="fas fa-book"></i>',
+            callback: element => {
+                const item = this.actor.items.get(element.data("item-id"));
+                item.sheet.render(true);
             }
         }
     ];
@@ -99,6 +112,40 @@ export default class HMarchandSheet extends ActorSheet {
             }
             new Dialog(data, null).render(true);
         });
+    }
+
+    //#endregion
+
+    //#region method overrides
+
+    _canDragStart(selector) {
+        return true;
+    }
+    
+    _canDragDrop(selector) {
+        return true;
+    }
+
+    /*_onDragStart(event) {
+        if (!event.currentTarget.classList.contains("InventoryItem")) {
+            super._onDragStart(event);
+        }
+
+        const dragData = this.actor.items.get(event.currentTarget.dataset.itemId).toDragData();
+
+        event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
+    }*/
+
+    async _onDrop(event) {
+        const data = TextEditor.getDragEventData(event);
+        const item = await Item.implementation.fromDropData(data);
+
+        if (item.parent?._id == this.actor._id || item.parent == undefined) {
+            super._onDrop(event);
+        } else {
+            CONFIG.hibern.socket.executeAsGM("CreateGMItem", item.parent._id, this.actor._id, item._id);
+            CONFIG.hibern.socket.executeAsGM("DeleteGMItem", item.parent, item);
+        }
     }
 
     //#endregion

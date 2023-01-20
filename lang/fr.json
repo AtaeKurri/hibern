@@ -105,6 +105,11 @@
         },
         "marchands": {
             "Recherche": "Ecrivez pour rechercher..."
+        },
+        "ContextMenu": {
+            "Editer": "Editer",
+            "Supprimer": "Supprimer",
+            "Details": "Voir Détails"
         }
     }
 }
