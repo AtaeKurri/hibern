@@ -28,6 +28,8 @@
             "NoSpells": "Aucune Spell Card",
             "abilities": "Capacités",
             "NoAbilities": "Aucune Capacité",
+            "summons": "Invocations",
+            "NoSummons": "Aucune Invocation",
             "atkMagic": "Attaque Magique",
             "atkPhysic": "Attaque Physique",
             "dmgMagic": "Dégâts Magique",
@@ -68,7 +70,8 @@
             "StatBonus": "Bonus de Statistique",
             "component": "Composante",
             "Fatigue": "Fatigue",
-            "Stat": "Statistique"
+            "Stat": "Statistique",
+            "NotSelling": "Je n'ai aucun objet de ce type."
         },
         "rolls": {
             "CritSuccess": "Succès Critique !!!",

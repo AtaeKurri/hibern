@@ -40,11 +40,23 @@ export default class HMarchandSheet extends ActorSheet {
         if (this.actor.isOwner) {
             new ContextMenu(html, ".InventoryItem", this.itemContextMenuOwner);
         } else {
-            new ContextMenu(html, ".InventoryItem", this.itemContextMenu);
+            //new ContextMenu(html, ".InventoryItem", this.itemContextMenu);
         }
+
+        html.find(".open-item").click(this._onOpenItem.bind(this));
 
         super.activateListeners(html);
     }
+
+    //#region Listeners
+
+    async _onOpenItem(event) {
+        const itemId = event.currentTarget.closest(".open-item").dataset.itemid;
+        let item = this.actor.items.get(itemId);
+        item.sheet.render(true);
+    }
+
+    //#endregion
 
     //#region Context Menus
 

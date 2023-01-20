@@ -378,6 +378,12 @@
             border-top-right-radius: @main-radius;
         }
 
+        .ability-tabs {
+            display: flex;
+            margin-bottom: 0;
+            justify-content: space-around;
+        }
+
         .ASName {
             color: @passif-color;
         }
@@ -420,6 +426,13 @@
         .spell-table-content {
             .spell-name {
                 .bold();
+            }
+
+            .summon-img {
+                border: none;
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: 50% 0;
             }
         }
     }

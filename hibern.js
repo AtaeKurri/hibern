@@ -74,8 +74,8 @@ Hooks.once("init", function() {
     Items.registerSheet("hibern", HItemSheet, {makeDefault:true});
 
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("hibern", HCharacterSheet, {types:["personnage"], makeDefault:true});
-    Actors.registerSheet("hibern", HMarchandSheet, {types:["marchand"], makeDefault:true});
+    Actors.registerSheet("hibern", HCharacterSheet, {types: ["personnage", "invocation"], makeDefault: true});
+    Actors.registerSheet("hibern", HMarchandSheet, {types: ["marchand"], makeDefault: true});
 
     preloadHandlebarsTemplates();
     registerSystemSettings();
@@ -109,6 +109,6 @@ function CreateGMItem(itemSourceId, itemDestId, itemid) {
     const itemSource = game.actors.get(itemSourceId);
     const item = itemSource.items.get(itemid);
     const itemData = item.toObject();
-    
+
     itemDest.createEmbeddedDocuments("Item", [itemData]);
 }

@@ -434,6 +434,11 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+.hibern.sheet.personnage .spells .ability-tabs {
+  display: flex;
+  margin-bottom: 0;
+  justify-content: space-around;
+}
 .hibern.sheet.personnage .spells .ASName {
   color: #353584;
 }
@@ -467,6 +472,12 @@
 }
 .hibern.sheet.personnage .spells .spell-table-content .spell-name {
   font-weight: bold;
+}
+.hibern.sheet.personnage .spells .spell-table-content .summon-img {
+  border: none;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 0;
 }
 .hibern.sheet.item textarea {
   resize: none;
@@ -700,14 +711,24 @@
   color: brown;
   border: 1px solid brown;
   border-top: 1px solid black;
+  margin: 0px 0px -10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .hibern.sheet.marchand .marchand-name {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   padding: 5px 15px 5px 15px;
   font-size: 30px;
   border: none;
   margin: 0;
   color: white;
   background-color: brown;
+}
+.hibern.sheet.marchand .marchand-name span {
+  font-size: 14px;
 }
 .hibern.sheet.marchand .marchand-img {
   border: 1px solid brown !important;
@@ -735,6 +756,10 @@
   overflow-y: scroll;
   max-height: 335px;
   height: 335px;
+}
+.hibern.sheet.marchand .not-selling {
+  font-weight: bold;
+  margin: 30px;
 }
 .hibern.sheet.marchand .grid-items {
   display: grid;

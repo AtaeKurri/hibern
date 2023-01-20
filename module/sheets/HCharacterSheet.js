@@ -6,10 +6,9 @@ export default class HCharacterSheet extends ActorSheet {
             scrollY: [".scroll-container", ".content"],
             resizable: false,
             classes: ["hibern", "sheet", "personnage"],
-            tabs: [{
-                navSelector: ".tabs",
-                contentSelector: ".content",
-                initial: "description" }]
+            tabs: [
+                {navSelector: ".tabs", contentSelector: ".content", initial: "abilities"}
+            ]
         });
     }
     
@@ -44,9 +43,16 @@ export default class HCharacterSheet extends ActorSheet {
         const data = super.getData();
 
         const baseData = super.getData();
+
+        let invocationList = [];
+        try {
+            baseData.actor.system.invocationList.forEach(actorId => {
+                invocationList.push(game.actors.get(actorId));
+            });
+        } catch (err) {}
+
         let sheetData = {
             owner: this.actor.isOwner,
-            //modifier editable en true, ou alors voir pour modifier les permissions de drag and drop sur la fiche (modifier les permissions internes ?)
             editable: this.isEditable,
             actor: baseData.actor,
             system: baseData.actor.system,
@@ -56,8 +62,11 @@ export default class HCharacterSheet extends ActorSheet {
             accessoires: data.items.filter(function (item) {return item.type == "Accessoire"}),
             spellcards: data.items.filter(function (item) {return item.type == "Spell Card"}),
             abilities: data.items.filter(function (item) {return item.type == "Capacité"}),
-            objets: data.items.filter(function (item) {return item.type == "Objet"})
+            objets: data.items.filter(function (item) {return item.type == "Objet"}),
+            invocations: invocationList
         };
+
+        console.log(sheetData.invocations);
 
         return sheetData;
     }
@@ -73,6 +82,7 @@ export default class HCharacterSheet extends ActorSheet {
             html.find(".use-ability").click(this._useAbility.bind(this));
             html.find(".roll-weapon").click(this._useWeapon.bind(this));
             html.find(".roll-baseatk").click(this._rollBasicAtk.bind(this));
+            html.find(".delete-summon-reference").click(this._onDeleteSummonReference.bind(this));
         
             new ContextMenu(html, ".InventoryItem", this.itemContextMenu);
         }
@@ -528,17 +538,43 @@ export default class HCharacterSheet extends ActorSheet {
 
     //#endregion
 
+    //#region invocations
+
+    _onDeleteSummonReference(event) {
+        
+    }
+
+    //#endregion
+
     //#region DragDrop
 
     async _onDrop(event) {
         const data = TextEditor.getDragEventData(event);
-        const item = await Item.implementation.fromDropData(data);
+        switch (data.type) {
+            case "Actor":
+                const DraggedActor = await Actor.implementation.fromDropData(data);
+                if (this.actor.system.invocationList.includes(DraggedActor._id) == true) { return; }
+                let newSummonlist = this.actor.system.invocationList;
+                newSummonlist.push(DraggedActor._id);
+                await this.actor.update({
+                    system: {
+                        invocationList: newSummonlist
+                    }
+                }, {diff: false, render: true});
+            break;
+            case "Item":
+                const item = await Item.implementation.fromDropData(data);
 
-        if (item.parent?._id == this.actor._id || item.parent == undefined) {
-            super._onDrop(event);
-        } else {
-            CONFIG.hibern.socket.executeAsGM("CreateGMItem", item.parent._id, this.actor._id, item._id);
-            CONFIG.hibern.socket.executeAsGM("DeleteGMItem", item.parent, item);
+                if (item.parent?._id == this.actor._id || item.parent == undefined) {
+                    super._onDrop(event);
+                } else {
+                    CONFIG.hibern.socket.executeAsGM("CreateGMItem", item.parent._id, this.actor._id, item._id);
+                    CONFIG.hibern.socket.executeAsGM("DeleteGMItem", item.parent, item);
+                }
+            break;
+            default:
+                super._onDrop(event);
+                break;
         }
     }
 

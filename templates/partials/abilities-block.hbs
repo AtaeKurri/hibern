@@ -1,44 +1,70 @@
 <section class="spells" style="margin-bottom: 10px;">
-    <h2 class="name" style="margin-bottom: 0px;">{{localize "hibern.chars.abilities"}}
+    <!--<h2 class="name" style="margin-bottom: 0px;">{{localize "hibern.chars.abilities"}}
         {{#EditMode actor}}
             <a class="item-create" data-itemname="Capacité" data-type="Capacité"><i class="fas fa-plus"></i></a>
-        {{/EditMode}}</h2>
-    <div style="max-height: 117.5px;" class="scroll-container">
-        <table class="item-list scoll-content">
-            {{#if (eq abilities.length 0)}}
-            <tr>
-                <td style="text-align: center;">{{localize "hibern.chars.NoAbilities"}}</td>
-            </tr>
-            {{else}}
-                {{#each abilities as |ability id|}}
-                <tr class="item spell-table-content" data-itemid="{{ability._id}}" data-item-id="{{ability._id}}">
-                    {{#EditMode ../actor}}
-                        <td class="spell-name" style="width: 175px;">
-                            <a class="item-delete" data-itemid="{{ability._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-trash"></i></a>
-                            <a class="item-edit" data-itemid="{{ability._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-edit"></i></a>
-                            <div class="text-flow1 {{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}">({{ability.system.Fatigue}}) {{ability.name}}</div>
-                        </td>
-                        <td>
-                            <span class="text-flow1" style="width: 240px;">{{{ability.system.Description}}}</span>
-                        </td>
-                        <td style="width: 20px; text-align: left;">
-                            <span>{{ability.system.Spécialisation}}</span>
-                        </td>
-                    {{else}}
-                        <td class="spell-name" style="width: 175px;">
-                            <a class="use-ability fullsizelinkwidth text-flow1 {{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}"
-                                data-itemid="{{ability._id}}">
-                                ({{ability.system.Fatigue}}) {{ability.name}}
-                            </a>
-                        </td>
-                        <td><span class="text-flow1" style="width: 240px; font-size: 12px;">{{{ability.system.Description}}}</span></td>
-                        <td style="width: 20px; text-align: left;">
-                            <span>{{ability.system.Spécialisation}}</span>
-                        </td>
-                    {{/EditMode}}
+        {{/EditMode}}</h2>-->
+    <nav class="tabs name" data-group="primary-tabs">
+        <a class="item fullsizelink" data-tab="abilities">{{localize "hibern.chars.abilities"}}</a>
+        <a class="item fullsizelink" data-tab="summons">{{localize "hibern.chars.summons"}}</a>
+    </nav>
+    <div class="content scroll-container" style="max-height: 117.5px;">
+        <div class="tab" data-tab="abilities" data-group="primary-tabs">
+            <table class="item-list scoll-content">
+                {{#if (eq abilities.length 0)}}
+                <tr>
+                    <td style="text-align: center;">{{localize "hibern.chars.NoAbilities"}}</td>
                 </tr>
-                {{/each}}
-            {{/if}}
-        </table>
+                {{else}}
+                    {{#each abilities as |ability id|}}
+                    <tr class="item spell-table-content" data-itemid="{{ability._id}}" data-item-id="{{ability._id}}">
+                        {{#EditMode ../actor}}
+                            <td class="spell-name" style="width: 175px;">
+                                <a class="item-delete" data-itemid="{{ability._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-trash"></i></a>
+                                <a class="item-edit" data-itemid="{{ability._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-edit"></i></a>
+                                <div class="text-flow1 {{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}">({{ability.system.Fatigue}}) {{ability.name}}</div>
+                            </td>
+                            <td>
+                                <span class="text-flow1" style="width: 240px;">{{{ability.system.Description}}}</span>
+                            </td>
+                            <td style="width: 20px; text-align: left;">
+                                <span>{{ability.system.Spécialisation}}</span>
+                            </td>
+                        {{else}}
+                            <td class="spell-name" style="width: 175px;">
+                                <a class="use-ability fullsizelinkwidth text-flow1 {{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}"
+                                    data-itemid="{{ability._id}}">
+                                    ({{ability.system.Fatigue}}) {{ability.name}}
+                                </a>
+                            </td>
+                            <td><span class="text-flow1" style="width: 240px; font-size: 12px;">{{{ability.system.Description}}}</span></td>
+                            <td style="width: 20px; text-align: left;">
+                                <span>{{ability.system.Spécialisation}}</span>
+                            </td>
+                        {{/EditMode}}
+                    </tr>
+                    {{/each}}
+                {{/if}}
+            </table>
+        </div>
+        <div class="tab" data-tab="summons", data-group="primary-tabs">
+            <table class="scroll-content">
+                {{#if (eq invocations.length 0)}}
+                <tr>
+                    <td style="text-align: center;">{{localize "hibern.chars.NoSummons"}}</td>
+                </tr>
+                {{else}}
+                    {{#each invocations as |invocation index|}}
+                    <tr class="spell-table-content">
+                        <td style="width: 25px;">
+                            <img src="{{invocation.img}}" title="{{invocation.name}}" height="45" width="45" class="summon-img" />
+                        </td>
+                        <td class="spell-name" style="width: 175px;">
+                            {{invocation.name}} | {{index}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                {{/if}}
+            </table>
+        </div>
     </div>
 </section>

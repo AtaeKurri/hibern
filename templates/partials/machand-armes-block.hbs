@@ -12,12 +12,17 @@
         });
     </script>
     <div class="scroll-container">
+        {{#if (eq armes.length 0)}}
+        <div>
+            <span class="not-selling">{{localize "hibern.objects.NotSelling"}}</span>
+        </div>
+        {{else}}
         <div class="item-list grid-items">
         {{#each armes as |arme id|}}
             <div class="item grid-item InventoryItem" data-item-id="{{arme._id}}">
                 <div class="header">
                     <img src="{{arme.img}}" title="{{arme.name}}" height="30" width="30" class="item-img" />
-                    <span class="item-name" data-tooltip="{{arme.name}}">{{arme.name}}</span>
+                    <span class="item-name" data-tooltip="{{arme.name}}"><a class="open-item" data-itemid="{{arme._id}}">{{arme.name}}</a></span>
                 </div>
                 <div class="scroll-container item-description">
                     <span>{{{arme.system.Description}}}</span>
@@ -28,5 +33,6 @@
             </div>
         {{/each}}
         </div>
+        {{/if}}
     </div>
 </section>

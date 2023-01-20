@@ -1,6 +1,6 @@
 {
     "Actor": {
-        "types": ["personnage", "marchand"],
+        "types": ["personnage", "marchand", "invocation"],
         "templates": {
             "commonStats": {
                 "PV": {
@@ -32,14 +32,21 @@
             "combat": {
                 "posture": "Normal",
                 "actionsUsed": {}
+            },
+            "invocations": {
+                "invocationList": []
             }
         },
         "personnage": {
+            "templates": ["commonStats", "description", "checks", "combat", "invocations"]
+        },
+        "invocation": {
             "templates": ["commonStats", "description", "checks", "combat"]
         },
         "marchand": {
             "templates": ["checks"],
-            "fonction": "..."
+            "fonction": "...",
+            "CHA": 0
         }
     },
     "Item": {

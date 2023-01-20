@@ -28,6 +28,8 @@
             "NoSpells": "No Spell Cards",
             "abilities": "Abilities",
             "NoAbilities": "No Abilities",
+            "summons": "Summons",
+            "NoSummons": "No Summons",
             "atkMagic": "Magic Attack",
             "atkPhysic": "Physical Attack",
             "dmgMagic": "Magic Damage",
@@ -68,7 +70,8 @@
             "StatBonus": "Stat Bonus",
             "component": "Component",
             "Fatigue": "Fatigue",
-            "Stat": "Statistic"
+            "Stat": "Statistic",
+            "NotSelling": "I don't own any objects of that type, sorry."
         },
         "rolls": {
             "CS": "Critical Success !!!",
