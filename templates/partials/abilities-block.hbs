@@ -61,14 +61,14 @@
             </table>
         </div>
         <div class="tab" data-tab="summons", data-group="primary-tabs">
-            <table class="scroll-content">
+            <table class="invocation-list scroll-content">
                 {{#if (eq invocations.length 0)}}
                 <tr>
                     <td style="text-align: center;">{{localize "hibern.chars.NoSummons"}}</td>
                 </tr>
                 {{else}}
                     {{#each invocations as |invocation index|}}
-                    <tr class="spell-table-content">
+                    <tr class="invocation spell-table-content" data-summonid="{{invocation._id}}">
                         {{#EditMode ../actor}}
                             <td style="min-width: 25px;">
                                 <img src="{{invocation.img}}" title="{{invocation.name}}" height="45" width="45" class="summon-img" />

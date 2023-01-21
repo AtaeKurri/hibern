@@ -6,7 +6,11 @@ export default class HCharacterSheet extends ActorSheet {
             scrollY: [".scroll-container", ".content"],
             resizable: false,
             classes: ["hibern", "sheet", "personnage"],
-            tabs: [{navSelector: ".tabs", contentSelector: ".content", initial: "abilities"}]
+            tabs: [{navSelector: ".tabs", contentSelector: ".content", initial: "abilities"}],
+            dragDrop: [
+                {dragSelector: ".item-list .item", dropSelector: null},
+                {dragSelector: ".invocation-list .invocation", dropSelector: null}
+            ]
         });
     }
     
@@ -63,6 +67,8 @@ export default class HCharacterSheet extends ActorSheet {
             objets: data.items.filter(function (item) {return item.type == "Objet"}),
             invocations: invocationList
         };
+
+        //TODO invocation : Permettre au joueur de glisser/déposer la référénce de l'acteur sur la scène directement
 
         return sheetData;
     }
@@ -548,7 +554,7 @@ export default class HCharacterSheet extends ActorSheet {
     async _onDeleteSummonReference(event) {
         const summonIndex = event.currentTarget.closest(".delete-summon-reference").dataset.index;
 
-        let checkOptions = await this.GetDeletionConfirmation(game.actors.get(this.actor.system.invocationList[summonIndex]));
+        let checkOptions = await this.GetDeletionConfirmation(game.actors.get(this.actor.system.invocationList[summonIndex]).name);
         if (checkOptions.cancelled) {
             return;
         }
@@ -571,6 +577,27 @@ export default class HCharacterSheet extends ActorSheet {
     //#endregion
 
     //#region DragDrop
+
+    _onDragStart(event) {
+        const li = event.target;
+        if (!event.target.classList.contains("invocation")) {
+            super._onDragStart(event);
+        } else {
+            const actor = game.actors.get(event.target.dataset.summonid);
+
+            const dragData = actor.toDragData();
+            event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
+
+            if ( actor && canvas.ready ) {
+                const img = li.querySelector("img");
+                const pt = actor.prototypeToken;
+                const w = pt.width * canvas.dimensions.size * Math.abs(pt.texture.scaleX) * canvas.stage.scale.x;
+                const h = pt.height * canvas.dimensions.size * Math.abs(pt.texture.scaleY) * canvas.stage.scale.y;
+                const preview = DragDrop.createDragImage(img, w, h);
+                event.dataTransfer.setDragImage(preview, w / 2, h / 2);
+            }
+        }
+    }
 
     async _onDrop(event) {
         const data = TextEditor.getDragEventData(event);

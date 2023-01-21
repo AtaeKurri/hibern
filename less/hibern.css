@@ -453,6 +453,7 @@
 }
 .hibern.sheet.personnage .spells table {
   margin-top: -8px;
+  margin-bottom: 0;
   background: none;
   /*tr:last-child {
                 border-bottom-left-radius: @main-radius;
