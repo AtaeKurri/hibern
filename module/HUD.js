@@ -1,7 +1,7 @@
 export default class character_rack_HUD extends FormApplication {
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            title: "Character Rack",
+            title: game.i18n.localize("hibern.Divers.CharacterRack"),
             template: "systems/hibern/templates/partials/character-rack.hbs",
             classes: ["dialog"],
             width: 250,
@@ -111,7 +111,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
     const database = {
         icon: "fas fa-list",
         name: "hibernrack",
-        title: "Show Character Rack",
+        title: game.i18n.localize("hibern.Divers.ShowCharacterRack"),
         button: true,
         visible: true,
         onClick: () => {

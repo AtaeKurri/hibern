@@ -13,7 +13,9 @@
             {{else}}
             <a class="item fullsizelink" data-tab="abilities">{{localize "hibern.chars.abilities"}}</a>
             {{/EditMode}}
+            {{#ifCond actor.system.invocationList.length '!=' 0}}
             <a class="item fullsizelink" data-tab="summons">{{localize "hibern.chars.summons"}}</a>
+            {{/ifCond}}
         </nav>
     {{else}}
         <h2 class="name" style="margin-bottom: 0px;">{{localize "hibern.chars.abilities"}}

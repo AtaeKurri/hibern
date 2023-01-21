@@ -61,8 +61,6 @@ function registerSystemSettings() {
 }
 
 Hooks.once("init", function() {
-    console.log("Hibernation | Initialized.");
-
     CONFIG.hibern = hibern;
     CONFIG.Item.documentClass = HItem;
 
@@ -81,6 +79,15 @@ Hooks.once("init", function() {
     //CONFIG.debug.hooks = true;
 
     CONFIG.Combat.initiative.formula = '1d20+@DEX.value';
+
+    console.log("Justice | Initialized.");
+});
+
+Hooks.once("ready", () => {
+    //Check permissions for TOKEN_CREATE for users.
+    if (!game.permissions.TOKEN_CREATE.includes(1)) {
+        ui.notifications.info("Your players can't place summon tokens from their sheet. Please consider editing their permissions to allow so.");
+    }
 });
 
 Hooks.once("socketlib.ready", () => {

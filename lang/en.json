@@ -91,7 +91,9 @@
             "EnnemiRoll": "Enemy's roll",
             "Deletion": "Delete an item",
             "ConfirmDeletion": "Would you really like to delete ",
-            "AffectFatigue": "Change Fatigue values?"
+            "AffectFatigue": "Change Fatigue values?",
+            "CharacterRack": "Character Rack",
+            "ShowCharacterRack": "Show Character Rack"
         },
         "chat": {
             "CurrentCombattant": "Current fighter",

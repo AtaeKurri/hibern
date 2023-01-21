@@ -91,7 +91,9 @@
             "EnnemiRoll": "Résultat ennemi",
             "Deletion": "Supprimer un objet",
             "ConfirmDeletion": "Voulez-vous vraiment supprimer ",
-            "AffectFatigue": "Changer les valeurs de fatigue ?"
+            "AffectFatigue": "Changer les valeurs de fatigue ?",
+            "CharacterRack": "Grille de Personnage",
+            "ShowCharacterRack": "Montrer la Grille de Personnage"
         },
         "chat": {
             "CurrentCombattant": "Combattant actuel",
