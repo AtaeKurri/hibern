@@ -105,7 +105,7 @@
   resize: none;
 }
 .hibern.sheet.personnage .content {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .hibern.sheet.personnage .window-content {
   height: 100%;
@@ -478,6 +478,34 @@
   border-radius: 50%;
   object-fit: cover;
   object-position: 50% 0;
+}
+.hibern.sheet.personnage .table-border {
+  max-height: 117.5px;
+  border: 1px solid brown;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+.hibern.sheet.personnage .baseatktable {
+  margin: 0px;
+  border: none;
+  border-left: 1px solid brown;
+  border-right: 1px solid brown;
+}
+.hibern.sheet.personnage .invoc-stats {
+  text-align: center;
+}
+.hibern.sheet.personnage .invoc-stats .stat-name {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.hibern.sheet.personnage .invoc-stats .stat {
+  color: inherit;
+}
+.hibern.sheet.personnage .tabs .item.active {
+  text-shadow: 0 0 10px white;
+}
+.hibern.sheet.personnage .tabs a:hover {
+  text-shadow: 0 0 5px white;
 }
 .hibern.sheet.item textarea {
   resize: none;

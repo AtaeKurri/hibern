@@ -6,9 +6,7 @@ export default class HCharacterSheet extends ActorSheet {
             scrollY: [".scroll-container", ".content"],
             resizable: false,
             classes: ["hibern", "sheet", "personnage"],
-            tabs: [
-                {navSelector: ".tabs", contentSelector: ".content", initial: "abilities"}
-            ]
+            tabs: [{navSelector: ".tabs", contentSelector: ".content", initial: "abilities"}]
         });
     }
     
@@ -66,8 +64,6 @@ export default class HCharacterSheet extends ActorSheet {
             invocations: invocationList
         };
 
-        console.log(sheetData.invocations);
-
         return sheetData;
     }
 
@@ -83,8 +79,17 @@ export default class HCharacterSheet extends ActorSheet {
             html.find(".roll-weapon").click(this._useWeapon.bind(this));
             html.find(".roll-baseatk").click(this._rollBasicAtk.bind(this));
             html.find(".delete-summon-reference").click(this._onDeleteSummonReference.bind(this));
+            html.find(".open-invocation-sheet").click(this._onOpenInvocationSheet.bind(this));
         
             new ContextMenu(html, ".InventoryItem", this.itemContextMenu);
+        }
+
+        if (this.actor.type == "personnage") {
+            Hooks.on("updateSummon", (actorId) => {
+                if (this.actor.system.invocationList.includes(actorId) && this.actor.sheet.rendered) {
+                    this.actor.sheet.render(true);
+                }
+            });
         }
 
         super.activateListeners(html);
@@ -298,7 +303,7 @@ export default class HCharacterSheet extends ActorSheet {
         const newDiff = getAdjustedDiff(checkOptions.Diff, item.system.Fatigue);
 
         if (checkOptions.AffectFatigue == true) {
-            const ftg = item.system.Fatigue += (IsCharInAS(newThis.actor)) ? 2 : 1;
+            const ftg = item.system.Fatigue += (IsCharInAS(newThis.actor) && newThis.actor.type == "personnage") ? 2 : 1;
             item.update({
                 system: {
                     Fatigue: ftg
@@ -372,7 +377,7 @@ export default class HCharacterSheet extends ActorSheet {
             const newDiff = getAdjustedDiff(checkOptions.Diff, ability.system.Fatigue);
 
             if (checkOptions.AffectFatigue == true) {
-                const ftg = ability.system.Fatigue += (IsCharInAS(newThis.actor)) ? 2 : 1;
+                const ftg = ability.system.Fatigue += (IsCharInAS(newThis.actor) && newThis.actor.type == "personnage") ? 2 : 1;
                 ability.update({
                     system: {
                         Fatigue: ftg
@@ -540,8 +545,27 @@ export default class HCharacterSheet extends ActorSheet {
 
     //#region invocations
 
-    _onDeleteSummonReference(event) {
-        
+    async _onDeleteSummonReference(event) {
+        const summonIndex = event.currentTarget.closest(".delete-summon-reference").dataset.index;
+
+        let checkOptions = await this.GetDeletionConfirmation(game.actors.get(this.actor.system.invocationList[summonIndex]));
+        if (checkOptions.cancelled) {
+            return;
+        }
+
+        let newSummonlist = this.actor.system.invocationList;
+        newSummonlist.splice(summonIndex, 1);
+        await this.actor.update({
+            system: {
+                invocationList: newSummonlist
+            }
+        }, {diff: false, render: true});
+    }
+
+    async _onOpenInvocationSheet(event) {
+        const summonIndex = event.currentTarget.closest(".open-invocation-sheet").dataset.index;
+        const actor = game.actors.get(this.actor.system.invocationList[summonIndex]);
+        actor.sheet.render(true);
     }
 
     //#endregion
@@ -599,7 +623,7 @@ Hooks.on("renderActorSheet", (app, html, data) => {
 
 // Faire des calculs sur les stats modifiées automatiquement.
 Hooks.on("updateActor", (actor, sysdiff, diffrender, id) => {
-    if (actor.canUserModify(game.user, "update") && actor.type == "personnage") {
+    if (actor.canUserModify(game.user, "update")) {
         if (diffrender.diff == true) {
             actor.update({
                 system: {
@@ -613,6 +637,10 @@ Hooks.on("updateActor", (actor, sysdiff, diffrender, id) => {
                 }
             }, {diff: false, render: true});
         }
+    }
+
+    if (actor.type == "invocation") {
+        Hooks.callAll("updateSummon", actor._id);
     }
 });
 

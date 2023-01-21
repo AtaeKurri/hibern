@@ -13,11 +13,13 @@
                 / {{system.PV.max}}</span>     
         </div>
     </div>
+    {{#if (eq actor.type "personnage")}}
     <div class="border-around main-background bold" style="margin: 13px; padding: 5px; text-align: center;">
         <h3>{{localize "hibern.stats.WillPoints"}}</h3>
         <span class="will-point"><input name="system.WillPoints.value" type="number" value="{{system.WillPoints.value}}" data-dtype="Number" />
             / {{system.WillPoints.max}}</span>
     </div>
+    {{/if}}
     {{#if actor.isOwner}}
     <div class="border-around main-background bold" style="margin: 13px; padding: 5px;">
         {{#EditMode actor}}

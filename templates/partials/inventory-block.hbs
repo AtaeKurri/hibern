@@ -89,9 +89,9 @@
                     {{localize "hibern.objects.objects"}}
                     {{#EditMode actor}}
                         <a class="item-create" data-itemname="Objet" data-type="Objet"><i class="fas fa-plus"></i></a>
-                         | Mons: <input class="mons-input" type="number" name="system.mons" value="{{actor.system.mons}}" />
+                        {{#if (eq actor.type "personnage")}} | Mons: <input class="mons-input" type="number" name="system.mons" value="{{actor.system.mons}}" />{{/if}}
                     {{else}}
-                        <span> | Mons : {{actor.system.mons}}</span>
+                        {{#if (eq actor.type "personnage")}}<span> | Mons : {{actor.system.mons}}</span>{{/if}}
                     {{/EditMode}}
                 </h2>
                 <div class="content">

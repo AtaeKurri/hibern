@@ -24,11 +24,7 @@ async function preloadHandlebarsTemplates() {
 
 function registerHandlebarsHelpers() {
     Handlebars.registerHelper("EditMode", function(actor, content) {
-        if (actor.system.EditModeOn == true){
-            return content.fn(this);
-        } else {
-            return content.inverse(this);
-        }
+        return (actor.system.EditModeOn == true) ? content.fn(this) : content.inverse(this);
     });
 
     Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {

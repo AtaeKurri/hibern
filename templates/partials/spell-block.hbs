@@ -1,9 +1,9 @@
 <section class="spells" style="margin-bottom: 10px;">
-    <h2 class="name" style="margin-bottom: 0px;">Spell Cards
+    <h2 class="name" style="margin-bottom: 6px;">Spell Cards
         {{#EditMode actor}}
             <a class="item-create" data-itemname="Spell Card" data-type="Spell Card"><i class="fas fa-plus"></i></a>
         {{/EditMode}}</h2>
-    <table style="margin: 0px; border: none;">
+    <table class="baseatktable">
         <tr style="text-align: center; background-color: white;">
             <th>
                 <a class="roll-baseatk" data-type="Physic" data-ctx="Atk" style="text-decoration: underline;">{{localize "hibern.chars.atkPhysic"}}</a>
@@ -15,8 +15,8 @@
             </th>
         </tr>
     </table>
-    <div style="max-height: 117.5px;" class="scroll-container">
-        <table class="item-list scoll-content">
+    <div class="scroll-container table-border">
+        <table class="item-list">
             {{#if (eq spellcards.length 0)}}
             <tr>
                 <td style="text-align: center;">{{localize "hibern.chars.NoSpells"}}</td>

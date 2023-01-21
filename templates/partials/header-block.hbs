@@ -1,6 +1,6 @@
 <section style="padding: 5px; margin-bottom: 10px;">
     <div class="row">
-        <div class="col-4 char-name2" style="margin: -10px 3px 0px 3px;">
+        <div class="{{#if (eq actor.type 'personnage')}}col-4{{else}}col-6{{/if}} char-name2" style="margin: -10px 3px 0px 3px;">
             {{#EditMode actor}}
                 <p>{{localize "hibern.chars.title"}} : <input type="text" name="system.title" value="{{system.title}}" class="stat-css"/></p>
             {{else}}
@@ -8,7 +8,7 @@
                 <span class="text-flow1 color-text-second">{{system.title}}</span>
             {{/EditMode}}
         </div>
-        <div class="col-4 char-name2" style="margin: -10px 3px 0px 3px;">
+        <div class="{{#if (eq actor.type 'personnage')}}col-4{{else}}col-6{{/if}} char-name2" style="margin: -10px 3px 0px 3px;">
             {{#EditMode actor}}
                 <p>{{localize "hibern.chars.species"}} : <input type="text" name="system.species" value="{{system.species}}" class="stat-css"/></p>
             {{else}}
@@ -16,6 +16,7 @@
                 <span class="text-flow1 color-text-second">{{system.species}}</span>
             {{/EditMode}}
         </div>
+        {{#if (eq actor.type "personnage")}}
         <div class="LWItem col-4">
             <div class="char-name2 LW" style="margin: -10px 3px 0px 3px;">
                 {{#if (eq system.lwready true)}}
@@ -25,5 +26,6 @@
                 {{/if}}
             </div>
         </div>
+        {{/if}}
     </div>
 </section>

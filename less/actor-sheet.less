@@ -18,7 +18,7 @@
     }
 
     .content {
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 
     .window-content {
@@ -434,6 +434,43 @@
                 object-fit: cover;
                 object-position: 50% 0;
             }
+        }
+    }
+
+    .table-border {
+        max-height: 117.5px;
+        border: 1px solid @main-color;
+        border-top: none;
+        border-radius: 0 0 @main-radius @main-radius;
+    }
+
+    .baseatktable {
+        margin: 0px;
+        border: none;
+        border-left: 1px solid @main-color;
+        border-right: 1px solid @main-color;
+    }
+
+    .invoc-stats {
+        text-align: center;
+
+        .stat-name {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .stat {
+            color: inherit;
+        }
+    }
+
+    .tabs {
+        .item.active {
+            text-shadow: 0 0 10px @second-color;
+        }
+
+        a:hover {
+            text-shadow: 0 0 5px @second-color;
         }
     }
 }
