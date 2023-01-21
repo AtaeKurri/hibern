@@ -1,13 +1,15 @@
 <form class="{{cssClass}} border-around" autocomplete="off">
-    <div class="row">
-        <div class="col-7 main-margin">
-            <p class="field-name"><b>{{localize "hibern.objects.Reduction"}}</b></p>
-            <input name="system.Reduction" type="text" value="{{item.system.Reduction}}" placeholder="Reduction"/>
-            <p class="field-name"><b>Description</b></p>
+    <div class="row main-bg">
+        <div class="col-7 outer-border">
+            <div class="main-margin">
+                <p class="field-name"><b>{{localize "hibern.objects.Reduction"}}</b></p>
+                <input name="system.Reduction" type="text" value="{{item.system.Reduction}}" placeholder="Reduction"/>
+                <p class="field-name"><b>Description</b></p>
 <textarea name="system.Description" rows="8" placeholder="Description">{{{item.system.Description}}}</textarea>
-        <p class="field-name"><b>{{localize "hibern.objects.Equiped"}}
-        <input type="checkbox" name="system.Equiped" value="{{item.system.Equiped}}" data-dtype="Boolean"
-            {{checked item.system.Equiped}} style="margin: 0; margin-top: 1px"/></b></p>
+            <p class="field-name"><b>{{localize "hibern.objects.Equiped"}}
+            <input type="checkbox" name="system.Equiped" value="{{item.system.Equiped}}" data-dtype="Boolean"
+                {{checked item.system.Equiped}} style="margin: 0; margin-top: 1px"/></b></p>
+            </div>
         </div>
         <div class="col-5 sheet-header header">
             <h1 class="item-type">{{localize "hibern.objects.armor"}}

@@ -564,6 +564,9 @@
 .hibern.sheet.item .row .col-12 {
   width: 100%;
 }
+.hibern.sheet.item .main-bg {
+  background: brown;
+}
 .hibern.sheet.item .row::after {
   clear: both;
   content: "";
@@ -627,6 +630,11 @@
   text-align: center;
   font-weight: bold;
   color: white;
+}
+.hibern.sheet.item .outer-border {
+  background: white;
+  border-left: 1px solid;
+  border-radius: 0px 10px 10px 0px;
 }
 .hibern.sheet.marchand * {
   box-sizing: border-box;

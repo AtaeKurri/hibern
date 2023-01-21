@@ -35,6 +35,10 @@
         .col-12 {width: 100%;}
     }
 
+    .main-bg {
+        background: @main-color;
+    }
+
     .row::after {
         clear: both;
         content: "";
@@ -112,5 +116,11 @@
         text-align: center;
         font-weight: bold;
         color: @second-color;
+    }
+
+    .outer-border {
+        background: @second-color;
+        border-left: 1px solid;
+        border-radius: 0px 10px 10px 0px;
     }
 }
