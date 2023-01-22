@@ -94,7 +94,8 @@
             "Actif": true,
             "UsageWhenKO": false,
             "PostureCustom": false,
-            "Fatigue": 0
+            "Fatigue": 0,
+            "stat": "MAG"
         }
     }
 }

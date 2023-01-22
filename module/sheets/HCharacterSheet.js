@@ -296,11 +296,12 @@ export default class HCharacterSheet extends ActorSheet {
         const rollStat = newThis.actor.system[item.system.stat].value;
         let RollBonus = 0;
         if (item.system.Composante != "None") {
-            RollBonus = newThis.actor.items.get(item.system.Composante).system.Spécialisation;
-            if (RollBonus >= newThis.actor.system.MAG.value)
-                RollBonus = newThis.actor.system.MAG.value;
+            const Composante = newThis.actor.items.get(item.system.Composante);
+            let RollBonus = Composante.system.Spécialisation;
+            const CompoStat = newThis.actor.system[Composante.system.stat].value;
+            if (RollBonus >= CompoStat)
+                RollBonus = CompoStat;
         }
-        const AdditionnalManaCost = (RollBonus == 0) ? 0 : 1;
 
         let checkOptions = await this.GetDiffRollOptions(true);
         if (checkOptions.cancelled) {
@@ -349,7 +350,7 @@ export default class HCharacterSheet extends ActorSheet {
             rollResult: rollResult2,
             Successtype: successtype,
             localizeResult: game.i18n.localize(`hibern.rolls.${localRes}`),
-            Cost: parseInt(item.system.Cout)+AdditionnalManaCost
+            Cost: parseInt(item.system.Cout)
         }
 
         chatData.content = await renderTemplate("systems/hibern/templates/partials/spell-card.hbs", cardData);
@@ -365,6 +366,7 @@ export default class HCharacterSheet extends ActorSheet {
         const capaID = event.currentTarget.closest(".use-ability").dataset.itemid;
         const ability = newThis.actor.items.get(capaID);
         const IsActive = ability.system.Actif;
+        const rollStat = newThis.actor.system[ability.system.stat].value;
         let rollResult;
         let rollResult2;
         let localRes;
@@ -397,7 +399,7 @@ export default class HCharacterSheet extends ActorSheet {
 
             if (rollResult._total == 20) {
                 successtype = "CritSuccess";
-            } else if (rollResult._total+ability.system.Spécialisation >= newDiff) {
+            } else if (rollResult._total + rollStat + ability.system.Spécialisation >= newDiff) {
                 successtype = "Success";
             } else if (rollResult._total == 1) {
                 successtype = "CritFailure";
@@ -405,7 +407,7 @@ export default class HCharacterSheet extends ActorSheet {
                 successtype = "Failure";
             }
             localRes = successtype;
-            rollResult2 = rollResult._total+ability.system.Spécialisation;
+            rollResult2 = rollResult._total + rollStat + ability.system.Spécialisation;
         }
 
         let cardData = {

@@ -12,9 +12,24 @@
                         <input name="system.Fatigue" type="number" value="{{item.system.Fatigue}}" placerholder="0" data-dtype="Number" />
                     </div>
                 </div>
+                <div class="row row-initial">
+                    <div class="col-12" style="margin-left: 2px;">
+                        <p class="field-name"><b>{{localize "hibern.objects.Stat"}}</b></p>
+                        <select name="system.stat" style="width: 100%; height: 47%;">
+                            {{#select item.system.stat}}
+                                <option value="FOR">{{localize "hibern.stats.FOR"}}</option>
+                                <option value="MAG">{{localize "hibern.stats.MAG"}}</option>
+                                <option value="DEX">{{localize "hibern.stats.DEX"}}</option>
+                                <option value="CON">{{localize "hibern.stats.CON"}}</option>
+                                <option value="ERU">{{localize "hibern.stats.ERU"}}</option>
+                                <!--<option value="CHA">{{localize "hibern.stats.CHA"}}</option>-->
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
                 <p class="field-name"><b>Description</b></p>
-<textarea name="system.Description" rows="8" placeholder="Description">{{{item.system.Description}}}</textarea>
-                <div class="row" style="height: initial;">
+<textarea name="system.Description" rows="4" placeholder="Description">{{{item.system.Description}}}</textarea>
+                <div class="row row-initial">
                     <div class="col-4">
                         <p class="field-name"><b>{{localize "hibern.objects.Actif"}}</b>
                         <input type="checkbox" name="system.Actif" value="{{item.system.Actif}}" data-dtype="Boolean"

@@ -1,4 +1,7 @@
 Hooks.on("renderCombatTracker", async (tracker, html, data) => {
+    $("#combat-popout").css("height", "initial");
+    $("#combat-popout").css("max-height", "650px");
+
     let currentToken;
     let currentCombatant;
     try {
@@ -51,7 +54,7 @@ Hooks.on("renderCombatTracker", async (tracker, html, data) => {
     });
 
     let RenderedHtml = await renderTemplate("systems/hibern/templates/partials/combat-tracker.hbs", sheetData);
-    html.find("#combat-controls").before(RenderedHtml);
+    html.find("#combat-tracker").after(RenderedHtml);
 
     html.find("#change-posture").change(async (event) => {
         const postureInput = event.currentTarget.closest("#change-posture").value;

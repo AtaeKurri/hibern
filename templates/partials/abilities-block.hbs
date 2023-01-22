@@ -39,7 +39,7 @@
                                 <a class="item-edit" data-itemid="{{ability._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-edit"></i></a>
                                 <div class="text-flow1
                                     {{#if (eq ability.system.PostureCustom true)}}posture{{else}}{{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}{{/if}}">
-                                    {{#if (eq ability.system.PostureCustom false)}}({{ability.system.Fatigue}}){{/if}} {{ability.name}}
+                                    {{#if (eq ability.system.Actif true)}}({{ability.system.Fatigue}}){{/if}} {{ability.name}}
                                 </div>
                             </td>
                             <td>
@@ -57,7 +57,7 @@
                                 {{else}}
                                     <a class="use-ability fullsizelinkwidth text-flow1 {{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}"
                                         data-itemid="{{ability._id}}">
-                                        ({{ability.system.Fatigue}}) {{ability.name}}
+                                        {{#if (eq ability.system.Actif true)}}({{ability.system.Fatigue}}){{/if}} {{ability.name}}
                                     </a>
                                 {{/if}}
                             </td>
