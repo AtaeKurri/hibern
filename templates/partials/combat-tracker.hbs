@@ -3,16 +3,21 @@
     <div class="posture">
         <span style="text-align: left; width: 50%;">Posture</span>
         {{#if (eq actor.isOwner true)}}
-        <select name="posture" style="text-align: right; width: 50%;" data-tooltip="{{posturetooltip}}" id="change-posture">
-            <option value="Base" {{#if (eq currentPosture "Base")}}selected{{/if}}>{{localize "hibern.chars.postureBase"}}</option>
-            <option value="Def" {{#if (eq currentPosture "Def")}}selected{{/if}}>{{localize "hibern.chars.postureDef"}}</option>
-            <option value="Off" {{#if (eq currentPosture "Off")}}selected{{/if}}>{{localize "hibern.chars.postureOff"}}</option>
-            <option value="Rea" {{#if (eq currentPosture "Rea")}}selected{{/if}}>{{localize "hibern.chars.postureRea"}}</option>
-            <option value="Fuy" {{#if (eq currentPosture "Fuy")}}selected{{/if}}>{{localize "hibern.chars.postureFuy"}}</option>
-            <option value="Hib" {{#if (eq currentPosture "Hib")}}selected{{/if}}>{{localize "hibern.chars.postureHib"}}</option>
-        </select>
+            <select name="posture" style="text-align: right; width: 50%;" data-tooltip="{{posturetooltip}}" id="change-posture">
+                {{#select currentPosture}}
+                    <option value="Base">{{localize "hibern.chars.postureBase"}}</option>
+                    <option value="Def">{{localize "hibern.chars.postureDef"}}</option>
+                    <option value="Off">{{localize "hibern.chars.postureOff"}}</option>
+                    <option value="Rea">{{localize "hibern.chars.postureRea"}}</option>
+                    <option value="Fuy">{{localize "hibern.chars.postureFuy"}}</option>
+                    <option value="Hib">{{localize "hibern.chars.postureHib"}}</option>
+                    {{#each PosturesCustom as |posture index|}}
+                        <option value="{{posture._id}}">{{posture.name}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
         {{else}}
-        <span style="text-align: right; width: 50%;" data-tooltip="{{posturetooltip}}">{{localPosture}}</span>
+            <span style="text-align: right; width: 50%;" data-tooltip="{{posturetooltip}}">{{localPosture}}</span>
         {{/if}}
     </div>
     <h3><u>{{localize "hibern.chat.ActionsLeft"}}</u></h3>

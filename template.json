@@ -91,8 +91,9 @@
         "Capacité": {
             "templates": ["description"],
             "Spécialisation": 0,
-            "Actif": "true",
-            "UsageWhenKO": "false",
+            "Actif": true,
+            "UsageWhenKO": false,
+            "PostureCustom": false,
             "Fatigue": 0
         }
     }

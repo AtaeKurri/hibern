@@ -4,6 +4,7 @@ import HItemSheet from "./module/sheets/HItemSheet.js";
 import HCharacterSheet from "./module/sheets/HCharacterSheet.js";
 import HMarchandSheet from "./module/sheets/HMarchandSheet.js";
 import * as HUD from "./module/HUD.js";
+import * as TRACKER from "./module/combat-tracker.js";
 
 async function preloadHandlebarsTemplates() {
     const templatePaths = [

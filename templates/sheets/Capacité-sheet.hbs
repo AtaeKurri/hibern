@@ -15,15 +15,20 @@
                 <p class="field-name"><b>Description</b></p>
 <textarea name="system.Description" rows="8" placeholder="Description">{{{item.system.Description}}}</textarea>
                 <div class="row" style="height: initial;">
-                    <div class="col-6">
+                    <div class="col-4">
                         <p class="field-name"><b>{{localize "hibern.objects.Actif"}}</b>
                         <input type="checkbox" name="system.Actif" value="{{item.system.Actif}}" data-dtype="Boolean"
                             {{checked item.system.Actif}} style="margin: 0; margin-top: 1px"/></p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4">
                         <p class="field-name"><b>{{localize "hibern.objects.KoUsage"}}</b>
                         <input type="checkbox" name="system.UsageWhenKO" value="{{item.system.UsageWhenKO}}" data-dtype="Boolean"
-                            {{checked item.system.UsageWhenKO}}  style="margin: 0; margin-top: 1px"/></p>
+                            {{checked item.system.UsageWhenKO}} style="margin: 0; margin-top: 1px"/></p>
+                    </div>
+                    <div class="col-4">
+                        <p class="field-name"><b>Posture</b>
+                        <input type="checkbox" name="system.PostureCustom" value="{{item.system.PostureCustom}}" data-dtype="Boolean"
+                            {{checked item.system.PostureCustom}} style="margin: 0; margin-top: 1px;"/></p>
                     </div>
                 </div>
             </div>

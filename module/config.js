@@ -25,3 +25,12 @@ hibern.ActorType = {
         class: "marchand"
     }
 }
+
+hibern.corePostures = [
+    "Base",
+    "Def",
+    "Off",
+    "Rea",
+    "Fuy",
+    "Hib"
+];

@@ -424,6 +424,9 @@
 .hibern.sheet.personnage .spells .passif {
   color: #353584;
 }
+.hibern.sheet.personnage .spells .posture {
+  color: #006400;
+}
 .hibern.sheet.personnage .spells .name {
   text-align: center;
   font-weight: bold;

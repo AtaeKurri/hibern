@@ -68,8 +68,6 @@ export default class HCharacterSheet extends ActorSheet {
             invocations: invocationList
         };
 
-        //TODO invocation : Permettre au joueur de glisser/déposer la référénce de l'acteur sur la scène directement
-
         return sheetData;
     }
 
@@ -97,6 +95,8 @@ export default class HCharacterSheet extends ActorSheet {
                 }
             });
         }
+
+        // Permettre aux capacités d'être des Postures custom et d'être lues dans le combat tracker
 
         super.activateListeners(html);
     }
@@ -375,7 +375,7 @@ export default class HCharacterSheet extends ActorSheet {
             speaker: ChatMessage.getSpeaker()
         };
 
-        if (IsActive) {
+        if (IsActive && ability.system.PostureCustom == false) {
             let checkOptions = await this.GetDiffRollOptions(true);
             if (checkOptions.cancelled) {
                 return;
@@ -411,6 +411,7 @@ export default class HCharacterSheet extends ActorSheet {
         let cardData = {
             ability: ability,
             isActive: IsActive,
+            isPosture: ability.system.PostureCustom,
             rollResult: rollResult2,
             Successtype: successtype,
             localizeResult: game.i18n.localize(`hibern.rolls.${localRes}`),
@@ -868,106 +869,6 @@ async function _rollEsq(type, token) {
 
     chatData.content = await renderTemplate("systems/hibern/templates/partials/esquive-card.hbs", cardData);
     return rollResult.toMessage(chatData);
-}
-
-//#endregion
-
-//#region combat tracker
-
-Hooks.on("renderCombatTracker", async (tracker, html, data) => {
-    let currentToken;
-    let currentCombatant;
-    try {
-        currentToken = game.scenes.get(data.combat._source.scene).tokens.get(data.combat.current.tokenId);
-        currentCombatant = tracker.viewed.combatants.get(tracker.viewed.current.combatantId);
-    } catch(err) {}
-    if (data.combat == null || currentCombatant == null) {return;}
-    const currentActor = game.actors.get(currentCombatant.actorId);
-
-    if (currentActor.system.posture == "Normal" || currentActor.system.posture == "Aucune") {
-        if (currentActor.canUserModify(game.user, "update")) {
-            currentActor.update({system: {posture: "Base"}});
-            CONFIG.hibern.socket.executeForEveryone("RenderTracker");
-        }
-    }
-
-    if (currentActor.system.actionsUsed.Reaction == null)
-    {
-        if (currentActor.canUserModify(game.user, "update")) {
-            await currentActor.update({
-                system: {
-                    actionsUsed: {
-                        "Action": true,
-                        "ActionSE": true,
-                        "Move": true,
-                        "ChangePosture": true,
-                        "Esquiver": true,
-                        "Parer": true,
-                        "Reaction": true
-                    }
-                }
-            });
-            CONFIG.hibern.socket.executeForEveryone("RenderTracker");
-        }
-    }
-
-    let sheetData = mergeObject(data, {
-        actor: currentActor,
-        token: currentToken,
-        posturetooltip: game.i18n.localize(`hibern.chars.tooltipPosture${currentActor.system.posture}`),
-        localPosture: game.i18n.localize(`hibern.chars.posture${currentActor.system.posture}`),
-        currentPosture: currentActor.system.posture,
-        usedActions: currentActor.system.actionsUsed
-    });
-
-    let RenderedHtml = await renderTemplate("systems/hibern/templates/partials/combat-tracker.hbs", sheetData);
-    html.find("#combat-controls").before(RenderedHtml);
-
-    html.find("#change-posture").change(async (event) => {
-        const postureInput = event.currentTarget.closest("#change-posture").value;
-        if (currentActor.canUserModify(game.user, "update")) {
-            await currentActor.update({system: {posture: postureInput}});
-        } 
-        CONFIG.hibern.socket.executeForEveryone("RenderTracker");
-    });
-
-    html.find(".use-action").click(async (event) => {
-        const actionUsed = event.currentTarget.closest(".use-action").dataset.type;
-        if (currentActor.canUserModify(game.user, "update")) {
-            await currentActor.update({system: {actionsUsed: {[actionUsed]: !currentActor.system.actionsUsed[actionUsed]}}});
-        }
-        CONFIG.hibern.socket.executeForEveryone("RenderTracker");
-    });
-});
-
-// Reset les actions de tout les tokens présents dans le combat ainsi que leur posture à la base
-Hooks.on("preDeleteCombat", (combat, rendering, id) => {
-    combat.combatants.forEach(resetCombatant);
-});
-
-Hooks.on("combatRound", (combat, roundInfo, data) => {
-    combat.combatants.forEach(resetCombatant);
-});
-
-async function resetCombatant(fighter) {
-    let currentActor = game.actors.get(fighter.actorId);
-    if (currentActor.canUserModify(game.user, "update")) {
-        await currentActor.update({
-            system: {
-                actionsUsed: {
-                    "Action": true,
-                    "ActionSE": true,
-                    "Move": true,
-                    "ChangePosture": true,
-                    "Esquiver": true,
-                    "Parer": true,
-                    "Reaction": true
-                },
-                posture: "Base"
-            }
-        });
-        CONFIG.hibern.socket.executeForEveryone("RenderTracker");
-    }
 }
 
 //#endregion

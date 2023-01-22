@@ -1,16 +1,22 @@
 <section class="dice-roll second-background">
     <div class="roll">
         <div class="name">{{ability.name}}</div>
-        {{#if (eq isActive true)}}
-        <div class="{{Successtype}} content" style="text-align: center;">
-            <span style="text-decoration: underline;" class="big-number">{{rollResult}}</span></br>
-            <span style="font-size: 14px; text-decoration: none;">({{localizeResult}})</span></br>
-            <span style="color: gray; font-size: small; text-shadow: none;">{{ability.system.Description}}</span>
-        </div>
-        {{else}}
+        {{#if (eq isPosture true)}}
         <div class="content" style="text-align: center;">
             <span style="color: gray; font-size: small; text-shadow: none;">{{ability.system.Description}}</span>
         </div>
+        {{else}}
+            {{#if (eq isActive true)}}
+            <div class="{{Successtype}} content" style="text-align: center;">
+                <span style="text-decoration: underline;" class="big-number">{{rollResult}}</span></br>
+                <span style="font-size: 14px; text-decoration: none;">({{localizeResult}})</span></br>
+                <span style="color: gray; font-size: small; text-shadow: none;">{{ability.system.Description}}</span>
+            </div>
+            {{else}}
+            <div class="content" style="text-align: center;">
+                <span style="color: gray; font-size: small; text-shadow: none;">{{ability.system.Description}}</span>
+            </div>
+            {{/if}}
         {{/if}}
     </div>
 </section>

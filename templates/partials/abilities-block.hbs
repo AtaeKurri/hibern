@@ -37,7 +37,10 @@
                             <td class="spell-name" style="width: 175px;">
                                 <a class="item-delete" data-itemid="{{ability._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-trash"></i></a>
                                 <a class="item-edit" data-itemid="{{ability._id}}" style="margin: 0px 2px 0px 2px;"><i class="fas fa-edit"></i></a>
-                                <div class="text-flow1 {{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}">({{ability.system.Fatigue}}) {{ability.name}}</div>
+                                <div class="text-flow1
+                                    {{#if (eq ability.system.PostureCustom true)}}posture{{else}}{{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}{{/if}}">
+                                    {{#if (eq ability.system.PostureCustom false)}}({{ability.system.Fatigue}}){{/if}} {{ability.name}}
+                                </div>
                             </td>
                             <td>
                                 <span class="text-flow1" style="width: 240px;">{{{ability.system.Description}}}</span>
@@ -47,10 +50,16 @@
                             </td>
                         {{else}}
                             <td class="spell-name" style="width: 175px;">
-                                <a class="use-ability fullsizelinkwidth text-flow1 {{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}"
-                                    data-itemid="{{ability._id}}">
-                                    ({{ability.system.Fatigue}}) {{ability.name}}
-                                </a>
+                                {{#if (eq ability.system.PostureCustom true)}}
+                                    <span class="fullsizelinkwidth text-flow1 posture">
+                                        {{ability.name}}
+                                    </span>
+                                {{else}}
+                                    <a class="use-ability fullsizelinkwidth text-flow1 {{#if (eq ability.system.Actif true)}}actif{{else}}passif{{/if}}"
+                                        data-itemid="{{ability._id}}">
+                                        ({{ability.system.Fatigue}}) {{ability.name}}
+                                    </a>
+                                {{/if}}
                             </td>
                             <td><span class="text-flow1" style="width: 240px; font-size: 12px;">{{{ability.system.Description}}}</span></td>
                             <td style="width: 20px; text-align: left;">

@@ -22,8 +22,8 @@
         </select></p>
     </div>-->
 
-    <div class="row main-bg">
-        <div class="col-7 outer-border">
+    <div class="row main-bg {{#if (eq item.system.AS true)}}header-AS{{/if}}">
+        <div class="col-7 outer-border" style="color: brown">
             <div class="main-margin">
                 <div class="row row-initial">
                     <div class="col-6" style="margin-right: 2px;">
@@ -96,7 +96,8 @@
         </div>
         <div class="col-5 sheet-header header {{#if (eq item.system.AS true)}}header-AS{{/if}}">
             <h1 class="item-type">Spell-Card
-                ({{localize "hibern.objects.Cost"}}: <input class="MarchandCost-input" type="number" name="system.MarchandCost" value="{{item.system.MarchandCost}}"/>)</h1>
+                ({{localize "hibern.objects.Cost"}}: <input class="MarchandCost-input" type="number" name="system.MarchandCost" value="{{item.system.MarchandCost}}" 
+                    style="background: rgba(0, 0, 0, 0.05);" />)</h1>
             <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" class="header {{#if (eq item.system.AS true)}}header-AS{{/if}}" /></h1>
             <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="200" width="200" />
         </div>

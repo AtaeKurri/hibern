@@ -29,10 +29,32 @@ export default class HItemSheet extends ItemSheet {
                 item: baseData.item,
                 data: baseData.item.system,
                 config: CONFIG.hibern,
-                abilities: this.actor.items.filter(function (item) {return item.type == "Capacité"}),
+                abilities: this.actor.items.filter(function (item) {return (item.type == "Capacité" && item.system.Actif == true)}),
             };
         }
 
         return sheetData;
     }
 }
+
+//#region Hooks
+
+/*Hooks.on("updateItem", (item, system, diff, id) => {
+    if (item.canUserModify(game.user, "update") && item.type == "Capacité") {
+        if (diff.render == true) {
+            const isActif = (item.system.PostureCustom == true) ? false : item.system.Actif
+            const isUsageWhenKO = (item.system.PostureCustom == true) ? false : item.system.UsageWhenKO
+            const isPostureCustom = (item.system.Actif == true || item.system.UsageWhenKO == true) ? false : item.system.PostureCustom
+            item.update({
+                system: {
+                    Actif: isActif,
+                    UsageWhenKO: isUsageWhenKO,
+                    PostureCustom: isPostureCustom
+                }
+                }, {diff: false, render: true}
+            );
+        }
+    }
+});*/
+
+//#endregion

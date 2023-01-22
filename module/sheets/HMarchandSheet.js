@@ -162,9 +162,3 @@ export default class HMarchandSheet extends ActorSheet {
 
     //#endregion
 }
-
-//#region Hooks
-
-
-
-//#endregion
