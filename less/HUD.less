@@ -456,3 +456,15 @@
         border-bottom: 1px solid @main-color;
     }
 }
+
+#menu {
+    background: @main-color-opacity;
+    border: 1px solid @second-color;
+    border-radius: @main-radius;
+
+    #menu-items {
+        li:not(:last-child) {
+            border-bottom: 1px solid @second-color;
+        }
+    }
+}

@@ -1253,6 +1253,14 @@
 #character-rack .rack-item:last-child {
   border-bottom: 1px solid brown;
 }
+#menu {
+  background: rgba(165, 42, 42, 0.7);
+  border: 1px solid white;
+  border-radius: 10px;
+}
+#menu #menu-items li:not(:last-child) {
+  border-bottom: 1px solid white;
+}
 .bold {
   font-weight: bold;
 }
