@@ -9,11 +9,7 @@ export default class character_rack_HUD extends FormApplication {
             top: 65,
             left: 120,
             resizable: false,
-            tabs: [{
-                navSelector: ".tabs",
-                contentSelector: ".content",
-                initial: "Spells"
-            }]
+            tabs: [{navSelector: ".tabs", contentSelector: ".content", initial: "Spells"}]
         });
     }
 
@@ -47,9 +43,6 @@ export default class character_rack_HUD extends FormApplication {
     }
 
     getData() {
-        const data = super.getData();
-
-        const baseData = super.getData();
         let sheetData;
         try {
             sheetData = {
@@ -71,7 +64,7 @@ export default class character_rack_HUD extends FormApplication {
     }
 
     activateListeners(html) {
-        Hooks.on("controlToken", (tokenData, selected) => {
+        Hooks.once("controlToken", (tokenData, selected) => {
             if (tokenData.document._actor.type == "marchand") {return;}
 
             this.selected_token = (selected) ? tokenData : undefined;
@@ -108,7 +101,7 @@ export default class character_rack_HUD extends FormApplication {
 //#region Hooks
 
 Hooks.on("getSceneControlButtons", (controls) => {
-    const database = {
+    const CharacterRack = {
         icon: "fas fa-list",
         name: "hibernrack",
         title: game.i18n.localize("hibern.Divers.ShowCharacterRack"),
@@ -120,7 +113,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
     };
 
     const bar = controls.find(c => c.name === "token");
-    bar.tools.push(database);
+    bar.tools.push(CharacterRack);
 });
 
 //#endregion
