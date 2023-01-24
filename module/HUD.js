@@ -67,8 +67,9 @@ export default class character_rack_HUD extends FormApplication {
         Hooks.once("controlToken", (tokenData, selected) => {
             if (tokenData.document._actor.type == "marchand") {return;}
 
-            this.selected_token = (selected) ? tokenData : undefined;
-            this.actor = (selected) ? this.selected_token.document._actor : undefined;
+            //this.selected_token = (selected) ? tokenData : undefined;
+            this.selected_token = canvas.tokens.controlled[0];
+            this.actor = this.selected_token?.document._actor;
             this.render();
         });
 

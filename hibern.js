@@ -89,6 +89,8 @@ Hooks.once("ready", () => {
     if (!game.permissions.TOKEN_CREATE.includes(1) && game.user.isGM === true) {
         ui.notifications.info("Your players can't place summon tokens from their sheet. Please consider editing their permissions to allow so.");
     }
+
+    $("#hotbar").remove();
 });
 
 Hooks.once("socketlib.ready", () => {
